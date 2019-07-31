@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <mt-header fixed title="设置"></mt-header>
         <div id="setting" class="mui-page mui-page-center">
+			<mt-header fixed title="设置"></mt-header>
 			<div class="mui-page-content">
 				<div class="mui-scroll-wrapper" data-scroll="2">
 					<div class="mui-scroll" style="transform: translate3d(0px, 0px, 0px) translateZ(0px); transition-duration: 0ms;">
@@ -34,7 +34,7 @@
 						</ul>
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
-								<router-link to="/about" class="mui-navigate-right">关于校园帮 <i class="mui-pull-right update">V1.0.0</i></router-link>
+								<router-link to="/about" class="mui-navigate-right">关于 <i class="mui-pull-right update">V1.0.0</i></router-link>
 							</li>
 							<li class="mui-table-view-cell">
 								<router-link to="/feedback" class="mui-navigate-right">问题反馈 </router-link>
@@ -232,7 +232,6 @@ export default {
 	.mui-ios .mui-navbar .mui-bar .mui-title {
 		position: static;
 	}
-	/*问题反馈在setting页面单独的css*/
 	#feedback .mui-popover{
 		position: fixed;
 	}
@@ -246,10 +245,10 @@ export default {
 	.mui-plus.mui-plus-stream .mui-stream-hidden{
 		display: none !important;
 	}
-.mui-scroll{
-    padding-top: 40px;
-}
-.mint-header.is-fixed{
-    z-index: 10;
-}
+	.mui-scroll-wrapper{
+		padding-top: 40px;
+	}
+	.mint-header.is-fixed{
+		z-index: 10;
+	}
 </style>
