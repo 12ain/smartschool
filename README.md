@@ -1,21 +1,78 @@
-# smartschool
+# 校园帮
 
-> vue构建的智慧校园移动端
+> vue构建的智慧校园移动端(校园帮)
 
-## Build Setup
+2019.8.23 引用axios与后端测试接口连通性,出现跨域问题.
 
-``` bash
-# install dependencies
-npm install
+2019.8.24 跨域问题解决,所有页面全部重构.重新设计UI
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 页面需求梳理及开发进度:
 
-# build for production with minification
-npm run build
+	+ 用户注册
+	
+	+ 用户登录
+	
+	+ 个人中心
+	
+		+ 个人信息
+		
+			- 查看
+			- 修改
+			
+	+ 故障报备
+	
+		- 用户
+		
+			+ 添加
+			+ 修改
+			+ 删除
+			+ 查看
+			
+		- 维修人员
+		
+			+ 查看
+			+ 修改
+			+ 删除
+			
+	+ 失物招领
+	
+		- 添加
+		- 查看
+		- 修改
+		- 删除
+	
+	+ 二手交易
+	
+		- 添加
+		- 查看
+		- 修改
+		- 删除
+		
+	+ 考试信息
+		- 信息通告
+		
+			+ 发布
+			+ 查看
+			
+		- 考试报名入口
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

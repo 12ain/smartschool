@@ -29,7 +29,7 @@
 				</ul>
 			</form>
 			<div class="mui-content-padded">
-                <router-link id="login" type="button" class="mui-btn mui-btn-block mui-btn-primary" to="/index">登录</router-link>
+                <router-link id="login" type="button" class="mui-btn mui-btn-block mui-btn-primary" to="/tabbar">登录</router-link>
 				<div class="link-area"><routerLink to="/register" id="reg">注册账号</routerLink> <span class="spliter">|</span> <a id="forgetPassword">忘记密码</a>
 				</div>
 			</div>

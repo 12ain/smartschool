@@ -1,8 +1,11 @@
 <template>
-    <div>
+    <div class="container">
+        <mt-header fixed title="考试信息"></mt-header>
+
         <tabbar></tabbar>
     </div>
 </template>
+
 <script>
 import tabbar from '../common/tabbar'
 export default {
@@ -11,7 +14,6 @@ export default {
     },
     data() {
         return {
-
         };
     },
     computed: {
@@ -21,7 +23,6 @@ export default {
 
     },
     mounted() {
-
     },
     watch: {
 
@@ -30,11 +31,10 @@ export default {
 
     },
     components: {
-        tabbar
+        tabbar,
     },
 };
 </script>
 
 <style scoped lang="scss">
-
 </style>

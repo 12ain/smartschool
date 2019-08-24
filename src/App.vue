@@ -10,4 +10,7 @@ export default {
 }
 </script>
 <style>
+.mint-header{
+  background-color: #1cbe99;
+}
 </style>

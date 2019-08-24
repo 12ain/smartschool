@@ -1,8 +1,10 @@
 <template>
-    <div>
+    <div class="container">
+        <mt-header fixed title="失物招领"></mt-header>
         <tabbar></tabbar>
     </div>
 </template>
+
 <script>
 import tabbar from '../common/tabbar'
 export default {
@@ -21,7 +23,6 @@ export default {
 
     },
     mounted() {
-
     },
     watch: {
 
@@ -30,11 +31,10 @@ export default {
 
     },
     components: {
-        tabbar
+        tabbar,
     },
 };
 </script>
 
 <style scoped lang="scss">
-
 </style>

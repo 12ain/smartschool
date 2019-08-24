@@ -1,18 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/components/index/index'
 import login from '@/components/login/login'
 import register from '@/components/login/register'
 import setting from '@/components/setting/setting'
-import application from '@/components/application/application'
-import message from '@/components/message/message'
 import tabbar from '@/components/common/tabbar'
-import lost from '@/components/application/apps/lost'
-import repair from '@/components/application/apps/repair'
-import second from '@/components/application/apps/second'
 import about from '@/components/setting/apps/about'
 import account from '@/components/setting/apps/account'
-import feedback from '@/components/setting/apps/feedback'
+import repair from '@/components/repair/repair'
+import second from '@/components/second/second'
+import information from '@/components/information/information'
+import lost from '@/components/lost/lost'
+
 
 Vue.use(Router)
 
@@ -28,39 +26,15 @@ export default new Router({
       component: login
     },
     {
-      path: '/index',
-      name: 'index',
-      component: index
-    },
-    {
       path: '/setting',
       name: 'setting',
       component: setting
     },
-    {
-      path: '/application',
-      name: 'application',
-      component: application,
-    },      
-    { 
-      path:'/lost', 
-      name: 'lost',
-      component: lost 
-    },
-    {
-      path: '/repair',
-      name: 'repair',
-      component: repair
-    },
-    { path:'/second',
-      name: 'second',
-      component: second
-    },
-    {
-      path: '/message',
-      name: 'message',
-      component: message
-    },
+     {
+       path: '/lost',
+       name: 'lost',
+       component: lost
+     },
     {
       path: '/register',
       name: 'register',
@@ -72,11 +46,6 @@ export default new Router({
       component: about
     },
     {
-      path: '/feedback',
-      name: 'feedback',
-      component: feedback
-    },
-    {
       path: '/account',
       name: 'account',
       component: account
@@ -85,7 +54,22 @@ export default new Router({
       path:'/tabbar',
       name: 'tabbar',
       component: tabbar
+    },
+    {
+      path: '/information',
+      name: 'information',
+      component: information
+    },
+    {
+      path: '/repair',
+      name: 'repair',
+      component: repair
+    },
+    {
+      path: '/second',
+      name: 'second',
+      component: second
     }
   ],
-  linkActiveClass:'mui-active'
+  linkActiveClass:''
 })

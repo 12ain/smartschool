@@ -1,26 +1,37 @@
 <template>
     <div>
-        <nav class="mui-bar mui-bar-tab">
-			<router-link class="mui-tab-item" to="/index">
-				<span class="mui-icon mui-icon-home"></span>
-				<span class="mui-tab-label">首页</span>
-			</router-link>
-			<router-link class="mui-tab-item" to="/application">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-class"></span>
-				<span class="mui-tab-label">应用</span>
-			</router-link>
-			<router-link class="mui-tab-item" to="/message">
-				<span class="mui-icon mui-icon-email">
-                    <!-- 消息提醒小红点 -->
-                    <span class="mui-badge">0</span>
-                </span>
-				<span class="mui-tab-label">消息</span>
-			</router-link>
-			<router-link class="mui-tab-item" to="/setting">
-				<span class="mui-icon mui-icon-gear"></span>
-				<span class="mui-tab-label">设置</span>
-			</router-link>
-		</nav>
+        <mt-tabbar fixed>
+        <mt-tab-item v-model="selected">
+            <i slot="icon" class="iconfont iconshandian"></i>
+            <router-link to="/repair">
+                <a>故障报备</a>
+            </router-link>
+        </mt-tab-item>
+        <mt-tab-item>
+            <i slot="icon" class="iconfont iconershoujiaoyi"></i>
+            <router-link to="/second">
+                <a>二手信息提供</a>
+            </router-link>
+        </mt-tab-item>
+        <mt-tab-item>
+            <i slot="icon" class="iconfont icontishi"></i>
+            <router-link to="/information">
+                <a>考试</a>
+            </router-link>
+        </mt-tab-item>
+        <mt-tab-item>
+            <i slot="icon" class="iconfont iconxingzhuang9kaobei"></i>
+            <router-link to="/lost">
+                <a>失物招领</a>
+            </router-link>
+        </mt-tab-item>
+        <mt-tab-item>
+            <i slot="icon" class="iconfont iconrenyuanguanli"></i>
+            <router-link to="/setting">
+                <a>个人中心</a>
+            </router-link>
+        </mt-tab-item>
+        </mt-tabbar>        
     </div>
 </template>
 
@@ -31,7 +42,7 @@ export default {
     },
     data() {
         return {
-
+            selected: true
         };
     },
     computed: {
@@ -56,7 +67,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .mui-icon-extra-class{
-        font-size: 20px;
+    .iconfont{
+        font-size: 24px;
+    }
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
+    .mint-tabbar > .mint-tab-item.is-selected{
+        color: #fff;
+        background-color: #1cbe99;
     }
 </style>
