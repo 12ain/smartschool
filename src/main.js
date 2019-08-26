@@ -9,9 +9,11 @@ import "./assets/normalize/normalize.css"
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css';
 import Axios from 'axios';
+import Vuex from 'vuex'
 
 Vue.use(VueResource)
 Vue.use(MintUI)
+Vue.use(Vuex);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -24,10 +26,10 @@ Axios.defaults.baseURL = '/api';
 // Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Axios({
-  url: '/record/wwmessmy',
+  url: '/lf/testAllLost',
   method: 'post',
   params: {
-
+    lflag: '失主'
   }
 }).then(res => {
   // console.log(res)
