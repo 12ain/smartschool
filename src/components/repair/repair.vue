@@ -4,10 +4,10 @@
         <mt-header fixed title="故障报备"></mt-header>
 
         <!-- 选项卡 -->
-        <mt-navbar v-model="active">
+        <!-- <mt-navbar v-model="active">
         <mt-tab-item id="tab-container1">故障报备</mt-tab-item>
         <mt-tab-item id="tab-container2">报备信息</mt-tab-item>
-        </mt-navbar>
+        </mt-navbar> -->
 
         <!-- 内容分栏 -->
         <mt-tab-container v-model="active">
@@ -21,14 +21,14 @@
             <mt-field label="上传图片" placeholder="上传图片" type="file" v-model="image"></mt-field>
             <mt-button type="primary" size="large">提交</mt-button>
         </mt-tab-container-item>
-            <!-- 内容区2: 已报备信息展示 -->
-        <mt-tab-container-item id="tab-container2">
-            
-                <mt-cell-swipe v-for="item in list" :key="item.rid"
-                :title="item.rdes" :label="item.wstatic" :right= "rightButtons">
-                </mt-cell-swipe>
-        </mt-tab-container-item>
         </mt-tab-container>
+
+
+          <!-- 报修数据显示 -->
+          <!-- <mt-cell-swipe v-for="item in list" :key="item.rid"
+          :title="item.rdes" :label="item.wstatic" :right= "rightButtons">
+          </mt-cell-swipe> -->
+
 
         <tabbar></tabbar>
     </div>
@@ -40,7 +40,8 @@ import Axios from 'axios';
 import tabbar from '../common/tabbar'
 import { Toast } from 'mint-ui'
 Vue.prototype.$axios = Axios;
-Axios.defaults.baseURL = '/api';
+
+Axios.defaults.baseURL = 'http://106.12.189.19';
 export default {
     props: {
 
@@ -63,44 +64,47 @@ export default {
 
     },
     created() {
-        this.rightButtons = [
-        {
-          content: '编辑',
-          style: { background: 'green', color: '#fff' },
-          handler: () => this.$messagebox({
-          title: '温馨提示',
-          message: '即将进入编辑页面,请确认您填写信息的有效性.',
-          showCancelButton: true,
-          confirmButtonText:"继续",
-          cancelButtonText:"取消"
-        }).then(action => {
-          if(action == 'confirm'){
-            console.log('继续')
-          }else{
-            console.log('取消')
-          }
-      })
-        },
-        {
-          content: '删除',
-          style: { background: 'red', color: '#fff' },
-          handler: () => this.$messagebox({
-          title: '温馨提示',
-          message: '删除后不可恢复,是否继续',
-          showCancelButton: true,
-          confirmButtonText:"确认删除",
-          cancelButtonText:"取消"
-        }).then(action => {
-          if(action == 'confirm'){
-            console.log('继续')
-          }else{
-            console.log('取消')
-          }
-      })
-        },
-      ];
 
     },
+    // created() {
+    //     this.rightButtons = [
+    //     {
+    //       content: '编辑',
+    //       style: { background: 'green', color: '#fff' },
+    //       handler: () => this.$messagebox({
+    //       title: '温馨提示',
+    //       message: '即将进入编辑页面,请确认您填写信息的有效性.',
+    //       showCancelButton: true,
+    //       confirmButtonText:"继续",
+    //       cancelButtonText:"取消"
+    //     }).then(action => {
+    //       if(action == 'confirm'){
+    //         console.log('继续')
+    //       }else{
+    //         console.log('取消')
+    //       }
+    //   })
+    //     },
+    //     {
+    //       content: '删除',
+    //       style: { background: 'red', color: '#fff' },
+    //       handler: () => this.$messagebox({
+    //       title: '温馨提示',
+    //       message: '删除后不可恢复,是否继续',
+    //       showCancelButton: true,
+    //       confirmButtonText:"确认删除",
+    //       cancelButtonText:"取消"
+    //     }).then(action => {
+    //       if(action == 'confirm'){
+    //         console.log('继续')
+    //       }else{
+    //         console.log('取消')
+    //       }
+    //   })
+    //     },
+    //   ];
+
+    // },
     mounted() {
         Axios({
         url: '/record/rmess',

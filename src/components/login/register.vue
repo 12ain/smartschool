@@ -112,16 +112,16 @@ html,body{
 }
 .myapp-login-logo-text .info{
   border: 0;
-  /* margin-top: 50px; */
+  margin-top: 50px;
 }
 .myapp-login-logo-image{
   width: 150px;
-  /* margin-top: 60px; */
+  margin-top: 60px;
 }
 .myapp-login{
   background-size:100% 100%;
 }
-.login-am-center .am-form input{
+/* .login-am-center .am-form input{
   line-height: 15px;
-}
+} */
 </style>
