@@ -4,17 +4,18 @@
 		<mt-header fixed title="个人中心"></mt-header>
 
         <!-- 主体部分 -->
-        <mt-cell title="昵称">
-        <span></span>
-        <img slot="icon" src="../../assets/images/logo.png" width="24" height="24">
+        <mt-cell title="用户名" class="setting-name" is-link to="/account">
+            
+        <img slot="icon" src="../../assets/images/logo.png" width="80" height="80">
         </mt-cell>
 
-        <mt-cell
-            title="退出登录"
-            to="/login">
-        </mt-cell>     
+        <mt-cell title="青岛高校全景" is-link icon="ditu" class="setting-map"></mt-cell>
 
-
+        <mt-cell title="编辑个人信息" to="/account" is-link></mt-cell>     
+        <mt-cell title="我的二手信息" to="/second" is-link></mt-cell>     
+        <mt-cell title="我的失物招领" to="/lost" is-link></mt-cell>     
+        <mt-cell title="考试入口" to="/information" is-link></mt-cell>     
+        <mt-cell title="退出登录" to="/login" class="setting-exit"></mt-cell>     
         <tabbar></tabbar>
     </div>
 </template>
@@ -27,7 +28,7 @@ export default {
     },
     data() {
         return {
-
+            
         };
     },
     computed: {
@@ -51,4 +52,30 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.setting-name{
+    height: 80px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    .mint-cell-title > img{
+        border-radius: 50%;
+        margin: 0 15px;
+    }
+}
+.setting-map{
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.setting-exit{
+    text-align: center;
+    margin-top: 100px;
+    background: #eb602e;
+    border-radius: 15px;
+    left: 25%;
+    width: 50%;
+    color: white;
+}
+.mint-cell{
+    padding-left: 10px;
+    border-radius: 10px;
+}
 </style>

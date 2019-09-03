@@ -4,10 +4,10 @@
         <mt-header fixed title="故障报备"></mt-header>
 
         <!-- 选项卡 -->
-        <!-- <mt-navbar v-model="active">
+        <mt-navbar v-model="active">
         <mt-tab-item id="tab-container1">故障报备</mt-tab-item>
         <mt-tab-item id="tab-container2">报备信息</mt-tab-item>
-        </mt-navbar> -->
+        </mt-navbar>
 
         <!-- 内容分栏 -->
         <mt-tab-container v-model="active">
@@ -21,14 +21,16 @@
             <mt-field label="上传图片" placeholder="上传图片" type="file" v-model="image"></mt-field>
             <mt-button type="primary" size="large">提交</mt-button>
         </mt-tab-container-item>
-        </mt-tab-container>
+        
+            <!-- 内容区2: 报修数据显示 -->
 
+            <mt-tab-container-item id="tab-container2">
+                <mt-cell-swipe v-for="item in list" :key="item.rid"
+                :title="item.rdes" :label="item.wstatic">
+                </mt-cell-swipe>
+            </mt-tab-container-item>
 
-          <!-- 报修数据显示 -->
-          <!-- <mt-cell-swipe v-for="item in list" :key="item.rid"
-          :title="item.rdes" :label="item.wstatic" :right= "rightButtons">
-          </mt-cell-swipe> -->
-
+        </mt-tab-container>          
 
         <tabbar></tabbar>
     </div>
@@ -112,11 +114,11 @@ export default {
         params: {
         }
         }).then(res => {
-            Toast({
-                message: res.data.msg,
-                position: 'bottom',
-                duration: 3000
-                });
+            // Toast({
+            //     message: res.data.msg,
+            //     position: 'bottom',
+            //     duration: 3000
+            //     });
             this.list = res.data.list
         })
     },
@@ -134,7 +136,7 @@ export default {
 
 <style scoped lang="scss">
     .mint-button--primary{
-        background-color: #1cbe99;
+        background-color: #44ceff;
     }
     .mint-button--large{
         margin-top: 20px;

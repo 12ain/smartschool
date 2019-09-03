@@ -1,11 +1,11 @@
 /* Write your styles */
 html, body {
-	background:#1cbe99;
+	background:#44ceff;
 }
 
 /* 登陆logo */
 .myapp-login {
-	background:#1cbe99;
+	background:#44ceff;
 	background-size: 100%;
 	height: 100%;
 }
@@ -45,8 +45,8 @@ html, body {
 	border-bottom: 1px solid #4d4d4d;
 	font-family: FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
 	width: 100%;
-	font-weight: normal;
-	font-size: 14px;
+	font-weight: bold;
+	font-size: 20px;
 	color: #fff;
 }
 
@@ -94,4 +94,14 @@ a{
 }
 .active{
 	color: #eb602e;
+}
+.myapp-login-logo-image {
+  width: 150px;
+  margin-top: 60px;
+}
+.am-btn.am-btn-default {
+  border-radius: 15px;
+}
+.login-am-center .am-form input{
+	border-radius: 15px;
 }

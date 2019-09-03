@@ -114,10 +114,6 @@ html,body{
   border: 0;
   margin-top: 50px;
 }
-.myapp-login-logo-image{
-  width: 150px;
-  margin-top: 60px;
-}
 .myapp-login{
   background-size:100% 100%;
 }

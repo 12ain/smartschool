@@ -14,10 +14,16 @@ export default {
   margin: 0;
   padding: 0;
 }
+html,body{
+  background-color: #ddedf3;
+}
 .mint-header{
-  background-color: #1cbe99;
+  background-color: #44ceff;
 }
 .container{
   margin-top: 40px;
+}
+.mint-searchbar{
+  background-color: transparent;
 }
 </style>
