@@ -52,7 +52,6 @@
 			</form>
 		</div>
 	</div>
-  <br><br>
 </div>
 </template>
 
@@ -60,7 +59,7 @@
 import Vue from "vue";
 import axios from "axios";
 import router from "../../router/index";
-import store from "../store/store";
+import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
 import { Toast } from 'mint-ui';
 import qs from 'Qs';
@@ -240,31 +239,32 @@ html,body{
   width: 100%;
   height: 100%;
 }
-.app{
-  width: 100%;
-  height: 100%;
+.myapp-login-logo-block{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-.myapp-login{
-  width: 100%;
-  height: 100%;
+.app{
+  min-height: 100vh;
 }
 .login-am-center .am-form input{
   background:#fff ;
 }
-.myapp-login-logo-text .info{
-  border: 0;
-  margin-top: 50px;
-}
-.myapp-login{
-  background-size:100% 100%;
-}
 .login-am-center .am-form input{
-  line-height: 15px;
+  line-height: 18px;
+}
+.myapp-login-logo-image{
+  margin: 0;
+  width: 15%;
+  height: 15%;
 }
 .am-form select {
   border-radius: 20px;
   font-size: 10px;
   padding: 6px;
-  line-height: 15px;
+  line-height: 18px;
+}
+.am-form-group{
+  margin-bottom: 0.6rem;
 }
 </style>

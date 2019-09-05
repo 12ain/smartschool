@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak @touchmove.prevent>
     <router-view></router-view>
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
 }
 html,body{
   background-color: #ddedf3;
+}
+[v-cloak] {
+  display: none;
 }
 .mint-header{
   background-color: #44ceff;

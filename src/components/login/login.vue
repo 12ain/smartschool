@@ -27,13 +27,11 @@
           <mt-cell title="自动登录">
           <mt-switch v-model="userLogin.autoLogin" name="自动登录"></mt-switch>
 					</mt-cell>
-					<button class="am-btn am-btn-default" @click.prevent="submitLogin">登录</button>
-          <!-- <p><router-link class="am-btn am-btn-default" to="/repair">登录</router-link></p> -->
+					<button class="am-btn am-btn-default" @click.prevent="_submitLogin">登录</button>
 				</fieldset>
 			</form>
 		</div>
 	</div>
-  <br><br><br><br><br><br><br><br><br><br>
 </div>
 
 </template>
@@ -42,7 +40,7 @@
 import Vue from "vue";
 import axios from "axios";
 import router from "../../router/index";
-import store from "../store/store";
+import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
 import { Toast } from 'mint-ui';
 import qs from 'Qs';
@@ -78,7 +76,21 @@ export default {
 
   },
   created() {
+    // 将localStroge中的参数存入userLogin
+    let userLogin = {
+      uid: window.localStorage.getItem("uid"),
+      upsd: window.localStorage.getItem("upsd"),
+      autoLogin: window.localStorage.getItem("autoLogin")
+    };
 
+    // 如果存在参数，自动调用登录函数
+    if (userLogin.uid  && userLogin.upsd  && userLogin.autoLogin != false) {
+      this._submitLogin(userLogin);
+      console.log('调用自动登录函数')
+    }
+    this.$nextTick(function() {
+
+    });
   },
   mounted() {
 
@@ -112,18 +124,27 @@ export default {
       }
     },
         // 登录请求
-    submitLogin() {
+    _submitLogin(userLogin) {
+      if (this.userLogin.autoLogin && 
+        !window.localStorage.getItem("uid")) {
+        window.localStorage.setItem("uid", this.userLogin.uid);
+        window.localStorage.setItem("upsd", this.userLogin.upsd);
+        window.localStorage.setItem("autoLogin", this.userLogin.autoLogin);
+        console.log('本地账号密码存储成功')
+      } 
       if (
         this.checkUid() &&
         this.checkPwd()
       ) {
         axios
           .post("/user/login", 
-          qs.stringify({           
+          qs.stringify(
+            {           
             uid: this.userLogin.uid, 
             upsd: this.userLogin.upsd,	
             autoLogin: this.userLogin.autoLogin
-          }))
+            }
+          ))
           .then(res => {
             console.log(res);
             
@@ -147,6 +168,11 @@ export default {
 @import url('../../assets/normalize/normalize.css');
 @import url('./css/amazeui.min.css');
 @import url('./css/app.css');
+.myapp-login-logo-block{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 *{
   margin: 0;
   padding: 0;
@@ -179,6 +205,12 @@ html,body{
 a:hover{
   color: #fff;
 }
-.mint-cell-wrapper{
+.myapp-login-logo{
+  padding: 0;
+}
+.myapp-login-logo-image{
+  width: 30%;
+  height: 30%;
+  margin-top: 30px;
 }
 </style>

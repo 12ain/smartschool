@@ -46,7 +46,7 @@ html, body {
 	font-family: FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
 	width: 100%;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 25px;
 	color: #fff;
 }
 
@@ -103,5 +103,5 @@ a{
   border-radius: 15px;
 }
 .login-am-center .am-form input{
-	border-radius: 15px;
+  border-radius: 15px;
 }
