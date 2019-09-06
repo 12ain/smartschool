@@ -10,7 +10,7 @@
         <mt-tab-item>
             <i slot="icon" class="mintui mintui-ershoujiaoyi"></i>
             <router-link to="/second">
-                <a>二手信息提供</a>
+                <a>二手信息</a>
             </router-link>
         </mt-tab-item>
         <mt-tab-item>

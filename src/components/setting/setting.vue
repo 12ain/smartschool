@@ -15,7 +15,7 @@
         <mt-cell title="我的二手信息" to="/second" is-link></mt-cell>     
         <mt-cell title="我的失物招领" to="/lost" is-link></mt-cell>     
         <mt-cell title="考试入口" to="/information" is-link></mt-cell>     
-        <mt-cell title="退出登录" to="/login" class="setting-exit"></mt-cell>     
+        <mt-cell title="退出登录" class="setting-exit" @click.native="exitLogin"></mt-cell>     
         <tabbar></tabbar>
     </div>
 </template>
@@ -28,7 +28,8 @@ export default {
     },
     data() {
         return {
-            
+            storage: window.localStorage,
+
         };
     },
     computed: {
@@ -43,7 +44,11 @@ export default {
 
     },
     methods: {
-
+        // 退出登录函数
+        exitLogin(){
+            this.storage.clear();
+            this.$router.push("/login");
+        }
     },
     components: {
         tabbar,

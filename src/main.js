@@ -21,13 +21,20 @@ new Vue({
 })
 Vue.prototype.$axios = axios;
 axios.defaults.baseURL = 'http://106.12.189.19';
-// Axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// Axios({
-//   url: '/lf/testAllLost',
-//   method: 'post',
-//   params: {
-//     lflag: '失主'
-//   }
-// }).then(res => {
-//   console.log(res)
-// })
+
+// 时间处理过滤器
+Vue.filter('dateFormat', function (dateStr, pattern = "") {
+  let dt = new Date(dateStr)
+  let y = dt.getFullYear()
+  let m = (dt.getMonth() + 1).toString().padStart(2, '0')
+  let d = dt.getDate().toString().padStart(2, '0')
+
+  if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+    return `${y}-${m}-${d}`
+  } else {
+    let hh = dt.getHours().toString().padStart(2, '0')
+    let mm = dt.getMinutes().toString().padStart(2, '0')
+    let ss = dt.getSeconds().toString().padStart(2, '0')
+    return `${y}-${m}-${d} ${hh}:${mm}:${ss} `
+  }
+})

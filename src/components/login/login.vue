@@ -44,7 +44,7 @@ import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
 import { Toast } from 'mint-ui';
 import qs from 'Qs';
-
+axios.defaults.baseURL = 'http://106.12.189.19';
 axios.defaults.withCredentials = true;
 
 export default {
@@ -57,9 +57,9 @@ export default {
   data() {
     return {
       userLogin: {
-        uid: "",
-        upsd: "",
-        autoLogin: false
+        uid: window.localStorage.getItem("uid"),
+        upsd: window.localStorage.getItem("upsd"),
+        autoLogin: Boolean(window.localStorage.getItem("autoLogin")) 
       },
       regUser: {
         // 用户名： 中文、英文、数字，不包括下划线等特殊符号

@@ -12,19 +12,35 @@
         <mt-tab-container v-model="active">
             <!-- 内容区1: 考试通知 -->
             <mt-tab-container-item id="tab-container1">
-                <mt-cell title="计算机等级考试" label="2019年10月28日" value="详情" is-link @click.native="popupVisible = !popupVisible"></mt-cell>
-                <mt-cell title="计算机等级考试" label="2019年10月28日" value="详情" is-link></mt-cell>
-                <mt-cell title="计算机等级考试" label="2019年10月28日" value="详情" is-link></mt-cell>
+                <mt-cell 
+                v-for="information in testList" 
+                :key="information.testid"
+                :title="information.testname"
+                :label="information.testdate | dateFormat()" 
+                value="详情" 
+                is-link 
+                @click.native="showDetails(information.testid)"  
+                >
+                </mt-cell>
             </mt-tab-container-item>
-            <!-- 内容区2: 考试入口 -->
-            <mt-tab-container id="tab-container2">
-                <mt-popup
+            <mt-popup
+                v-for="information in testList" 
+                    :key="information.testid"
                 v-model="popupVisible"
-                popup-transition="popup-fade">
-                <span>考试时间: 2019年10月28日</span>
-                <span>报名网址: https://www.baidu.com</span>
-                <span>学院: 信息工程学院</span>
-                </mt-popup>                
+                popup-transition="popup-fade"
+                >
+                <div class="mint-popup-container">
+                    <span class="mint-popup-title">通知</span>
+                    <div class="mint-popup-image">
+                        <img src="http://106.12.189.19/uploads/46068ba7fd634e6fba9e8b04b5e8798f_软考.jpg">
+                    </div>
+                        <span class="mint-popup-cell">考试名称:<span>{{ information.testname }}</span></span>
+                        <span class="mint-popup-cell">考试时间: <span>2019年10月28日</span></span>
+                        <span class="mint-popup-cell">考试地点: <span>{{ information.testid }}</span></span>
+                </div>
+                </mt-popup> 
+            <!-- 内容区2: 考试入口 -->
+            <mt-tab-container id="tab-container2">               
             </mt-tab-container>
         </mt-tab-container>
         <tabbar></tabbar>
@@ -32,7 +48,16 @@
 </template>
 
 <script>
+import Vue from "vue";
+import axios from "axios";
+import router from "../../router/index";
+import store from "../../store/store";
+import { mapState, mapMutations } from "vuex";
+import { Toast } from 'mint-ui';
 import tabbar from '../common/tabbar'
+import qs from 'Qs';
+axios.defaults.baseURL = 'http://106.12.189.19';
+axios.defaults.withCredentials = true;
 export default {
     props: {
 
@@ -40,14 +65,29 @@ export default {
     data() {
         return {
             active: "tab-container1",
-            // popupVisible: false,
-            popupVisible: true,
+            popupVisible: false,
+            testList:[]
         };
     },
     computed: {
 
     },
     created() {
+        {
+        axios
+          .post("/testtell/checkTell")
+          .then(res => {
+            console.log(res);
+            
+            if (res.data.status == '0') {
+              Toast(res.data.msg);
+              this.testList = res.data.list;
+            } else {
+              Toast(res.data.msg);
+            }
+          })
+          .catch();
+      }
 
     },
     mounted() {
@@ -56,7 +96,10 @@ export default {
 
     },
     methods: {
-
+        showDetails(testid){
+            this.popupVisible = !this.popupVisible;
+            console.log(testid)
+        }
     },
     components: {
         tabbar,
@@ -70,7 +113,33 @@ export default {
     margin: 20px 0;
 }
 .mint-popup{
-    background-color:  #44ceff;
-    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    justify-content:center;
+    .mint-popup-container{
+        display: flex;
+        // flex-basis: 350px;
+        width: 280px;
+        flex-direction: column;
+        // justify-content:center;
+        align-items: center;
+        .mint-popup-title{
+            font-size: 20px;
+            margin: 10px;
+            padding-bottom: 10px;
+        }
+        .mint-popup-cell{
+            padding: 5px 0;
+        }
+        .mint-popup-image{
+            text-align: center;
+            img{
+            max-width: 50%;
+            max-height: 50%;
+        }
+        } 
+    }
 }
 </style>

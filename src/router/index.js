@@ -14,7 +14,7 @@ import lost from '@/components/lost/lost'
 
 Vue.use(Router)
 
-export default new Router({
+const router= new Router({
   routes: [
     {
       path:'/',
@@ -28,48 +28,89 @@ export default new Router({
     {
       path: '/setting',
       name: 'setting',
-      component: setting
+      component: setting,
+      meta: {
+        checkLogined: true
+      },
     },
-     {
-       path: '/lost',
-       name: 'lost',
-       component: lost
-     },
+    {
+      path: '/lost',
+      name: 'lost',
+      component: lost,
+      meta: {
+        checkLogined: true
+      },
+    },
     {
       path: '/register',
       name: 'register',
-      component: register
+      component: register,
+      meta: {
+        checkLogined: true
+      },
     },
     {
       path: '/about',
       name: 'about',
-      component: about
+      component: about,
+      meta: {
+        checkLogined: true
+      },
     },
     {
       path: '/account',
       name: 'account',
-      component: account
+      component: account,
+      meta: {
+        checkLogined: true
+      },
     },
     {
       path:'/tabbar',
       name: 'tabbar',
-      component: tabbar
+      component: tabbar,
     },
     {
       path: '/information',
       name: 'information',
-      component: information
+      component: information,
+      meta: {
+        checkLogined: true
+      },
     },
     {
       path: '/repair',
       name: 'repair',
-      component: repair
+      component: repair,
+      meta: {
+        checkLogined: true
+      },
     },
     {
       path: '/second',
       name: 'second',
-      component: second
+      component: second,
+      meta: {
+        checkLogined: true
+      },
     }
   ],
   linkActiveClass:''
 })
+// router.beforeEach((to, from, next) => {
+//       if (to.meta.checkLogined) {
+//         if (
+//           window.localStorage.getItem("uid") &&
+//           window.localStorage.getItem("upsd")
+//         ) {
+//           next({
+//             path: "/",
+//           });
+//         } else {
+//           next();
+//         }
+//       } else {
+//         next();
+//       }
+//     });
+export default router;

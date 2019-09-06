@@ -38,12 +38,9 @@
 
 <script>
 import Vue from 'vue'
-import Axios from 'axios';
+import axios from 'axios';
 import tabbar from '../common/tabbar'
 import { Toast } from 'mint-ui'
-Vue.prototype.$axios = Axios;
-
-Axios.defaults.baseURL = 'http://106.12.189.19';
 export default {
     props: {
 
@@ -108,7 +105,7 @@ export default {
 
     // },
     mounted() {
-        Axios({
+        axios({
         url: '/record/rmess',
         method: 'post',
         params: {
