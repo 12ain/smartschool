@@ -40,7 +40,11 @@
                 </div>
                 </mt-popup> 
             <!-- 内容区2: 考试入口 -->
-            <mt-tab-container id="tab-container2">               
+            <mt-tab-container id="tab-container2"> 
+                <mt-cell title="标题文字" value="说明文字"></mt-cell>
+                <mt-cell title="标题文字" value="说明文字"></mt-cell>
+                <mt-cell title="标题文字" value="说明文字"></mt-cell>
+                <mt-cell title="标题文字" value="说明文字"></mt-cell>
             </mt-tab-container>
         </mt-tab-container>
         <tabbar></tabbar>
@@ -77,7 +81,7 @@ export default {
         axios
           .post("/testtell/checkTell")
           .then(res => {
-            console.log(res);
+            // console.log(res);
             
             if (res.data.status == '0') {
               Toast(res.data.msg);
@@ -95,7 +99,8 @@ export default {
     watch: {
 
     },
-    methods: {
+    methods: {    
+        ...mapMutations(["update"]),
         showDetails(testid){
             this.popupVisible = !this.popupVisible;
             console.log(testid)

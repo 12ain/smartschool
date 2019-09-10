@@ -9,18 +9,20 @@ Vue.config.productionTip = false
 import router from './router'
 import axios from 'axios';
 import Vuex from 'vuex'
-
+import store from './store/store'
 Vue.use(MintUI)
 Vue.use(Vuex);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store: store,
   components: { App },
   template: '<App/>'
 })
 Vue.prototype.$axios = axios;
 axios.defaults.baseURL = 'http://106.12.189.19';
+// axios.defaults.baseURL = 'http://192.168.123.219';
 
 // 时间处理过滤器
 Vue.filter('dateFormat', function (dateStr, pattern = "") {

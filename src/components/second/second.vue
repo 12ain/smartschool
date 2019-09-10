@@ -25,7 +25,7 @@
                 v-model="value"
                 cancel-text="取消"
                 placeholder="搜索">
-                </mt-search>                
+                </mt-search>
             </mt-tab-container-item>
 
         </mt-tab-container> 

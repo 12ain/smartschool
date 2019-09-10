@@ -38,9 +38,11 @@
 
 <script>
 import Vue from "vue";
+import Vuex from 'vuex';
 import axios from "axios";
 import router from "../../router/index";
 import store from "../../store/store";
+Vue.use(Vuex);
 import { mapState, mapMutations } from "vuex";
 import { Toast } from 'mint-ui';
 import qs from 'Qs';
@@ -96,6 +98,7 @@ export default {
 
   },
   methods: {
+    ...mapMutations(["update"]),
 
     // 正则检测用户名
     checkUid() {
@@ -130,7 +133,7 @@ export default {
         window.localStorage.setItem("uid", this.userLogin.uid);
         window.localStorage.setItem("upsd", this.userLogin.upsd);
         window.localStorage.setItem("autoLogin", this.userLogin.autoLogin);
-        console.log('本地账号密码存储成功')
+        console.log('本地账号密码存储成功');
       } 
       if (
         this.checkUid() &&
@@ -150,6 +153,16 @@ export default {
             
             if (res.data.status == '0') {
               Toast(res.data.msg);
+              this.update({
+                uid: res.data.data.uid,
+                upsd: res.data.data.upsd,
+                ugrade: res.data.data.ugrade,
+                uimage: res.data.data.uimage,
+                uname: res.data.data.uname,
+                udept: res.data.data.udept,
+                utel: res.data.data.utel,
+                uemail: res.data.data.uemail,
+            });
               this.$router.push("/repair");
               // console.log('登录成功')
             } else {
