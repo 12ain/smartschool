@@ -33,7 +33,9 @@ Vue.filter('dateFormat', function (dateStr, pattern = "") {
 
   if (pattern.toLowerCase() === 'yyyy-mm-dd') {
     return `${y}-${m}-${d}`
-  } else {
+  } if (pattern.toLowerCase() === 'yyyy/mm/dd'){
+    return `${y}/${m}/${d}`
+  }else {
     let hh = dt.getHours().toString().padStart(2, '0')
     let mm = dt.getMinutes().toString().padStart(2, '0')
     let ss = dt.getSeconds().toString().padStart(2, '0')

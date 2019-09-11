@@ -4,28 +4,25 @@
         <!-- 选项卡 -->
         <mt-navbar v-model="active">
         <mt-tab-item id="tab-container1">发布交易信息</mt-tab-item>
-        <mt-tab-item id="tab-container2">查看交易信息</mt-tab-item>
+        <mt-tab-item id="tab-container2" @click.native="getthingLists">查看交易信息</mt-tab-item>
         </mt-navbar>
 
         <!-- 内容分栏 -->
         <mt-tab-container v-model="active">
             <!-- 内容区1: 二手交易表单 -->
         <mt-tab-container-item id="tab-container1">
-            <mt-field label="物品名称" placeholder="请输入物品名称" v-model="ruid"></mt-field>
-            <mt-field label="物品描述" placeholder="物品描述" type="textarea" rows="3" v-model="rdes"></mt-field>
-            <mt-field label="物品价格" placeholder="请输入物品价格" v-model="ruid"></mt-field>
-            <mt-field label="上传图片" placeholder="上传图片" type="file" v-model="image"></mt-field>
-            <mt-button type="primary" size="large">提交</mt-button>
+            <mt-field label="物品描述" placeholder="物品描述" type="textarea" rows="3" v-model="thingList.tdes"></mt-field>
+            <mt-field label="物品价格" placeholder="请输入物品价格" v-model="thingList.tprice"></mt-field>
+            <m-up-loader :src="src" :info="thingList"></m-up-loader>
+
+            <!-- <mt-field label="上传图片" placeholder="上传图片" type="file" v-model="image"></mt-field>
+            <mt-button type="primary" size="large">提交</mt-button> -->
         </mt-tab-container-item>
         
             <!-- 内容区2: 二手交易数据显示 -->
 
             <mt-tab-container-item id="tab-container2">
-                <mt-search
-                v-model="value"
-                cancel-text="取消"
-                placeholder="搜索">
-                </mt-search>
+                <mt-cell v-for="item in thingLists" :key="item.tid" :title="item.tdes" :label="item.tprice.toString()"></mt-cell>
             </mt-tab-container-item>
 
         </mt-tab-container> 
@@ -35,23 +32,22 @@
 
 <script>
 import tabbar from '../common/tabbar'
+import mUpLoader from "../common/UpLoader"
+import axios from "axios";
 export default {
     props: {
 
     },
     data() {
         return {
+            src: 'http://106.12.189.19/trade/insertTo',
             active : 'tab-container1',
-            ruid: '',
-            rdate: '',
-            radr: '',
-            rtype: '',
-            rdes: '',
-            image: '',
-            list:[
-                
-            ],
-            value: ''
+            thingList:{
+                tuid: window.localStorage.getItem("uid"),
+                tdes:'',
+                tprice:'',
+            },              //二手信息提交
+            thingLists:[]   //二手信息列表获取
         };
     },
     computed: {
@@ -66,10 +62,19 @@ export default {
 
     },
     methods: {
-
+        getthingLists(){
+            axios({
+                url: "/trade/rmess",
+                method: "post",
+                params: {}
+                }).then(res => {
+                console.log(res)
+                this.thingLists = res.data.list;
+            });
+        }
     },
     components: {
-        tabbar,
+        tabbar,mUpLoader
     },
 };
 </script>

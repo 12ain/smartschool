@@ -149,7 +149,6 @@ export default {
             }
           ))
           .then(res => {
-            console.log(res);
             
             if (res.data.status == '0') {
               Toast(res.data.msg);

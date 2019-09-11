@@ -14,7 +14,6 @@
         <mt-cell title="编辑个人信息" to="/account" is-link></mt-cell>     
         <mt-cell title="我的二手信息" to="/second" is-link></mt-cell>     
         <mt-cell title="我的失物招领" to="/lost" is-link></mt-cell>     
-        <mt-cell title="考试入口" to="/information" is-link></mt-cell>     
         <mt-cell title="退出登录" class="setting-exit" @click.native="exitLogin"></mt-cell>     
         <tabbar></tabbar>
     </div>

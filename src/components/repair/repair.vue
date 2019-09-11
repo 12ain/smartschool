@@ -6,7 +6,7 @@
     <!-- 选项卡 -->
     <mt-navbar v-model="active">
       <mt-tab-item id="tab-container1">故障报备</mt-tab-item>
-      <mt-tab-item id="tab-container2">报备信息</mt-tab-item>
+      <mt-tab-item id="tab-container2" @click.native="getRepairLists">报备信息</mt-tab-item>
     </mt-navbar>
 
     <!-- 内容分栏 -->
@@ -16,15 +16,10 @@
         <mt-field label="报备时间" placeholder="请输入报备时间" type="date" v-model="repairList.rdate"></mt-field>
         <mt-field label="教室地点" placeholder="请输入教室地点" type="text" v-model="repairList.radr"></mt-field>
         <mt-field label="设备类型" placeholder="请输入设备类型" type="text" v-model="repairList.rtype"></mt-field>
-        <mt-field
-          label="详细描述"
-          placeholder="详细描述"
-          type="textarea"
-          rows="3"
-          v-model="repairList.rdes"
-        ></mt-field>
-        <input type="file" accept="image/jpeg,image/x-png,image/gif" @change="fileImage">
-        <mt-button type="primary" size="large" @click.native="submitRepairList">提交</mt-button>
+        <mt-field label="详细描述" placeholder="详细描述" type="textarea" rows="3" v-model="repairList.rdes"></mt-field>
+        <!-- <input type="file" accept="image/jpeg,image/x-png,image/gif" @change="fileImage"> -->
+        <m-up-loader :src="src" :info="repairList"></m-up-loader>
+        <!-- <mt-button type="primary" size="large" @click.native="submitRepairList">提交</mt-button> -->
       </mt-tab-container-item>
 
       <!-- 内容区2: 报修数据显示 -->
@@ -48,19 +43,20 @@ import Vue from "vue";
 import axios from "axios";
 import tabbar from "../common/tabbar";
 import { Toast } from "mint-ui";
+import mUpLoader from "../common/UpLoader"
 export default {
   props: {},
   data() {
     return {
+      src: 'http://106.12.189.19/record/insertTo',
       active: "tab-container1",
       repairList: {
         ruid: window.localStorage.getItem("uid"),
-        rdate: "2019/9/10",
+        rdate: "",
         radr: "",
         rtype: "",
         rdes: "",
         wstatic: "待维修",
-        image: ""
       },
       repairInfo: []
     };
@@ -106,23 +102,9 @@ export default {
   //   ];
 
   // },
-  mounted() {
-    axios({
-      url: "/record/rmess",
-      method: "post",
-      params: {}
-    }).then(res => {
-      // Toast({
-      //     message: res.data.msg,
-      //     position: 'bottom',
-      //     duration: 3000
-      //     });
-      this.repairInfo = res.data.list;
-    });
-  },
+  mounted() {},
   watch: {},
   methods: {
-    fileImage(){},
     submitRepairList() {
       let formData = new FormData();
       formData.append("ruid", this.repairList.ruid);
@@ -144,10 +126,26 @@ export default {
             console.log(res);
         }
       });
+    },
+    getRepairLists(){
+      axios({
+      url: "/record/rmessmy",
+      method: "post",
+      params: {
+        ruid: window.localStorage.getItem("uid")
+      }
+    }).then(res => {
+      // Toast({
+      //     message: res.data.msg,
+      //     position: 'bottom',
+      //     duration: 3000
+      //     });
+      this.repairInfo = res.data.list;
+    });
     }
   },
   components: {
-    tabbar
+    tabbar,mUpLoader
   }
 };
 </script>

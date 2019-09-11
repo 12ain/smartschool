@@ -13,39 +13,43 @@
             <!-- 内容区1: 考试通知 -->
             <mt-tab-container-item id="tab-container1">
                 <mt-cell 
-                v-for="information in testList" 
+                v-for="(information,i) in testList" 
                 :key="information.testid"
                 :title="information.testname"
-                :label="information.testdate | dateFormat()" 
+                :label="information.testdate | dateFormat('yyyy-mm-dd')" 
                 value="详情" 
                 is-link 
-                @click.native="showDetails(information.testid)"  
+                @click.native="showDetails(i)"  
                 >
                 </mt-cell>
             </mt-tab-container-item>
             <mt-popup
-                v-for="information in testList" 
-                    :key="information.testid"
                 v-model="popupVisible"
                 popup-transition="popup-fade"
                 >
                 <div class="mint-popup-container">
                     <span class="mint-popup-title">通知</span>
                     <div class="mint-popup-image">
-                        <img src="http://106.12.189.19/uploads/46068ba7fd634e6fba9e8b04b5e8798f_软考.jpg">
+                        <img :src="'http://'+everyTest.image">
                     </div>
-                        <span class="mint-popup-cell">考试名称:<span>{{ information.testname }}</span></span>
-                        <span class="mint-popup-cell">考试时间: <span>2019年10月28日</span></span>
-                        <span class="mint-popup-cell">考试地点: <span>{{ information.testid }}</span></span>
+                        <span class="mint-popup-cell">考试名称:<span>{{ everyTest.testname }}</span></span>
+                        <span class="mint-popup-cell">考试时间: <span>{{ everyTest.testdate | dateFormat('yyyy-mm-dd') }}</span></span>
+                        <span class="mint-popup-cell">考试地点: <span>{{ everyTest.testarea }}</span></span>
                 </div>
                 </mt-popup> 
             <!-- 内容区2: 考试入口 -->
-            <mt-tab-container id="tab-container2"> 
-                <mt-cell title="标题文字" value="说明文字"></mt-cell>
-                <mt-cell title="标题文字" value="说明文字"></mt-cell>
-                <mt-cell title="标题文字" value="说明文字"></mt-cell>
-                <mt-cell title="标题文字" value="说明文字"></mt-cell>
-            </mt-tab-container>
+            <mt-tab-container-item id="tab-container2"> 
+                <mt-cell 
+                v-for="(item) in entranceList" 
+                :key="item.tid"
+                :title="item.tname"
+                :label="item.tcollege" 
+                value="点击报名" 
+                is-link
+                :to=item.turl
+                >
+                </mt-cell>
+            </mt-tab-container-item>
         </mt-tab-container>
         <tabbar></tabbar>
     </div>
@@ -70,14 +74,15 @@ export default {
         return {
             active: "tab-container1",
             popupVisible: false,
-            testList:[]
+            testList:[],        // 所有考试信息列表
+            everyTest:[],       // 单独考试信息
+            entranceList:[],     // 考试入口信息
         };
     },
     computed: {
 
     },
     created() {
-        {
         axios
           .post("/testtell/checkTell")
           .then(res => {
@@ -91,7 +96,19 @@ export default {
             }
           })
           .catch();
-      }
+          axios
+          .post("test/checktest")
+          .then(res => {
+            // console.log(res);
+            
+            if (res.data.status == '0') {
+            //   Toast(res.data.msg);
+              this.entranceList = res.data.list;
+            } else {
+              Toast(res.data.msg);
+            }
+          })
+          .catch();
 
     },
     mounted() {
@@ -101,9 +118,10 @@ export default {
     },
     methods: {    
         ...mapMutations(["update"]),
-        showDetails(testid){
+        showDetails(key){
             this.popupVisible = !this.popupVisible;
-            console.log(testid)
+            this.everyTest = this.testList[key];
+            // console.log(this.testList[key])
         }
     },
     components: {
