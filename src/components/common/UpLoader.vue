@@ -2,6 +2,7 @@
 <template>
   <div class="vue-uploader">
     <!-- 添加图片 及 显示效果 -->
+    <span class="vue-uploader-info">上传图片</span>
     <div class="file-list">
       <!-- 图片列表 files -->
       <section v-for="(file, index) of files" class="file-item draggable-item" :key="index">
@@ -148,6 +149,10 @@
 <style lang="less" scoped>
   .vue-uploader {
     border: 1px solid #e5e5e5;
+    .vue-uploader-info{
+      font-size: 13px;
+      color: #acacac;
+    }
     .file-list {
       padding: 10px 0px;
       &:after {

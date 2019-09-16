@@ -46,7 +46,7 @@
                 :label="item.tcollege" 
                 value="点击报名" 
                 is-link
-                :to=item.turl
+                :to="{ name:'view', params: { vsrc: item.turl }}"
                 >
                 </mt-cell>
             </mt-tab-container-item>

@@ -129,7 +129,7 @@ export default {
     },
     getRepairLists(){
       axios({
-      url: "/record/rmessmy",
+      url: "/record/rmess",
       method: "post",
       params: {
         ruid: window.localStorage.getItem("uid")

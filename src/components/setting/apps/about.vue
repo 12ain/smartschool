@@ -1,6 +1,5 @@
 <template>
     <div>
-        这是一个很牛逼的APP
     </div>
 </template>
 
@@ -36,5 +35,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 </style>

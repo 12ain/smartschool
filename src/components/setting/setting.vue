@@ -9,7 +9,7 @@
         <img slot="icon" src="../../assets/images/logo.png" width="80" height="80">
         </mt-cell>
 
-        <mt-cell title="青岛高校全景" is-link icon="ditu" class="setting-map"></mt-cell>
+        <mt-cell title="青岛高校全景" is-link icon="ditu" class="setting-map" to="/school"></mt-cell>
 
         <mt-cell title="编辑个人信息" to="/account" is-link></mt-cell>     
         <mt-cell title="我的二手信息" to="/second" is-link></mt-cell>     

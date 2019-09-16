@@ -10,7 +10,8 @@ import repair from '@/components/repair/repair'
 import second from '@/components/second/second'
 import information from '@/components/information/information'
 import lost from '@/components/lost/lost'
-
+import view from '@/components/common/view'
+import school from '@/components/setting/apps/school'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ const router= new Router({
       },
     },
     {
+      path: '/school',
+      name: 'school',
+      component: school,
+    },
+    {
       path: '/account',
       name: 'account',
       component: account,
@@ -93,7 +99,12 @@ const router= new Router({
       meta: {
         checkLogined: true
       },
-    }
+    },
+    {
+      path: '/view',
+      name: 'view',
+      component: view,
+    },
   ],
   linkActiveClass:''
 })

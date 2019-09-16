@@ -14,7 +14,7 @@
             <mt-field label="时间" placeholder="请输入时间" type="date" v-model="lostList.time"></mt-field>
             <mt-field label="物品描述" placeholder="物品描述" type="textarea" rows="3" v-model="lostList.des"></mt-field>            
             <mt-radio
-            title="身份"
+            title="我丢失了:失主/我捡到了:得主"
             v-model="lostList.lflag"
             :options="['失主','得主']">
             </mt-radio>
@@ -60,14 +60,13 @@ export default {
             actives : 'lost-container',
             lostList:{
                 des : "",   // 物品名称及相关信息
-                time : "2019/9/10",  // 丢失时间
+                time : "",  // 丢失时间
                 uid : window.localStorage.getItem("uid"),
                 lflag : "失主",     // 失主/得主
                 lstatic: "未解决", 
             },
             lostLists:[],   //失主信息列表
             getLists:[],    //得主信息列表
-            value: '',
         };
     },
     computed: {

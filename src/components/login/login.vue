@@ -128,13 +128,6 @@ export default {
     },
         // 登录请求
     _submitLogin(userLogin) {
-      if (this.userLogin.autoLogin && 
-        !window.localStorage.getItem("uid")) {
-        window.localStorage.setItem("uid", this.userLogin.uid);
-        window.localStorage.setItem("upsd", this.userLogin.upsd);
-        window.localStorage.setItem("autoLogin", this.userLogin.autoLogin);
-        console.log('本地账号密码存储成功');
-      } 
       if (
         this.checkUid() &&
         this.checkPwd()
@@ -162,6 +155,11 @@ export default {
                 utel: res.data.data.utel,
                 uemail: res.data.data.uemail,
             });
+            if (this.userLogin.autoLogin ){
+            window.localStorage.setItem("uid", this.userLogin.uid);
+            window.localStorage.setItem("upsd", this.userLogin.upsd);
+            window.localStorage.setItem("autoLogin", this.userLogin.autoLogin);
+            }
               this.$router.push("/repair");
               // console.log('登录成功')
             } else {
