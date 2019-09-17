@@ -1,10 +1,11 @@
 <template>
-  <div id="app" v-cloak @touchmove.prevent>
+  <div id="app">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+//  v-cloak @touchmove.prevent
 export default {
   name: 'App'
 }

@@ -3,14 +3,14 @@
         <mt-header fixed title="二手交易信息"></mt-header>
         <!-- 选项卡 -->
         <mt-navbar v-model="active">
-        <mt-tab-item id="tab-container1">发布交易信息</mt-tab-item>
-        <mt-tab-item id="tab-container2" @click.native="getthingLists">查看交易信息</mt-tab-item>
+        <mt-tab-item id="tab-container1" @click.native="getthingLists">查看交易信息</mt-tab-item>
+        <mt-tab-item id="tab-container2">发布交易信息</mt-tab-item>
         </mt-navbar>
 
         <!-- 内容分栏 -->
         <mt-tab-container v-model="active">
             <!-- 内容区1: 二手交易表单 -->
-        <mt-tab-container-item id="tab-container1">
+        <mt-tab-container-item id="tab-container2">
             <mt-field label="物品描述" placeholder="物品描述" type="textarea" rows="3" v-model="thingList.tdes"></mt-field>
             <mt-field label="物品价格" placeholder="请输入物品价格" v-model="thingList.tprice"></mt-field>
             <m-up-loader :src="src" :info="thingList"></m-up-loader>
@@ -21,8 +21,15 @@
         
             <!-- 内容区2: 二手交易数据显示 -->
 
-            <mt-tab-container-item id="tab-container2">
-                <mt-cell v-for="item in thingLists" :key="item.tid" :title="item.tdes" :label="item.tprice.toString()"></mt-cell>
+            <mt-tab-container-item id="tab-container1">
+                <div class="main">
+                    <router-link class="thing-list" v-for="item in thingLists" :key="item.tid" :to="{ name:'view', params: { vsrc: item.surl }}">
+                        <img src="http://f.expoon.com/sub/user/logo/68/595587_364x216_2.jpg" class="thing-list-img">
+                        <span class="thing-list-price">￥{{item.tprice}}</span>
+                        <span class="thing-list-title">{{item.tdes}}</span>
+                    </router-link>
+                </div>
+                <!-- <mt-cell v-for="item in thingLists" :key="item.tid" :title="item.tdes" :label="item.tprice.toString()"></mt-cell> -->
             </mt-tab-container-item>
 
         </mt-tab-container> 
@@ -54,7 +61,7 @@ export default {
 
     },
     created() {
-
+        this.getthingLists();
     },
     mounted() {
     },
@@ -68,7 +75,7 @@ export default {
                 method: "post",
                 params: {}
                 }).then(res => {
-                console.log(res)
+                // console.log(res)
                 this.thingLists = res.data.list;
             });
         }
@@ -88,4 +95,30 @@ export default {
         left: 10%;
         width: 80%;
     }
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    .thing-list{
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 50%;
+        background: rgb(255, 255, 255);
+        margin-bottom: 5%;
+        .thing-list-img{
+            width: 88%;
+            height: 75%;
+            margin: 5%;
+        };
+        .thing-list-title{
+            color: #1b816c;
+        }
+        .thing-list-price{
+            color: red;
+            width: 100%;            
+        }
+    }
+}
+a{
+    text-decoration: none;
+}
 </style>

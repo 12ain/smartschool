@@ -49,6 +49,7 @@ export default {
 
     },
     methods: {
+      ...mapMutations(["update"]),
         submitInformation(){
         axios
           .post("/user/update", 
@@ -62,10 +63,18 @@ export default {
             uimage: ""
         }))
           .then(res => {
-            console.log(res);
             
             if (res.data.status == '0') {
               Toast(res.data.msg);
+              this.update({
+                uid: this.userInformation.uid, 
+                upsd: this.userInformation.upsd,	
+                uname: this.userInformation.uname,	
+                uemail: this.userInformation.uemail,
+                utel: this.userInformation.utel,
+                udept: this.userInformation.udept,
+                uimage: ""
+            });
             } else {
               Toast(res.data.msg);
             }

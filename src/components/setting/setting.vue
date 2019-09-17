@@ -11,9 +11,10 @@
 
         <mt-cell title="青岛高校全景" is-link icon="ditu" class="setting-map" to="/school"></mt-cell>
 
-        <mt-cell title="编辑个人信息" to="/account" is-link></mt-cell>     
-        <mt-cell title="我的二手信息" to="/second" is-link></mt-cell>     
-        <mt-cell title="我的失物招领" to="/lost" is-link></mt-cell>     
+        <mt-cell title="编辑个人信息" to="/account" is-link></mt-cell> 
+        <mt-cell title="我的故障报修" to="/myRepair" is-link></mt-cell>     
+        <mt-cell title="我的二手信息" to="/mySecond" is-link></mt-cell>     
+        <mt-cell title="我的失物招领" to="/myLost" is-link></mt-cell>     
         <mt-cell title="退出登录" class="setting-exit" @click.native="exitLogin"></mt-cell>     
         <tabbar></tabbar>
     </div>
@@ -57,12 +58,12 @@ export default {
 
 <style scoped lang="scss">
 .setting-name{
-    height: 80px;
+    height: 100px;
     margin-top: 60px;
     margin-bottom: 20px;
     .mint-cell-title > img{
         border-radius: 50%;
-        margin: 0 15px;
+        margin: 10px 15px;
     }
 }
 .setting-map{
@@ -71,7 +72,7 @@ export default {
 }
 .setting-exit{
     text-align: center;
-    margin-top: 100px;
+    margin-top: 8%;
     background: #eb602e;
     border-radius: 15px;
     left: 25%;

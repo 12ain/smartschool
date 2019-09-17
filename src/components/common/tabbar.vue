@@ -1,7 +1,7 @@
 <template>
     <div>
         <mt-tabbar fixed>
-        <mt-tab-item v-model="selected">
+        <mt-tab-item>
             <i slot="icon" class="mintui mintui-shandian"></i>
             <router-link to="/repair">
                 <a>故障报备</a>
@@ -42,7 +42,6 @@ export default {
     },
     data() {
         return {
-            selected: true
         };
     },
     computed: {
@@ -52,10 +51,10 @@ export default {
 
     },
     mounted() {
-
     },
-    watch: {
-
+    //监听
+    watch:{
+        
     },
     methods: {
 

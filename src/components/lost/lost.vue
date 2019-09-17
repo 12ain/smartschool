@@ -3,14 +3,14 @@
         <mt-header fixed title="失物招领"></mt-header>
         <!-- 选项卡 -->
         <mt-navbar v-model="active">
-        <mt-tab-item id="tab-container1">发布信息</mt-tab-item>
-        <mt-tab-item id="tab-container2" @click.native="getlostList">查看信息</mt-tab-item>
+        <mt-tab-item id="tab-container1" @click.native="getlostList">查看信息</mt-tab-item>
+        <mt-tab-item id="tab-container2">发布信息</mt-tab-item>
         </mt-navbar>
 
         <!-- 内容分栏 -->
         <mt-tab-container v-model="active">
             <!-- 内容区1: 失物招领表单 -->
-        <mt-tab-container-item id="tab-container1">
+        <mt-tab-container-item id="tab-container2">
             <mt-field label="时间" placeholder="请输入时间" type="date" v-model="lostList.time"></mt-field>
             <mt-field label="物品描述" placeholder="物品描述" type="textarea" rows="3" v-model="lostList.des"></mt-field>            
             <mt-radio
@@ -24,7 +24,7 @@
         
             <!-- 内容区2: 失物招领数据显示 -->
 
-            <mt-tab-container-item id="tab-container2">
+            <mt-tab-container-item id="tab-container1">
                 <div class="nav">
                     <mt-button size="small" @click.native.prevent="actives = 'lost-container'">寻物启事</mt-button>
                     <mt-button size="small" @click.native.prevent="actives = 'get-container'">失物招领</mt-button>
@@ -73,7 +73,7 @@ export default {
 
     },
     created() {
-
+        this.getlostList();
     },
     mounted() {
     },
@@ -92,7 +92,7 @@ export default {
                 //     position: 'bottom',
                 //     duration: 3000
                 //     });
-                console.log(res)
+                // console.log(res)
                 this.lostLists = res.data.list;
     });
             axios({
@@ -105,7 +105,7 @@ export default {
                 //     position: 'bottom',
                 //     duration: 3000
                 //     });
-                console.log(res)
+                // console.log(res)
                 this.getLists = res.data.list;
             });
         }
@@ -125,4 +125,12 @@ export default {
         left: 10%;
         width: 80%;
     }
+.nav{
+    padding-top: 2%;
+    .mint-button--default{
+        // background-color: #4fb5eb;
+        background-color:#44ceff;
+        color: #ffffff;
+    }
+}
 </style>

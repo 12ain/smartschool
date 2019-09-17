@@ -144,11 +144,12 @@ export default {
           .then(res => {
             
             if (res.data.status == '0') {
+              // console.log(res)
               Toast(res.data.msg);
               this.update({
                 uid: res.data.data.uid,
                 upsd: res.data.data.upsd,
-                ugrade: res.data.data.ugrade,
+                ugrade: res.data.data.ugrade.toString(),
                 uimage: res.data.data.uimage,
                 uname: res.data.data.uname,
                 udept: res.data.data.udept,

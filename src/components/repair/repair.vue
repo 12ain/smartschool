@@ -30,7 +30,9 @@
           :key="item.rid"
           :title="item.rdes"
           :label="item.wstatic"
-        ></mt-cell-swipe>
+        >        
+        <img slot="icon" :src="'http://' + item.image" width="30" height="30">
+      </mt-cell-swipe>
       </mt-tab-container-item>
     </mt-tab-container>
 

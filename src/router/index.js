@@ -12,6 +12,9 @@ import information from '@/components/information/information'
 import lost from '@/components/lost/lost'
 import view from '@/components/common/view'
 import school from '@/components/setting/apps/school'
+import myLost from '@/components/setting/apps/myLost'
+import myRepair from '@/components/setting/apps/myRepair'
+import mySecond from '@/components/setting/apps/mySecond'
 
 Vue.use(Router)
 
@@ -104,6 +107,21 @@ const router= new Router({
       path: '/view',
       name: 'view',
       component: view,
+    },
+    {
+      path: '/myLost',
+      name: 'myLost',
+      component: myLost,
+    },
+    {
+      path: '/myRepair',
+      name: 'myRepair',
+      component: myRepair,
+    },
+    {
+      path: '/mySecond',
+      name: 'mySecond',
+      component: mySecond,
     },
   ],
   linkActiveClass:''

@@ -7,9 +7,9 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <router-link v-for="item in schoolList" :key="item.sid" :to="{ name:'view', params: { vsrc: item.surl }}">
-                <img :src="item.simage">
-                {{item.sname}}
+            <router-link class="school-list" v-for="item in schoolList" :key="item.sid" :to="{ name:'view', params: { vsrc: item.surl }}">
+                <img :src="item.simage" class="school-list-img">
+                <span class="school-list-title">{{item.sname}}</span>
             </router-link>
         </div>
     </div>
@@ -119,4 +119,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    .school-list{
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 50%;
+        .school-list-img{
+            width: 88%;
+            height: 75%;
+            margin: 5%;
+        };
+        .school-list-title{
+            flex-grow: 1;
+            text-align: center;
+            color: #707070;
+        }
+    }
+}
+a{
+    text-decoration: none;
+}
 </style>

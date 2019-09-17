@@ -267,4 +267,7 @@ html,body{
 .am-form-group{
   margin-bottom: 0.6rem;
 }
+fieldset{
+  margin-bottom: 0;
+}
 </style>
