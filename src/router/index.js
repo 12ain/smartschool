@@ -9,12 +9,14 @@ import account from '@/components/setting/apps/account'
 import repair from '@/components/repair/repair'
 import second from '@/components/second/second'
 import information from '@/components/information/information'
+import entrance from '@/components/information/entrance'
 import lost from '@/components/lost/lost'
 import view from '@/components/common/view'
 import school from '@/components/setting/apps/school'
 import myLost from '@/components/setting/apps/myLost'
 import myRepair from '@/components/setting/apps/myRepair'
 import mySecond from '@/components/setting/apps/mySecond'
+import admin from '@/components/admin/admin'
 
 Vue.use(Router)
 
@@ -88,6 +90,11 @@ const router= new Router({
       },
     },
     {
+      path: '/entrance',
+      name: 'entrance',
+      component: entrance,
+    },
+    {
       path: '/repair',
       name: 'repair',
       component: repair,
@@ -122,6 +129,11 @@ const router= new Router({
       path: '/mySecond',
       name: 'mySecond',
       component: mySecond,
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: admin,
     },
   ],
   linkActiveClass:''

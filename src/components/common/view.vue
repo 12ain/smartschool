@@ -7,7 +7,7 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <iframe width=100% height=100% frameborder="0" name="ExpoonPanorama" allowfullscreen="true" scrolling="no" :src="this.$route.params.vsrc"></iframe>
+            <iframe width="100%" height="100%" frameborder="0" name="ExpoonPanorama" allowfullscreen="true" scrolling="yes" :src="this.$route.query.vsrc"></iframe>
         </div>
     </div>
 </template>

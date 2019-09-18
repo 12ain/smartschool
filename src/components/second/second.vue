@@ -14,9 +14,6 @@
             <mt-field label="物品描述" placeholder="物品描述" type="textarea" rows="3" v-model="thingList.tdes"></mt-field>
             <mt-field label="物品价格" placeholder="请输入物品价格" v-model="thingList.tprice"></mt-field>
             <m-up-loader :src="src" :info="thingList"></m-up-loader>
-
-            <!-- <mt-field label="上传图片" placeholder="上传图片" type="file" v-model="image"></mt-field>
-            <mt-button type="primary" size="large">提交</mt-button> -->
         </mt-tab-container-item>
         
             <!-- 内容区2: 二手交易数据显示 -->
@@ -25,11 +22,10 @@
                 <div class="main">
                     <router-link class="thing-list" v-for="item in thingLists" :key="item.tid" :to="{ name:'view', params: { vsrc: item.surl }}">
                         <img src="http://f.expoon.com/sub/user/logo/68/595587_364x216_2.jpg" class="thing-list-img">
-                        <span class="thing-list-price">￥{{item.tprice}}</span>
                         <span class="thing-list-title">{{item.tdes}}</span>
+                        <span class="thing-list-price">￥{{item.tprice}}</span>
                     </router-link>
                 </div>
-                <!-- <mt-cell v-for="item in thingLists" :key="item.tid" :title="item.tdes" :label="item.tprice.toString()"></mt-cell> -->
             </mt-tab-container-item>
 
         </mt-tab-container> 
@@ -42,9 +38,7 @@ import tabbar from '../common/tabbar'
 import mUpLoader from "../common/UpLoader"
 import axios from "axios";
 export default {
-    props: {
-
-    },
+    props: {},
     data() {
         return {
             src: 'http://106.12.189.19/trade/insertTo',
@@ -101,20 +95,28 @@ export default {
     .thing-list{
         display: inline-flex;
         flex-wrap: wrap;
-        width: 50%;
+        width: 48%;
         background: rgb(255, 255, 255);
-        margin-bottom: 5%;
+        margin:2% 1%;
+        padding: 5% 0;
+        border-radius: 5px;
         .thing-list-img{
             width: 88%;
-            height: 75%;
-            margin: 5%;
+            height: 78%;
+            padding: 5%;
         };
         .thing-list-title{
-            color: #1b816c;
+            color: #1a1a1a;
+            font-family: "微软雅黑";
+            margin-left: 5%;
+            font-weight: 500; 
         }
         .thing-list-price{
             color: red;
-            width: 100%;            
+            width: 100%;  
+            padding-bottom: 20px;   
+            font-weight: 600;    
+            margin-left: 5%;   
         }
     }
 }

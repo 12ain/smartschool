@@ -7,7 +7,7 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <router-link class="school-list" v-for="item in schoolList" :key="item.sid" :to="{ name:'view', params: { vsrc: item.surl }}">
+            <router-link class="school-list" v-for="item in schoolList" :key="item.sid" :to="{ name:'view', query: { vsrc: item.surl }}">
                 <img :src="item.simage" class="school-list-img">
                 <span class="school-list-title">{{item.sname}}</span>
             </router-link>
@@ -27,10 +27,10 @@ export default {
             schoolList:[
                 {   
                     sid: 0,
-                    sname:'青岛滨海学院',
-                    simage:'http://f.expoon.com/sub/user/logo/68/595587_364x216_2.jpg',
-                    surl:'https://www.expoon.com/27368/panorama'
-                },
+                    sname:'青岛工学院',
+                    simage:'http://f.expoon.com/sub/user/logo/1/321354_364x216_2.jpg',
+                    surl:'https://www.expoon.com/26301/panorama'
+                },               
                 {   
                     sid: 1,
                     sname:'青岛大学',
@@ -51,9 +51,9 @@ export default {
                 },
                 {   
                     sid: 4,
-                    sname:'青岛工学院',
-                    simage:'http://f.expoon.com/sub/user/logo/1/321354_364x216_2.jpg',
-                    surl:'https://www.expoon.com/26301/panorama'
+                    sname:'青岛滨海学院',
+                    simage:'http://f.expoon.com/sub/user/logo/68/595587_364x216_2.jpg',
+                    surl:'https://www.expoon.com/27368/panorama'
                 },
                 {   
                     sid: 5,

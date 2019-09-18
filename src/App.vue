@@ -16,7 +16,9 @@ export default {
   padding: 0;
 }
 html,body{
-  background-color: #ddedf3;
+  background-color: #d4edf6;
+  /* background-color:grey; */
+
 }
 [v-cloak] {
   display: none;
@@ -26,8 +28,12 @@ html,body{
 }
 .container{
   margin-top: 40px;
+  margin-bottom: 55px;
 }
 .mint-searchbar{
   background-color: transparent;
+}
+.mint-navbar{
+  margin-bottom:5px;
 }
 </style>

@@ -14,7 +14,8 @@
         <mt-cell title="编辑个人信息" to="/account" is-link></mt-cell> 
         <mt-cell title="我的故障报修" to="/myRepair" is-link></mt-cell>     
         <mt-cell title="我的二手信息" to="/mySecond" is-link></mt-cell>     
-        <mt-cell title="我的失物招领" to="/myLost" is-link></mt-cell>     
+        <mt-cell title="我的失物招领" to="/myLost" is-link></mt-cell>  
+        <mt-cell title="管理员" to="/admin" is-link  class="setting-map" ></mt-cell>   
         <mt-cell title="退出登录" class="setting-exit" @click.native="exitLogin"></mt-cell>     
         <tabbar></tabbar>
     </div>

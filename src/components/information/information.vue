@@ -39,14 +39,12 @@
                 </mt-popup> 
             <!-- 内容区2: 考试入口 -->
             <mt-tab-container-item id="tab-container2"> 
-                <mt-cell 
-                v-for="(item) in entranceList" 
-                :key="item.tid"
-                :title="item.tname"
-                :label="item.tcollege" 
-                value="点击报名" 
+                <mt-cell
+                v-for="(item) in collegeList"
+                :key="item.id"
+                :title="item.name"
                 is-link
-                :to="{ name:'view', params: { vsrc: item.turl }}"
+                :to="{ name:'entrance', query: { collegeName: item.name }}"
                 >
                 </mt-cell>
             </mt-tab-container-item>
@@ -76,39 +74,55 @@ export default {
             popupVisible: false,
             testList:[],        // 所有考试信息列表
             everyTest:[],       // 单独考试信息
-            entranceList:[],     // 考试入口信息
+            collegeList: [      // 学院列表
+                {
+                    name:'信息工程学院',
+                    id: 0,
+                },
+                {
+                    name:'建筑工程学院',
+                    id: 1,
+                },
+                {
+                    name:'机电工程学院',
+                    id: 2,
+                },
+                {
+                    name:'经济管理学院',
+                    id: 3,
+                },
+                {
+                    name:'职业技术学院',
+                    id: 4,
+                },
+                {
+                    name:'航空学院',
+                    id: 5,
+                },
+                {
+                    name:'外语学院',
+                    id: 6,
+                }
+            ]
         };
     },
     computed: {
 
     },
     created() {
-        axios
-          .post("/testtell/checkTell")
-          .then(res => {
-            // console.log(res);
-            
-            if (res.data.status == '0') {
-              Toast(res.data.msg);
-              this.testList = res.data.list;
-            } else {
-              Toast(res.data.msg);
-            }
-          })
-          .catch();
-          axios
-          .post("test/checktest")
-          .then(res => {
-            // console.log(res);
-            
-            if (res.data.status == '0') {
-            //   Toast(res.data.msg);
-              this.entranceList = res.data.list;
-            } else {
-              Toast(res.data.msg);
-            }
-          })
-          .catch();
+    axios
+        .post("/testtell/checkTell")
+        .then(res => {
+        // console.log(res);
+        
+        if (res.data.status == '0') {
+        //   Toast(res.data.msg);
+            this.testList = res.data.list;
+        } else {
+            Toast(res.data.msg);
+        }
+        })
+        .catch();
 
     },
     mounted() {

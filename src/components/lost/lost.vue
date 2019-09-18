@@ -126,7 +126,7 @@ export default {
         width: 80%;
     }
 .nav{
-    padding-top: 2%;
+    text-align: center;
     .mint-button--default{
         // background-color: #4fb5eb;
         background-color:#44ceff;
