@@ -17,6 +17,11 @@ import myLost from '@/components/setting/apps/myLost'
 import myRepair from '@/components/setting/apps/myRepair'
 import mySecond from '@/components/setting/apps/mySecond'
 import admin from '@/components/admin/admin'
+import manageEntrance from '@/components/admin/manageEntrance'
+import manageInformation from '@/components/admin/manageInformation'
+import manageLost from '@/components/admin/manageLost'
+import manageRepair from '@/components/admin/manageRepair'
+import manageSecond from '@/components/admin/manageSecond'
 
 Vue.use(Router)
 
@@ -134,6 +139,31 @@ const router= new Router({
       path: '/admin',
       name: 'admin',
       component: admin,
+    },
+    {
+      path: '/manageEntrance',
+      name: 'manageEntrance',
+      component: manageEntrance,
+    },
+    {
+      path: '/manageInformation',
+      name: 'manageInformation',
+      component: manageInformation,
+    },
+    {
+      path: '/manageLost',
+      name: 'manageLost',
+      component: manageLost,
+    },
+    {
+      path: '/manageRepair',
+      name: 'manageRepair',
+      component: manageRepair,
+    },
+    {
+      path: '/manageSecond',
+      name: 'manageSecond',
+      component: manageSecond,
     },
   ],
   linkActiveClass:''

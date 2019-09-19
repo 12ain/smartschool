@@ -21,7 +21,7 @@
             <mt-tab-container-item id="tab-container1">
                 <div class="main">
                     <router-link class="thing-list" v-for="item in thingLists" :key="item.tid" :to="{ name:'view', params: { vsrc: item.surl }}">
-                        <img src="http://f.expoon.com/sub/user/logo/68/595587_364x216_2.jpg" class="thing-list-img">
+                        <img :src="'http://'+item.image" class="thing-list-img">
                         <span class="thing-list-title">{{item.tdes}}</span>
                         <span class="thing-list-price">￥{{item.tprice}}</span>
                     </router-link>

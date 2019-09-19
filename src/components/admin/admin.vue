@@ -5,6 +5,11 @@
                 <mt-button icon="back" @click.native="$router.back(-1)">返回</mt-button>
             </router-link>
         </mt-header>
+        <div class="main">
+          <routerLink  :to="item.path" v-for="item in entrance" :key="item.id">
+              <mt-button>{{item.name}}</mt-button>
+          </routerLink>
+        </div>
   </div>
 </template>
 
@@ -19,7 +24,33 @@ export default {
   },
   data() {
     return {
-
+      entrance:[
+        {
+          id:0,
+          name:'故障报备管理',
+          path:'/manageRepair'
+        },
+        {
+          id:1,
+          name:'二手信息管理',
+          path:'/manageSecond'
+        },
+        {
+          id:2,
+          name:'失物招领管理',
+          path:'/manageLost'
+        },
+        {
+          id:3,
+          name:'考试通知管理',
+          path:'/manageInformation'
+        },
+        {
+          id:4,
+          name:'考试报名入口管理',
+          path:'/manageEntrance'
+        },
+      ]
     }
   },
   computed: {
@@ -41,5 +72,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.main{
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  text-align: center;
+  a{
+    // width: 50%;
+    padding: 3% 0;
+  .mint-button{
+    width: 50%;
+    height: 80px;
+    background-color: #44ceff;
+    color: white;
+  }
+  }
+}
 </style>

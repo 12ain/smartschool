@@ -76,32 +76,36 @@ export default {
             everyTest:[],       // 单独考试信息
             collegeList: [      // 学院列表
                 {
-                    name:'信息工程学院',
+                    name:'公共考试',
                     id: 0,
                 },
                 {
-                    name:'建筑工程学院',
+                    name:'信息工程学院',
                     id: 1,
                 },
                 {
-                    name:'机电工程学院',
+                    name:'建筑工程学院',
                     id: 2,
                 },
                 {
-                    name:'经济管理学院',
+                    name:'机电工程学院',
                     id: 3,
                 },
                 {
-                    name:'职业技术学院',
+                    name:'经济管理学院',
                     id: 4,
                 },
                 {
-                    name:'航空学院',
+                    name:'职业技术学院',
                     id: 5,
                 },
                 {
-                    name:'外语学院',
+                    name:'航空学院',
                     id: 6,
+                },
+                {
+                    name:'外语学院',
+                    id: 7,
                 }
             ]
         };
