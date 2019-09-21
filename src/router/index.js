@@ -7,10 +7,13 @@ import tabbar from '@/components/common/tabbar'
 import about from '@/components/setting/apps/about'
 import account from '@/components/setting/apps/account'
 import repair from '@/components/repair/repair'
+import repairdetails from '@/components/repair/repairdetails'
 import second from '@/components/second/second'
+import seconddetails from '@/components/second/seconddetails'
 import information from '@/components/information/information'
 import entrance from '@/components/information/entrance'
 import lost from '@/components/lost/lost'
+import lostdetails from '@/components/lost/lostdetails'
 import view from '@/components/common/view'
 import school from '@/components/setting/apps/school'
 import myLost from '@/components/setting/apps/myLost'
@@ -48,6 +51,14 @@ const router= new Router({
       path: '/lost',
       name: 'lost',
       component: lost,
+      meta: {
+        checkLogined: true
+      },
+    },
+    {
+      path: '/lostdetails',
+      name: 'lostdetails',
+      component: lostdetails,
       meta: {
         checkLogined: true
       },
@@ -108,9 +119,25 @@ const router= new Router({
       },
     },
     {
+      path: '/repairdetails',
+      name: 'repairdetails',
+      component: repairdetails,
+      meta: {
+        checkLogined: true
+      },
+    },
+    {
       path: '/second',
       name: 'second',
       component: second,
+      meta: {
+        checkLogined: true
+      },
+    },
+    {
+      path: '/seconddetails',
+      name: 'seconddetails',
+      component: seconddetails,
       meta: {
         checkLogined: true
       },

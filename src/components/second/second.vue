@@ -20,7 +20,7 @@
 
             <mt-tab-container-item id="tab-container1">
                 <div class="main">
-                    <router-link class="thing-list" v-for="item in thingLists" :key="item.tid" :to="{ name:'view', params: { vsrc: item.surl }}">
+                    <router-link class="thing-list" v-for="item in thingLists" :key="item.tid" :to="{ name:'seconddetails', params: { secondList: item }}">
                         <img :src="'http://'+item.image" class="thing-list-img">
                         <span class="thing-list-title">{{item.tdes}}</span>
                         <span class="thing-list-price">￥{{item.tprice}}</span>

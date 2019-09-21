@@ -5,8 +5,8 @@
 
     <!-- 选项卡 -->
     <mt-navbar v-model="active">
-      <mt-tab-item id="tab-container1">故障报备</mt-tab-item>
       <mt-tab-item id="tab-container2" @click.native="getRepairLists">报备信息</mt-tab-item>
+      <mt-tab-item id="tab-container1">故障报备</mt-tab-item>
     </mt-navbar>
 
     <!-- 内容分栏 -->
@@ -25,14 +25,15 @@
       <!-- 内容区2: 报修数据显示 -->
 
       <mt-tab-container-item id="tab-container2">
-        <mt-cell-swipe
-          v-for="item in repairInfo"
-          :key="item.rid"
-          :title="item.rdes"
-          :label="item.wstatic"
-        >        
-        <img slot="icon" :src="'http://' + item.image" width="30" height="30">
-      </mt-cell-swipe>
+        <router-link v-for="item in repairInfo"
+          :key="item.rid" :to="{ name:'repairdetails', params: { repairList: item }}">
+          <mt-cell
+            :title="item.rdes"
+            :label="item.wstatic"
+          >
+          <img slot="icon" :src="'http://' + item.image" width="30" height="30">
+        </mt-cell>
+      </router-link>
       </mt-tab-container-item>
     </mt-tab-container>
 
@@ -51,7 +52,7 @@ export default {
   data() {
     return {
       src: 'http://106.12.189.19/record/insertTo',
-      active: "tab-container1",
+      active: "tab-container2",
       repairList: {
         ruid: window.localStorage.getItem("uid"),
         rdate: "",
@@ -64,46 +65,9 @@ export default {
     };
   },
   computed: {},
-  created() {},
-  // created() {
-  //     this.rightButtons = [
-  //     {
-  //       content: '编辑',
-  //       style: { background: 'green', color: '#fff' },
-  //       handler: () => this.$messagebox({
-  //       title: '温馨提示',
-  //       message: '即将进入编辑页面,请确认您填写信息的有效性.',
-  //       showCancelButton: true,
-  //       confirmButtonText:"继续",
-  //       cancelButtonText:"取消"
-  //     }).then(action => {
-  //       if(action == 'confirm'){
-  //         console.log('继续')
-  //       }else{
-  //         console.log('取消')
-  //       }
-  //   })
-  //     },
-  //     {
-  //       content: '删除',
-  //       style: { background: 'red', color: '#fff' },
-  //       handler: () => this.$messagebox({
-  //       title: '温馨提示',
-  //       message: '删除后不可恢复,是否继续',
-  //       showCancelButton: true,
-  //       confirmButtonText:"确认删除",
-  //       cancelButtonText:"取消"
-  //     }).then(action => {
-  //       if(action == 'confirm'){
-  //         console.log('继续')
-  //       }else{
-  //         console.log('取消')
-  //       }
-  //   })
-  //     },
-  //   ];
-
-  // },
+  created() {
+    this.getRepairLists();
+  },
   mounted() {},
   watch: {},
   methods: {
@@ -133,9 +97,6 @@ export default {
       axios({
       url: "/record/rmess",
       method: "post",
-      params: {
-        ruid: window.localStorage.getItem("uid")
-      }
     }).then(res => {
       // Toast({
       //     message: res.data.msg,
@@ -153,6 +114,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+a{
+    text-decoration: none;
+    color: black;
+}
 .mint-button--primary {
   background-color: #44ceff;
 }

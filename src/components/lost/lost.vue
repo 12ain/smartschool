@@ -31,10 +31,28 @@
                 </div>
                 <mt-tab-container v-model="actives">
                     <mt-tab-container-item id="lost-container">
-                        <mt-cell v-for="item in lostLists" :key="item.id" :title="item.des" :label="item.lstatic"></mt-cell> 
+                        <router-link 
+                        v-for="item in lostLists" 
+                        :key="item.id"  
+                        :to="{ name:'lostdetails', params: { lostList: item }}">
+                            <mt-cell 
+                            :title="item.des"
+                            :label="item.lstatic"
+                            >
+                            </mt-cell> 
+                        </router-link>
                     </mt-tab-container-item>
                     <mt-tab-container-item id="get-container">
-                        <mt-cell v-for="item in getLists" :key="item.id" :title="item.des" :label="item.lstatic"></mt-cell>         
+                        <router-link 
+                        v-for="item in getLists" 
+                        :key="item.id" 
+                        :to="{ name:'lostdetails', params: { lostList: item }}"
+                        >
+                        <mt-cell 
+                        :title="item.des" 
+                        :label="item.lstatic"
+                        ></mt-cell>    
+                        </router-link>     
                     </mt-tab-container-item>
                     </mt-tab-container> 
                 
@@ -117,6 +135,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+a{
+    text-decoration: none;
+    color: black;
+}
 .mint-button--primary{
         background-color: #44ceff;
     }
