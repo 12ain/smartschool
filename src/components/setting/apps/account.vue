@@ -73,7 +73,8 @@ export default {
                 uemail: this.userInformation.uemail,
                 utel: this.userInformation.utel,
                 udept: this.userInformation.udept,
-                uimage: ""
+                ugrade: this.userInformation.ugrade,
+                uimage: this.userInformation.uimage,
             });
             } else {
               Toast(res.data.msg);

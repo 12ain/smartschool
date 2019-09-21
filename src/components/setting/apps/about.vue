@@ -1,38 +1,40 @@
 <template>
-    <div>
-    </div>
+  <div class="p-page">
+    page
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
+  components: {
 
-    },
-    data() {
-        return {
+  },
+  props: {
 
-        };
-    },
-    computed: {
+  },
+  data() {
+    return {
 
-    },
-    created() {
+    }
+  },
+  computed: {
 
-    },
-    mounted() {
+  },
+  watch: {
 
-    },
-    watch: {
+  },
+  created() {
 
-    },
-    methods: {
+  },
+  mounted() {
 
-    },
-    components: {
+  },
+  methods: {
 
-    },
-};
+  }
+}
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="less" rel="stylesheet/less">
+
 </style>

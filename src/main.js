@@ -45,7 +45,7 @@ Vue.filter('dateFormat', function (dateStr, pattern = "") {
 
 document.addEventListener('plusready', function () {
   var webview = plus.webview.currentWebview();
-  plus.navigator.setStatusBarBackground('#e40113');//设置顶部颜色
+  plus.navigator.setStatusBarBackground('#44ceff'); //设置顶部颜色
   plus.key.addEventListener('backbutton', function () {
     webview.canBack(function (e) {
       if (e.canBack) {
