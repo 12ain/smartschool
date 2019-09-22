@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <mt-header fixed title="二手交易信息"></mt-header>
+        <mt-header fixed title="二手信息"></mt-header>
         <!-- 选项卡 -->
         <mt-navbar v-model="active">
-        <mt-tab-item id="tab-container1" @click.native="getthingLists">查看交易信息</mt-tab-item>
-        <mt-tab-item id="tab-container2">发布交易信息</mt-tab-item>
+        <mt-tab-item id="tab-container1" @click.native="getthingLists">查看二手信息</mt-tab-item>
+        <mt-tab-item id="tab-container2">发布二手信息</mt-tab-item>
         </mt-navbar>
 
         <!-- 内容分栏 -->

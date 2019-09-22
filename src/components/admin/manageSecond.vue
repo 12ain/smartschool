@@ -6,15 +6,19 @@
             </router-link>
     </mt-header>
     <div class="main">
+        <router-link
+        v-for="item in secondList"
+        :key="item.tid"
+        :to="{ name:'seconddetails', params: { secondList: item }}"
+        >
         <mt-cell-swipe
-            v-for="item in secondList"
-            :key="item.tid"
             :title="item.tdes"
             :right="rightButtons"
-            @touchstart.native="getid(item.tid)"
+            @touchstart.native="getid(item)"
         >
         <img slot="icon" :src="'http://' + item.image" width="30" height="30">
         </mt-cell-swipe>
+        </router-link>
     </div>
   </div>
 </template>
@@ -37,7 +41,8 @@ export default {
   data() {
     return {
         secondList:[],
-        tid:''
+        tid:'',
+        secondItem:[],
     }
   },
   computed: {
@@ -60,7 +65,7 @@ created() {
     cancelButtonText:"取消"
     }).then(action => {
     if(action == 'confirm'){
-        console.log('继续')
+        this.$router.push({ name:'changesecond', params: { secondList: this.seconditem }})
     }else{
         console.log('取消')
     }
@@ -91,9 +96,13 @@ created() {
 
   },
   methods: {
-      getid(id){
+      ...mapMutations(["updatesecond"]),
+     getid(item){
         // console.log(id);
-        this.tid=id
+        this.secondItem = item
+        this.tid=item.id
+        this.updatesecond(this.secondItem)
+        // console.log(this.secondItem)
       },
       getList(){
           axios

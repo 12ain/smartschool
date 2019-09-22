@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 const state = {
+    oldimg:'',
     // 用户信息相关参数
     userInformation:{
       uid: "",
@@ -71,6 +72,7 @@ const mutations = {
       state.repairInformation.rdes = Info.rdes
       state.repairInformation.wstatic = Info.wstatic
       state.repairInformation.image = Info.image
+      state.oldimg = Info.image
       state.repairInformation.wid = Info.wid
       state.repairInformation.wdate = Info.wdate
     },
@@ -82,6 +84,7 @@ const mutations = {
       state.secondInformation.utel = Info.utel
       state.secondInformation.tprice = Info.tprice
       state.secondInformation.image = Info.image
+      state.oldimg = Info.image
     },
     // 更新失物招领信息
   updatelost(state, Info) {
@@ -92,6 +95,7 @@ const mutations = {
     state.lostInformation.lflag = Info.lflag
     state.lostInformation.lstatic = Info.lstatic
     state.lostInformation.image = Info.image
+    state.oldimg = Info.image
   },
 
 }

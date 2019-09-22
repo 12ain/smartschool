@@ -8,31 +8,24 @@
 
     <div class="main">
       <div class="nav">
-        <mt-button size="small" @click.native.prevent="actives = 'lost-container'">寻物启事</mt-button>
-        <mt-button size="small" @click.native.prevent="actives = 'get-container'">失物招领</mt-button>
+        <mt-button size="small" @click.native.prevent="getlostList">寻物启事</mt-button>
+        <mt-button size="small" @click.native.prevent="getfoundList">失物招领</mt-button>
       </div>
       <mt-tab-container v-model="actives">
         <mt-tab-container-item id="lost-container">
-          <mt-cell-swipe 
-          v-for="item in lostLists" 
+          <router-link 
+          v-for="item in lostList" 
           :key="item.id" 
+          :to="{ name:'lostdetails', params: { lostList: item }}">
+          <mt-cell-swipe 
           :title="item.des" 
           :label="item.lstatic"
-          @touchstart.native="getid(item.id)"
+          @touchstart.native="getid(item)"
           :right="rightButtons"
           >
+          <img slot="icon" :src="'http://' + item.image" width="30" height="30">
           </mt-cell-swipe>
-        </mt-tab-container-item>
-        <mt-tab-container-item id="get-container">
-          <mt-cell-swipe 
-          v-for="item in getLists" 
-          :key="item.id" 
-          :title="item.des" 
-          :label="item.lstatic"
-          @touchstart.native="getid(item.id)"
-          :right="rightButtons"
-          >
-          </mt-cell-swipe>
+          </router-link>
         </mt-tab-container-item>
       </mt-tab-container>
     </div>
@@ -52,18 +45,14 @@ export default {
   data() {
     return {
       actives: "lost-container",
-      lostList: {
-        des: "", // 物品名称及相关信息
-        time: "", // 丢失时间
-        uid: window.localStorage.getItem("uid"),
-        lflag: "失主", // 失主/得主
-        lstatic: "未解决"
-      },
-      lostLists: [], //失主信息列表
-      getLists: [] //得主信息列表
+      lostList: [], //信息列表
+      id:'',
+      lostItem:[],
     };
   },
-  computed: {},
+  computed: {
+    ...mapState(["userInformation"]),
+  },
   created() {
     this.getlostList();
     this.rightButtons = [
@@ -79,7 +68,7 @@ export default {
             cancelButtonText: "取消"
           }).then(action => {
             if (action == "confirm") {
-              console.log("继续");
+              this.$router.push({ name:'changelost', params: { lostList: this.lostitem }})
             } else {
               console.log("取消");
             }
@@ -98,7 +87,7 @@ export default {
           }).then(action => {
             if (action == "confirm") {
               // console.log(this.id)
-              this.delList(this.tid);
+              this.delList(this.id);
             } else {
               console.log("取消");
             }
@@ -109,9 +98,13 @@ export default {
   mounted() {},
   watch: {},
   methods: {
-      getid(id){
+      ...mapMutations(["updatelost"]),
+      getid(item){
         // console.log(id);
-        this.id=id
+        this.lostItem = item
+        this.id=item.id
+        this.updatelost(this.lostItem)
+        // console.log(this.repairItem)
       },
     getlostList() {
       axios({
@@ -119,14 +112,15 @@ export default {
         method: "post",
         params: { lflag: "失主" }
       }).then(res => {
-        this.lostLists = res.data.list;
-      });
+        this.lostList = res.data.list;
+      });},
+    getfoundList(){
       axios({
         url: "/lf/testAllFound",
         method: "post",
         params: { lflag: "得主" }
       }).then(res => {
-        this.getLists = res.data.list;
+        this.lostList = res.data.list;
       });
     },
     delList(){

@@ -14,7 +14,7 @@
       <!-- 内容区1: 报备表单 -->
       <mt-tab-container-item id="tab-container1">
         <mt-field label="报备时间" placeholder="请输入报备时间" type="date" v-model="repairList.rdate"></mt-field>
-        <mt-field label="教室地点" placeholder="请输入教室地点" type="text" v-model="repairList.radr"></mt-field>
+        <mt-field label="报备地点" placeholder="请输入报备地点" type="text" v-model="repairList.radr"></mt-field>
         <mt-field label="设备类型" placeholder="请输入设备类型" type="text" v-model="repairList.rtype"></mt-field>
         <mt-field label="详细描述" placeholder="详细描述" type="textarea" rows="3" v-model="repairList.rdes"></mt-field>
         <!-- <input type="file" accept="image/jpeg,image/x-png,image/gif" @change="fileImage"> -->

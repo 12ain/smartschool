@@ -12,7 +12,7 @@
         <mt-field label="姓名" placeholder="请输入姓名" v-model="userInformation.uname"></mt-field>
         <mt-field label="邮箱" placeholder="请输入邮箱" v-model="userInformation.uemail" type="email" ></mt-field>
         <mt-field label="手机号" placeholder="请输入手机号" v-model="userInformation.utel" type="tel" ></mt-field>
-        <mt-field label="学院名称" placeholder="请输入学院名称" v-model="userInformation.udept"></mt-field>
+        <mt-field label="学校名称" placeholder="请输入学校名称" v-model="userInformation.udept"></mt-field>
         </div>
 </template>
 

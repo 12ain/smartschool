@@ -20,6 +20,10 @@ html,body{
   /* background-color:grey; */
 
 }
+a{
+  text-decoration: none;
+  color: black;
+}
 [v-cloak] {
   display: none;
 }

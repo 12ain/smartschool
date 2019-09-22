@@ -38,7 +38,7 @@
 					</div>
 
           <div class="am-form-group">
-						<input type="text" class="" placeholder="请输入学院" v-model="userInfo.udept">
+						<input type="text" class="" placeholder="请输入学校名称" v-model="userInfo.udept">
 					</div>
 
           <select v-model="userInfo.ugrade">

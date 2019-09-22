@@ -8,12 +8,15 @@ import about from '@/components/setting/apps/about'
 import account from '@/components/setting/apps/account'
 import repair from '@/components/repair/repair'
 import repairdetails from '@/components/repair/repairdetails'
+import changerepair from '@/components/repair/changerepair'
 import second from '@/components/second/second'
 import seconddetails from '@/components/second/seconddetails'
+import changesecond from '@/components/second/changesecond'
 import information from '@/components/information/information'
 import entrance from '@/components/information/entrance'
 import lost from '@/components/lost/lost'
 import lostdetails from '@/components/lost/lostdetails'
+import changelost from '@/components/lost/changelost'
 import view from '@/components/common/view'
 import school from '@/components/setting/apps/school'
 import myLost from '@/components/setting/apps/myLost'
@@ -59,6 +62,14 @@ const router= new Router({
       path: '/lostdetails',
       name: 'lostdetails',
       component: lostdetails,
+      meta: {
+        checkLogined: true
+      },
+    },
+    {
+      path: '/changelost',
+      name: 'changelost',
+      component: changelost,
       meta: {
         checkLogined: true
       },
@@ -127,6 +138,14 @@ const router= new Router({
       },
     },
     {
+      path: '/changerepair',
+      name: 'changerepair',
+      component: changerepair,
+      meta: {
+        checkLogined: true
+      },
+    },
+    {
       path: '/second',
       name: 'second',
       component: second,
@@ -138,6 +157,14 @@ const router= new Router({
       path: '/seconddetails',
       name: 'seconddetails',
       component: seconddetails,
+      meta: {
+        checkLogined: true
+      },
+    },
+    {
+      path: '/changesecond',
+      name: 'changesecond',
+      component: changesecond,
       meta: {
         checkLogined: true
       },

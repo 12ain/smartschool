@@ -1,22 +1,25 @@
 <template>
-  <div class="container">
+<div class="container">
     <mt-header fixed title="我的二手信息">
         <router-link slot="left" to="">
                 <mt-button icon="back" @click.native="$router.back(-1)">返回</mt-button>
             </router-link>
     </mt-header>
     <div class="main">
-        <mt-cell-swipe
+        <router-link 
             v-for="item in secondList"
-            :key="item.tid"
+            :key="item.tid" 
+            :to="{ name:'seconddetails', params: { secondList: item }}">
+        <mt-cell-swipe
             :title="item.tdes"
             :right="rightButtons"
-            @touchstart.native="getid(item.tid)"
+            @touchstart.native="getid(item)"
         >
         <img slot="icon" :src="'http://' + item.image" width="30" height="30">
         </mt-cell-swipe>
+        </router-link>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -28,24 +31,23 @@ import { mapState, mapMutations } from "vuex";
 import axios from 'axios';
 import qs from 'Qs';
 export default {
-  components: {
+components: {},
+props: {
 
-  },
-  props: {
-
-  },
-  data() {
+},
+data() {
     return {
         secondList:[],
-        tid:''
+        tid:'',
+        secondItem:[],
     }
-  },
-  computed: {
-    ...mapState(["userInformation"]),
-  },
-  watch: {
+},
+computed: {
+...mapState(["userInformation"]),
+},
+watch: {
 
-  },
+},
 created() {
     this.getList();
     this.rightButtons = [
@@ -60,7 +62,7 @@ created() {
     cancelButtonText:"取消"
     }).then(action => {
     if(action == 'confirm'){
-        console.log('继续')
+        this.$router.push({ name:'changesecond', params: { secondList: this.secondItem }})
     }else{
         console.log('取消')
     }
@@ -87,16 +89,18 @@ created() {
 ];
 
 },
-  mounted() {
+mounted() {
 
-  },
-  methods: {
-      getid(id){
-        // console.log(id);
-        this.tid=id
-      },
-      getList(){
-          axios
+},
+methods: {
+    ...mapMutations(["updatesecond"]),
+    getid(item){
+        this.secondItem = item
+        this.tid=item.tid
+        this.updatesecond(this.secondItem)
+    },
+    getList(){
+        axios
             .post("/trade/rmessmy", 
             qs.stringify({           
             tuid: this.userInformation.uid,
@@ -111,9 +115,9 @@ created() {
                 Toast(res.data.msg);
             }
             })
-      },
-      delList(rid){
-          axios
+    },
+    delList(rid){
+        axios
             .post("/trade/deleteTo", 
             qs.stringify({           
             tid: this.tid,
@@ -127,8 +131,8 @@ created() {
                 Toast(res.data.msg);
             }
             })
-      },
-  }
+        },
+}
 }
 </script>
 

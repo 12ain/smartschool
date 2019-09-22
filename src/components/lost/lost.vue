@@ -105,12 +105,6 @@ export default {
                 method: "post",
                 params: {lflag : "失主"}
                 }).then(res => {
-                // Toast({
-                //     message: res.data.msg,
-                //     position: 'bottom',
-                //     duration: 3000
-                //     });
-                // console.log(res)
                 this.lostLists = res.data.list;
     });
             axios({
@@ -118,12 +112,6 @@ export default {
                 method: "post",
                 params: {lflag : "得主"}
                 }).then(res => {
-                // Toast({
-                //     message: res.data.msg,
-                //     position: 'bottom',
-                //     duration: 3000
-                //     });
-                // console.log(res)
                 this.getLists = res.data.list;
             });
         }

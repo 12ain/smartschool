@@ -6,16 +6,18 @@
             </router-link>
     </mt-header>
     <div class="main">
-        <mt-cell-swipe
-            v-for="item in lostList"
+        <router-link v-for="item in lostList"
             :key="item.id"
+            :to="{ name:'lostdetails', params: { lostList: item }}">
+        <mt-cell-swipe
             :title="item.des"
             :right="rightButtons"
             :value="item.lstatic"
-            @touchstart.native="getid(item.id)"
+            @touchstart.native="getid(item)"
         >
         <img slot="icon" :src="'http://' + item.image" width="30" height="30">
         </mt-cell-swipe>
+        </router-link>
     </div>
   </div>
 </template>
@@ -38,7 +40,8 @@ export default {
   data() {
     return {
         lostList:[],
-        id:''
+        id:'',
+        lostItem:[],
     }
   },
   computed: {
@@ -61,7 +64,7 @@ created() {
     cancelButtonText:"取消"
     }).then(action => {
     if(action == 'confirm'){
-        console.log('继续')
+        this.$router.push({ name:'changelost', params: { lostList: this.lostitem }})
     }else{
         console.log('取消')
     }
@@ -79,7 +82,7 @@ created() {
     }).then(action => {
     if(action == 'confirm'){
         // console.log(this.id)
-        this.delList(this.tid)
+        this.delList(this.id)
     }else{
         console.log('取消')
     }
@@ -92,9 +95,11 @@ created() {
 
   },
   methods: {
-      getid(id){
-        // console.log(id);
-        this.id=id
+      ...mapMutations(["updatelost"]),
+      getid(item){
+        this.lostItem = item
+        this.id=item.id
+        this.updatelost(this.lostItem)
       },
       getList(){
           axios

@@ -1,21 +1,28 @@
 <template>
   <div class="container">
-    <mt-header fixed title="故障报修">
+    <mt-header fixed title="故障报修管理">
         <router-link slot="left" to="">
                 <mt-button icon="back" @click.native="$router.back(-1)">返回</mt-button>
             </router-link>
     </mt-header>
     <div class="main">
+            <div class="nav">
+                <mt-button size="small" @click.native.prevent="getList1">待维修</mt-button>
+                <mt-button size="small" @click.native.prevent="getList2">已维修</mt-button>
+            </div>
+        <router-link 
+        :to="{ name:'repairdetails', params: { repairList: item }}"
+        v-for="item in repairList"
+        :key="item.rid">
         <mt-cell-swipe
-            v-for="item in repairList"
-            :key="item.rid"
             :title="item.rdes"
             :right="rightButtons"
             :value="item.rid"
-            @touchstart.native="getid(item.rid)"
+            @touchstart.native="getid(item)"
         >
         <img slot="icon" :src="'http://' + item.image" width="30" height="30">
         </mt-cell-swipe>
+        </router-link>
     </div>
   </div>
 </template>
@@ -38,7 +45,8 @@ export default {
   data() {
     return {
         repairList:[],
-        rid:''
+        rid:'',
+        repairItem:[],
     }
   },
   computed: {
@@ -48,7 +56,7 @@ export default {
 
   },
 created() {
-    this.getList();
+    this.getList1();
     this.rightButtons = [
     {
     content: '编辑',
@@ -61,7 +69,7 @@ created() {
     cancelButtonText:"取消"
     }).then(action => {
     if(action == 'confirm'){
-        console.log('继续')
+        this.$router.push({ name:'changerepair', params: { repairList: this.repairitem }})
     }else{
         console.log('取消')
     }
@@ -92,19 +100,42 @@ created() {
 
   },
   methods: {
-      getid(id){
+      ...mapMutations(["updaterepair"]),
+      getid(item){
         // console.log(id);
-        this.rid=id
+        this.repairItem = item
+        this.rid=item.id
+        this.updaterepair(this.repairItem)
+        // console.log(this.repairItem)
       },
-      getList(){
+      getList1(){
           axios
-            .post("/record/rmess")
+            .post("/record/wwmessmy", 
+            qs.stringify({           
+        }))
             .then(res => {
             // console.log(res);
             
             if (res.data.status == '0') {
                 this.repairList = res.data.list
-                // Toast(res.data.msg);
+                Toast(res.data.msg);
+            } else {
+                Toast(res.data.msg);
+            }
+            })
+      },
+      getList2(){
+          axios
+            .post("/record/wymessmy", 
+            qs.stringify({           
+            wid: this.userInformation.uid,
+        }))
+            .then(res => {
+            // console.log(res);
+            
+            if (res.data.status == '0') {
+                this.repairList = res.data.list
+                Toast(res.data.msg);
             } else {
                 Toast(res.data.msg);
             }
@@ -131,5 +162,14 @@ created() {
 </script>
 
 <style scoped lang="scss">
-
+.nav{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+    .mint-button--default{
+        // background-color: #4fb5eb;
+        background-color:#44ceff;
+        color: #ffffff;
+    }
+}
 </style>

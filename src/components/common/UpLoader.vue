@@ -34,8 +34,8 @@
     <input type="file" accept="image/*" @change="fileChanged" ref="file" capture="camera"  multiple>
   </div>
 </template>
- 
 <script>
+import {Toast} from 'mint-ui'
   export default {
     props: {
       src: { // 后台接受图片的http地址
@@ -93,6 +93,8 @@
       finished() {
         this.files = []
         this.status = 'ready'
+        Toast('操作成功')
+        this.$router.back(-1)
       },
       // 上传图片列表中的某个图片
       remove(index) {

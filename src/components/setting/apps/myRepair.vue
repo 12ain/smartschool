@@ -6,16 +6,19 @@
             </router-link>
     </mt-header>
     <div class="main">
+        <router-link 
+        :to="{ name:'repairdetails', params: { repairList: item }}"
+        v-for="item in repairList"
+        :key="item.rid">
         <mt-cell-swipe
-            v-for="item in repairList"
-            :key="item.rid"
             :title="item.rdes"
             :right="rightButtons"
             :value="item.rid"
-            @touchstart.native="getid(item.rid)"
+            @touchstart.native="getid(item)"
         >
         <img slot="icon" :src="'http://' + item.image" width="30" height="30">
         </mt-cell-swipe>
+        </router-link>
     </div>
   </div>
 </template>
@@ -38,7 +41,8 @@ export default {
   data() {
     return {
         repairList:[],
-        rid:''
+        rid:'',
+        repairItem:[],
     }
   },
   computed: {
@@ -61,7 +65,7 @@ created() {
     cancelButtonText:"取消"
     }).then(action => {
     if(action == 'confirm'){
-        console.log('继续')
+        this.$router.push({ name:'changerepair', params: { repairList: this.repairitem }})
     }else{
         console.log('取消')
     }
@@ -92,9 +96,13 @@ created() {
 
   },
   methods: {
-      getid(id){
+      ...mapMutations(["updaterepair"]),
+      getid(item){
         // console.log(id);
-        this.rid=id
+        this.repairItem = item
+        this.rid=item.id
+        this.updaterepair(this.repairItem)
+        // console.log(this.repairItem)
       },
       getList(){
           axios
