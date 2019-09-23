@@ -100,7 +100,7 @@ created() {
       getid(item){
         // console.log(id);
         this.repairItem = item
-        this.rid=item.id
+        this.rid=item.rid
         this.updaterepair(this.repairItem)
         // console.log(this.repairItem)
       },

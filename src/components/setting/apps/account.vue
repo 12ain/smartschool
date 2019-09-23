@@ -6,7 +6,12 @@
             </router-link>
         <mt-button icon="xiazai" slot="right" @click.native="submitInformation">提交</mt-button>
         </mt-header>
-
+        <router-link to="/avatar">
+        <mt-cell title="头像" is-link>
+          <img slot="icon" :src="'http://'+userInformation.uimage" width="30" class="cell-avatar" v-show="avator">
+          <img slot="icon" src="../../../assets/images/logo.png" width="30" class="cell-avatar" v-show="!avator">
+        </mt-cell>
+        </router-link>
         <mt-field label="账号" placeholder="请输入账号" v-model="userInformation.uid" readonly></mt-field>
         <mt-field label="密码" placeholder="请输入密码" v-model="userInformation.upsd" type="password" ></mt-field>
         <mt-field label="姓名" placeholder="请输入姓名" v-model="userInformation.uname"></mt-field>
@@ -34,12 +39,15 @@ export default {
     },
     data() {
         return {
+          avator:false,
         };
     },
     computed: {
         ...mapState(["userInformation"]),
     },
     created() {
+      if (this.userInformation.uimage != null)
+        this.avator=true;
 
     },
     mounted() {
@@ -60,7 +68,6 @@ export default {
             uemail: this.userInformation.uemail,
             utel: this.userInformation.utel,
             udept: this.userInformation.udept,
-            uimage: ""
         }))
           .then(res => {
             
@@ -74,7 +81,7 @@ export default {
                 utel: this.userInformation.utel,
                 udept: this.userInformation.udept,
                 ugrade: this.userInformation.ugrade,
-                uimage: this.userInformation.uimage,
+                uimage: this.userInformation.uimage
             });
             } else {
               Toast(res.data.msg);
@@ -90,5 +97,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+  .cell-avatar{
+    float: right;
+    border-radius: 50%;
+  }
 </style>

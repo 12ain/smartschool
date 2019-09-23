@@ -6,6 +6,7 @@ import setting from '@/components/setting/setting'
 import tabbar from '@/components/common/tabbar'
 import about from '@/components/setting/apps/about'
 import account from '@/components/setting/apps/account'
+import avatar from '@/components/setting/apps/avatar'
 import repair from '@/components/repair/repair'
 import repairdetails from '@/components/repair/repairdetails'
 import changerepair from '@/components/repair/changerepair'
@@ -101,6 +102,14 @@ const router= new Router({
       path: '/account',
       name: 'account',
       component: account,
+      meta: {
+        checkLogined: true
+      },
+    },
+    {
+      path: '/avatar',
+      name: 'avatar',
+      component: avatar,
       meta: {
         checkLogined: true
       },

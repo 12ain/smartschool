@@ -104,7 +104,7 @@ created() {
       getid(item){
         // console.log(id);
         this.repairItem = item
-        this.rid=item.id
+        this.rid=item.rid
         this.updaterepair(this.repairItem)
         // console.log(this.repairItem)
       },
@@ -151,7 +151,7 @@ created() {
             // console.log(res);
             if (res.data.status == '0') {
                 Toast(res.data.msg);
-                this.getList();
+                this.getList1();
             } else {
                 Toast(res.data.msg);
             }

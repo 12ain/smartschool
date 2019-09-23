@@ -36,6 +36,9 @@
 </template>
 <script>
 import {Toast} from 'mint-ui'
+import Vuex from 'vuex';
+import store from "../../store/store";
+import { mapState, mapMutations } from "vuex";
   export default {
     props: {
       src: { // 后台接受图片的http地址
@@ -56,6 +59,7 @@ import {Toast} from 'mint-ui'
       }
     },
     methods: {
+      ...mapMutations(["update"]),
       // 添加图片操作
       add() {
         this.$refs.file.click();
@@ -70,6 +74,7 @@ import {Toast} from 'mint-ui'
         const formData = new FormData();
         this.files.forEach((item) => {
           formData.append("image", item.file)
+          formData.append("uimage", item.file)
         })
         for(let key in this.info){
         formData.append(key, this.info[key])
