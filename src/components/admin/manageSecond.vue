@@ -100,7 +100,7 @@ created() {
      getid(item){
         // console.log(id);
         this.secondItem = item
-        this.tid=item.id
+        this.tid=item.tid
         this.updatesecond(this.secondItem)
         // console.log(this.secondItem)
       },
@@ -118,7 +118,7 @@ created() {
             }
             })
       },
-      delList(rid){
+      delList(tid){
           axios
             .post("/trade/deleteTo", 
             qs.stringify({           
@@ -131,6 +131,7 @@ created() {
                 this.getList();
             } else {
                 Toast(res.data.msg);
+                // console.log(res)
             }
             })
       },

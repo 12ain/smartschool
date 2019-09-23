@@ -15,6 +15,8 @@
 
 <script>
 import Vue from "vue";
+import store from "../../store/store";
+import { mapState, mapMutations } from "vuex";
 export default {
   components: {
 
@@ -24,12 +26,8 @@ export default {
   },
   data() {
     return {
-      entrance:[
-        {
-          id:0,
-          name:'故障报备管理',
-          path:'/manageRepair'
-        },
+      title: "",
+      entranceAdmin:[
         {
           id:1,
           name:'二手信息管理',
@@ -50,23 +48,39 @@ export default {
           name:'考试报名入口管理',
           path:'/manageEntrance'
         },
-      ]
+      ],
+      entranceRepair:[
+        {
+          id:0,
+          name:'故障报备管理',
+          path:'/manageRepair'
+        },
+      ],
+      entrance:[],
     }
   },
   computed: {
+    ...mapState(["userInformation"]),
 
   },
   watch: {
 
   },
   created() {
-
+    this.decide()
   },
   mounted() {
 
   },
   methods: {
-
+    decide(){
+      if(this.userInformation.ugrade === '2'){
+        this.entrance = this.entranceAdmin
+      }
+      if (this.userInformation.ugrade === '1') {
+        this.entrance = this.entranceRepair
+      }
+    }
   }
 }
 </script>

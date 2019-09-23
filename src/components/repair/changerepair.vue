@@ -20,7 +20,7 @@
             </div>
             <div class="show" v-show="isRepair">
                 <mt-field label="报备编号" v-model="repairRepair.rid" readonly></mt-field>
-                <mt-field label="维修人员" v-model="repairRepair.wid"></mt-field>
+                <mt-field label="维修人员" v-model="repairRepair.wid" readonly></mt-field>
                 <mt-field label="维修状态" v-model="repairRepair.wstatic"></mt-field>
                 <mt-field label="维修时间" type="date" v-model="repairRepair.wdate"></mt-field>
                 <mt-button @click.native="submitRepair">提交</mt-button>
@@ -79,7 +79,7 @@ export default {
         if (this.userInformation.ugrade === '1'){        
               this.isRepair = true;
               this.repairRepair.rid = this.repairList.rid
-              this.repairRepair.wid = this.repairList.wid
+              this.repairRepair.wid = this.userInformation.uid
               this.repairRepair.wstatic = this.repairList.wstatic
               this.repairRepair.wdate = this.repairList.wdate
           }

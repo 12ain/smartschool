@@ -100,11 +100,9 @@ export default {
   methods: {
       ...mapMutations(["updatelost"]),
       getid(item){
-        // console.log(id);
         this.lostItem = item
         this.id=item.id
         this.updatelost(this.lostItem)
-        // console.log(this.repairItem)
       },
     getlostList() {
       axios({

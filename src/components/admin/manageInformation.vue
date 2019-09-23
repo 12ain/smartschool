@@ -8,14 +8,14 @@
     </mt-header>
     <div class="main">
                 <mt-cell-swipe 
-                v-for="information in testList" 
-                :key="information.testid"
-                :title="information.testname"
-                :label="information.testdate | dateFormat('yyyy-mm-dd')" 
+                v-for="item in testList" 
+                :key="item.testid"
+                :title="item.testname"
+                :label="item.testdate | dateFormat('yyyy-mm-dd')" 
                 :right="rightButtons"
-                @touchstart.native="getid(information.testid)"
+                @touchstart.native="getid(item)"
                 >
-                  <img slot="icon" :src="'http://' + information.image" width="30" height="30">
+                  <img slot="icon" :src="'http://' + item.image" width="30" height="30">
                 </mt-cell-swipe>
 
                 <mt-popup
@@ -53,6 +53,7 @@ export default {
         src:'http://106.12.189.19/testtell/insertTell',
         popupVisible:false,  // 显示添加组件
         testList:[],        // 所有考试信息列表
+        testItem:[],
         testid:'',
         newtestList:{
           testname:'',
@@ -62,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["userInformation"]),
+    ...mapState(["userinformation"]),
   },
   watch: {
 
@@ -81,7 +82,7 @@ created() {
     cancelButtonText:"取消"
     }).then(action => {
     if(action == 'confirm'){
-        console.log('继续')
+      this.$router.push({ name:'changeInformation', params: { informationList: this.informationitem }})
     }else{
         console.log('取消')
     }
@@ -99,7 +100,7 @@ created() {
     }).then(action => {
     if(action == 'confirm'){
         // console.log(this.id)
-        this.delList(this.tid)
+        this.delList(this.testid)
     }else{
         console.log('取消')
     }
@@ -112,9 +113,12 @@ created() {
 
   },
   methods: {
-      getid(id){
+    ...mapMutations(["updateinformation"]),
+      getid(item){
         // console.log(id);
-        this.testid=id
+        this.informationItem = item
+        this.testid=item.testid
+        this.updateinformation(this.informationItem)
       },
       getList(){
           axios
@@ -130,7 +134,7 @@ created() {
             }
             })
       },
-      delList(rid){
+      delList(){
           axios
             .post("/testtell/deleteTell", 
             qs.stringify({           

@@ -94,7 +94,6 @@ import {Toast} from 'mint-ui'
         this.files = []
         this.status = 'ready'
         Toast('操作成功')
-        this.$router.back(-1)
       },
       // 上传图片列表中的某个图片
       remove(index) {

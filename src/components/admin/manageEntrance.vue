@@ -13,7 +13,7 @@
                 :title="item.tname"
                 :label="item.tcollege" 
                 :right="rightButtons"
-                @touchstart.native="getid(item.tid)"
+                @touchstart.native="getid(item)"
                 >
                 </mt-cell-swipe>
                 <mt-popup
@@ -57,6 +57,7 @@ export default {
           turl:'',
           tcollege:'',
         },
+        testItem:[]
     }
   },
   computed: {
@@ -79,7 +80,7 @@ created() {
     cancelButtonText:"取消"
     }).then(action => {
     if(action == 'confirm'){
-        console.log('继续')
+      this.$router.push({ name:'changeEntrance', params: { EntranceList: this.Entranceitem }})
     }else{
         console.log('取消')
     }
@@ -110,9 +111,11 @@ created() {
 
   },
   methods: {
-      getid(id){
-        // console.log(id);
-        this.tid=id
+    ...mapMutations(["updateentrance"]),
+      getid(item){
+        this.entranceItem = item
+        this.tid=item.tid
+        this.updateentrance(this.entranceItem)
       },
       getList(){
           axios
@@ -128,7 +131,7 @@ created() {
             }
             })
       },
-      delList(rid){
+      delList(){
           axios
             .post("/test/deleteTest", 
             qs.stringify({           

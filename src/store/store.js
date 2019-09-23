@@ -48,6 +48,21 @@ const state = {
       lstatic: "",
       image: "",
     },
+    // 考试通知相关参数
+    testInformation:{
+      testid:"",
+      testname: "",
+      testdate: "",
+      testarea: "",
+      image:"",
+    },
+    // 考试报名入口相关参数
+    entranceInformation:{
+      tid: "",
+      tname: "",
+      tcollege: "",
+      turl: "",
+    }
 }
 const mutations = {
     // 更新账号密码
@@ -88,15 +103,32 @@ const mutations = {
     },
     // 更新失物招领信息
   updatelost(state, Info) {
-    state.lostInformation.id = Info.id
-    state.lostInformation.des = Info.des 
-    state.lostInformation.time = Info.time
-    state.lostInformation.uid = Info.uid
-    state.lostInformation.lflag = Info.lflag
-    state.lostInformation.lstatic = Info.lstatic
-    state.lostInformation.image = Info.image
-    state.oldimg = Info.image
+      state.lostInformation.id = Info.id
+      state.lostInformation.des = Info.des 
+      state.lostInformation.time = Info.time
+      state.lostInformation.uid = Info.uid
+      state.lostInformation.lflag = Info.lflag
+      state.lostInformation.lstatic = Info.lstatic
+      state.lostInformation.image = Info.image
+      state.oldimg = Info.image
   },
+    //更新考试通知
+  updateinformation(state, Info) {
+      state.testInformation.testid = Info.testid
+      state.testInformation.testname = Info.testname
+      state.testInformation.testdate = Info.testdate
+      state.testInformation.testarea = Info.testarea
+      state.testInformation.image = Info.image
+      state.oldimg = Info.image
+    },
+      // 更新考试报名入口
+  updateentrance(state, Info) {
+      state.entranceInformation.tid = Info.tid
+      state.entranceInformation.tname = Info.tname
+      state.entranceInformation.tcollege = Info.tcollege
+      state.entranceInformation.turl = Info.turl
+    }
+  
 
 }
 

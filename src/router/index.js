@@ -28,6 +28,8 @@ import manageInformation from '@/components/admin/manageInformation'
 import manageLost from '@/components/admin/manageLost'
 import manageRepair from '@/components/admin/manageRepair'
 import manageSecond from '@/components/admin/manageSecond'
+import changeInformation from '@/components/admin/changeInformation'
+import changeEntrance from '@/components/admin/changeEntrance'
 
 Vue.use(Router)
 
@@ -117,9 +119,22 @@ const router= new Router({
       },
     },
     {
+      path: '/changeInformation',
+      name: 'changeInformation',
+      component: changeInformation,
+      meta: {
+        checkLogined: true
+      },
+    },
+    {
       path: '/entrance',
       name: 'entrance',
       component: entrance,
+    },
+    {
+      path: '/changeEntrance',
+      name: 'changeEntrance',
+      component: changeEntrance,
     },
     {
       path: '/repair',
