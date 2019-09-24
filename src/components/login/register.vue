@@ -14,7 +14,7 @@
 			<form class="am-form">
 				<fieldset>
 					<div class="am-form-group">
-						<input type="text" class="" placeholder="请输入输入账号" v-model="userInfo.uid" @blur="checkUid">
+						<input type="text" class="" placeholder="请输入账号" v-model="userInfo.uid" @blur="checkUid">
 					</div>
 
 					<div class="am-form-group">
