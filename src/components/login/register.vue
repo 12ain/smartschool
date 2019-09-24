@@ -36,12 +36,23 @@
           <div class="am-form-group">
 						<input type="text" class="" placeholder="请输入手机号" v-model="userInfo.utel" @blur="checkTel">
 					</div>
+          
+          <select v-model="userInfo.udept" class="am-form-group">
+            <option value="青岛工学院">青岛工学院</option>
+            <option value="青岛大学">青岛大学</option>
+            <option value="青岛科技大学">青岛科技大学</option>
+            <option value="青岛理工大学">青岛理工大学</option>
+            <option value="青岛农业大学">青岛农业大学</option>
+            <option value="青岛滨海学院">青岛滨海学院</option>
+            <option value="青岛恒星科技学院">青岛恒星科技学院</option>
+            <option value="青岛黄海学院">青岛黄海学院</option>
+            <option value="青岛求实职业技术学院">青岛求实职业技术学院</option>
+            <option value="青岛远洋船员职业学院">青岛远洋船员职业学院</option>
+            <option value="青岛飞洋职业技术学院">青岛飞洋职业技术学院</option>
+            <option value="青岛港湾职业技术学院">青岛港湾职业技术学院</option>
+          </select>
 
-          <div class="am-form-group">
-						<input type="text" class="" placeholder="请输入学校名称" v-model="userInfo.udept">
-					</div>
-
-          <select v-model="userInfo.ugrade">
+          <select v-model="userInfo.ugrade" class="am-form-group">
             <option value="0">学生</option>
             <option value="0">老师</option>
             <option value="1">维修人员</option>
@@ -82,7 +93,7 @@ export default {
         uname: "",				//姓名		必填
         uemail: "",			  //邮箱		必填
         utel: "",				  //手机号		必填
-        udept: "",			  //学院		选填
+        udept: "青岛工学院",			  //学院		选填
         ugrade: '0'   
                     //学生或老师，Ugrade为0，
                     // 维修人员Ugrade为1
