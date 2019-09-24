@@ -6,11 +6,9 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <mt-swipe>
-                <mt-swipe-item>
+                <div class="img">
                     <img :src="'http://'+oldimg" width="100%">
-                </mt-swipe-item>
-            </mt-swipe>
+                </div>
             <div class="show">
                 <mt-field label="交易编号" v-model="usersecond.tid" readonly></mt-field>
                 <mt-field label="物品信息" type="textarea" rows="3" v-model="usersecond.tdes"></mt-field>
@@ -70,10 +68,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.mint-swipe{
-    height: 200px;
-    width: 100%;
+.container{
+    margin-bottom: 0;
 }
+.img{
+        width: 100%;
+        max-height: 50%;
+    }
 .show{
     display: flex;
     flex-direction: column;

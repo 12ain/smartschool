@@ -2,7 +2,7 @@
   <div class="container">
     <!-- 顶栏 -->
     <mt-header fixed title="故障报备"></mt-header>
-
+    <div class="main">
     <!-- 选项卡 -->
     <mt-navbar v-model="active">
       <mt-tab-item id="tab-container2" @click.native="getRepairLists">报备信息</mt-tab-item>
@@ -26,17 +26,25 @@
 
       <mt-tab-container-item id="tab-container2">
         <router-link v-for="item in repairInfo"
-          :key="item.rid" :to="{ name:'repairdetails', params: { repairList: item }}">
-          <mt-cell
-            :title="item.rdes"
-            :label="item.wstatic"
+          :key="item.rid" 
+          :to="{ name:'repairdetails', params: { repairList: item }}"
+          class="item"
           >
-          <img slot="icon" :src="'http://' + item.image" width="30" height="30">
-        </mt-cell>
-      </router-link>
+          <div class="item-main">
+            <div class="item-title">{{ item.rdes }}</div>
+              <div class="item-label">{{ item.wstatic }}
+                <span class="item-date">
+                  {{ item.rdate | dateFormat('yyyy-mm-dd') }}
+                  </span>
+              </div>
+            </div>
+            <div class="img">
+          <img :src="'http://' + item.image" width="60" height="60" class="img-icon">
+            </div>
+        </router-link>
       </mt-tab-container-item>
     </mt-tab-container>
-
+    </div>
     <tabbar></tabbar>
   </div>
 </template>
@@ -113,17 +121,40 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-a{
-    text-decoration: none;
-    color: black;
-}
-.mint-button--primary {
-  background-color: #44ceff;
-}
-.mint-button--large {
-  margin-top: 20px;
-  left: 10%;
-  width: 80%;
+<style lang="scss" scoped>
+.item{
+  display: inline-flex;
+  width: 96%;
+  position: relative;
+  left:1%;
+  flex-direction: row;
+  border: solid 1px white;
+  border-left:solid 3px #44ceff;
+  margin: 3% 0;
+  background-color: white;
+  border-radius: 3px;
+  .item-main{
+    display: inline-flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  .img{
+    margin: 15px 15px;
+  }
+  .img-icon{
+    border-radius: 3px;
+  }
+  .item-title{
+    flex: 4;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 6%;
+    margin-left: 3%;
+  }
+  .item-label{
+    font-size: 0.8rem;
+    margin-bottom: 6%;
+    margin-left: 3%;
+  }
 }
 </style>

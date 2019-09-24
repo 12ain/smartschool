@@ -34,12 +34,12 @@
                         <router-link 
                         v-for="item in lostLists" 
                         :key="item.id"  
-                        :to="{ name:'lostdetails', params: { lostList: item }}">
-                            <mt-cell 
-                            :title="item.des"
-                            :label="item.lstatic"
-                            >
-                            </mt-cell> 
+                        :to="{ name:'lostdetails', params: { lostList: item }}"
+                        class="thing-list"
+                        >
+                        <img :src="'http://'+item.image" class="thing-list-img">
+                        <span class="thing-list-title">{{item.des}}</span>
+                        <span class="thing-list-static">{{item.lstatic}}</span>
                         </router-link>
                     </mt-tab-container-item>
                     <mt-tab-container-item id="get-container">
@@ -47,11 +47,15 @@
                         v-for="item in getLists" 
                         :key="item.id" 
                         :to="{ name:'lostdetails', params: { lostList: item }}"
+                        class="thing-list"
                         >
-                        <mt-cell 
+                        <img :src="'http://'+item.image" class="thing-list-img">
+                        <span class="thing-list-title">{{item.des}}</span>
+                        <span class="thing-list-static">{{item.lstatic}}</span>
+                        <!-- <mt-cell 
                         :title="item.des" 
                         :label="item.lstatic"
-                        ></mt-cell>    
+                        ></mt-cell>     -->
                         </router-link>     
                     </mt-tab-container-item>
                     </mt-tab-container> 
@@ -123,18 +127,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-a{
-    text-decoration: none;
-    color: black;
-}
-.mint-button--primary{
-        background-color: #44ceff;
-    }
-    .mint-button--large{
-        margin-top: 20px;
-        left: 10%;
-        width: 80%;
-    }
 .nav{
     text-align: center;
     .mint-button--default{
@@ -143,4 +135,33 @@ a{
         color: #ffffff;
     }
 }
+.thing-list{
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 48%;
+        background: rgb(255, 255, 255);
+        margin:2% 1%;
+        padding: 3% 0;
+        border-radius: 5px;
+        .thing-list-img{
+            width: 88%;
+            height: 78%;
+            padding: 5%;
+        };
+        .thing-list-title{
+            color: #1a1a1a;
+            font-family: "微软雅黑";
+            margin-left: 5%;
+            font-weight: 500; 
+        }
+        .thing-list-static{
+            // color: red;
+            width: 100%;  
+            font-size: 0.8rem;
+            margin-top: 5%;   
+            // font-weight: 600;    
+            margin-left: 5%;   
+            color: #c0c0c0;
+        }
+    }
 </style>

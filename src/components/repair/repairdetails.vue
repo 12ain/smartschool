@@ -6,18 +6,16 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <mt-swipe>
-                <mt-swipe-item>
-                    <img :src="'http://'+repairList.image" width="100%">
-                </mt-swipe-item>
-            </mt-swipe>
+            <div class="img">
+                <img :src="'http://'+repairList.image" width="100%">
+            </div>
             <div class="show">
-                <div class="show-title">{{ repairList.rdes }}</div>
-                <div class="show-title">{{ repairList.radr }}</div>
-                <div class="show-title">{{ repairList.rdate | dateFormat('yyyy-mm-dd')}}</div>
-                <div class="show-id"><i class="mintui mintui-renyuanguanli"></i>{{ repairList.ruid }}</div>
-                <div class="show-tel">{{ repairList.utel }}</div>
-                <div class="show-tel">{{ repairList.wstatic }}</div>
+                <mt-field label="报备描述" :value="repairList.rdes" readonly></mt-field>
+                <mt-field label="发布时间" :value="repairList.rdate | dateFormat('yyyy-mm-dd')" readonly></mt-field>
+                <mt-field label="报备地点" :value="repairList.radr" readonly></mt-field>
+                <mt-field label="报备人员" :value="repairList.ruid" readonly></mt-field>
+                <mt-field label="联系电话" :value="repairList.utel" readonly></mt-field>
+                <mt-field label="当前状态" :value="repairList.wstatic" readonly></mt-field>
             </div>
         </div>
     </div>
@@ -50,10 +48,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.mint-swipe{
-    height: 300px;
-    width: 100%;
+.container{
+    margin-bottom:0;
 }
+.img{
+        width: 100%;
+        max-height: 50%;
+    }
 .show{
     display: flex;
     flex-direction: column;
@@ -65,5 +66,8 @@ export default {
         color: red;
         font-weight: 600; 
     }
+}
+>>>.mint-field{
+    line-height: 1.2;
 }
 </style>

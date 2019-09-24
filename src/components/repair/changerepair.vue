@@ -6,11 +6,9 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <mt-swipe>
-                <mt-swipe-item>
-                    <img :src="'http://'+oldimg" width="100%">
-                </mt-swipe-item>
-            </mt-swipe>
+            <div class="img">
+                <img :src="'http://'+oldimg" width="100%">
+            </div>
             <div class="show" v-show="!isRepair">
                 <mt-field label="报备编号" v-model="userRepair.rid" readonly></mt-field>
                 <mt-field label="教室地点" placeholder="请输入教室地点" type="text" v-model="userRepair.radr"></mt-field>
@@ -69,8 +67,7 @@ export default {
         this.repairList=this.repairInformation
       },
       decide(){
-        if (this.userInformation.ugrade === '2'){
-              this.isAdmin=true;
+        if (this.userInformation.ugrade === '2' || this.userInformation.ugrade === '0'){
               this.userRepair.rid = this.repairList.rid
               this.userRepair.radr = this.repairList.radr
               this.userRepair.rtype = this.repairList.rtype
@@ -111,10 +108,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.mint-swipe{
-    height: 200px;
-    width: 100%;
+.container{
+    margin-bottom: 0;
 }
+.img{
+        width: 100%;
+        max-height: 50%;
+    }
 .show{
     display: flex;
     flex-direction: column;

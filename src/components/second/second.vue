@@ -110,6 +110,7 @@ export default {
             font-family: "微软雅黑";
             margin-left: 5%;
             font-weight: 500; 
+            height: 10%;
         }
         .thing-list-price{
             color: red;

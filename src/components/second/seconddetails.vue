@@ -6,16 +6,14 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <mt-swipe>
-                <mt-swipe-item>
-                    <img :src="'http://'+secondList.image" width="100%">
-                </mt-swipe-item>
-            </mt-swipe>
+            <div class="img">
+                <img :src="'http://'+secondList.image" width="100%">
+            </div>
             <div class="show">
-                <div class="show-title">{{ secondList.tdes }}</div>
-                <div class="show-price">￥{{ secondList.tprice }}</div>
-                <div class="show-id"><i class="mintui mintui-renyuanguanli"></i>{{ secondList.tuid }}</div>
-                <div class="show-tel">{{ secondList.utel }}</div>
+                <mt-field label="商品描述" :value="secondList.tdes" readonly></mt-field>
+                <mt-field label="商品价格" :value="secondList.tprice" readonly></mt-field>
+                <mt-field label="用户账号" :value="secondList.tuid" readonly></mt-field>
+                <mt-field label="联系方式" :value="secondList.utel" readonly></mt-field>
             </div>
         </div>
     </div>
@@ -48,10 +46,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.mint-swipe{
-    height: 400px;
-    width: 100%;
-}
 .show{
     display: flex;
     flex-direction: column;
@@ -62,6 +56,30 @@ export default {
     .show-price{
         color: red;
         font-weight: 600; 
+    }
+}
+
+.container{
+    margin-bottom:0;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    .img{
+        width: 100%;
+        max-height: 50%;
+    }
+    .show{
+        display: inline-flex;
+        flex-direction: column;
+        background-color: white;
+        .show-title{
+            font-size: 1.2rem;
+        }
+        .show-price{
+            color: red;
+            font-weight: 600; 
+        }
     }
 }
 </style>

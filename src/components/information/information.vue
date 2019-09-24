@@ -12,7 +12,24 @@
         <mt-tab-container v-model="active">
             <!-- 内容区1: 考试通知 -->
             <mt-tab-container-item id="tab-container1">
-                <mt-cell 
+                <div v-for="(information,i) in testList"
+                    :key="information.testid" 
+                    class="item"
+                    @click="showDetails(i)"
+                    >
+                    <div class="item-main">
+                        <div class="item-title">{{ information.testname }}</div>
+                        <div class="item-label">
+                            <span class="item-date">
+                            {{ information.testdate | dateFormat('yyyy-mm-dd') }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="img">
+                        <img :src="'http://'+information.image" width="60" height="60" class="img-icon">
+                    </div>
+                </div>
+                <!-- <mt-cell 
                 v-for="(information,i) in testList" 
                 :key="information.testid"
                 :title="information.testname"
@@ -21,7 +38,7 @@
                 is-link 
                 @click.native="showDetails(i)"  
                 >
-                </mt-cell>
+                </mt-cell> -->
             </mt-tab-container-item>
             <mt-popup
                 v-model="popupVisible"
@@ -149,6 +166,41 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.item{
+  display: inline-flex;
+  width: 96%;
+  position: relative;
+  left:2%;
+  flex-direction: row;
+  border: solid 1px white;
+  border-left:solid 3px #44ceff;
+  margin: 3% 0;
+  background-color: white;
+  border-radius: 3px;
+  .item-main{
+    display: inline-flex;
+    flex-direction: column;
+    width: 90%;
+  }
+  .img{
+    margin: 15px 15px;
+  }
+  .img-icon{
+    border-radius: 3px;
+  }
+  .item-title{
+    flex: 4;
+    font-size: 1.1rem;
+    margin-top: 6%;
+    margin-left: 3%;
+    font-weight: 600;
+  }
+  .item-label{
+    font-size: 0.8rem;
+    margin-bottom: 6%;
+    margin-left: 3%;
+  }
+}
 .mint-cell{
     border-radius: 15px;
     margin: 20px 0;

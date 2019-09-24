@@ -6,11 +6,9 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <mt-swipe>
-                <mt-swipe-item>
-                    <img :src="'http://'+oldimg" width="100%">
-                </mt-swipe-item>
-            </mt-swipe>
+            <div class="img">
+                <img :src="'http://'+oldimg" width="100%">
+            </div>
             <div class="show">
                 <mt-field label="考试编号" v-model="usertest.testid" readonly></mt-field>
                 <mt-field label="考试名称" v-model="usertest.testname"></mt-field>
@@ -77,6 +75,13 @@ export default {
     height: 200px;
     width: 100%;
 }
+.container{
+    margin-bottom: 0;
+}
+.img{
+        width: 100%;
+        max-height: 50%;
+    }
 .show{
     display: flex;
     flex-direction: column;

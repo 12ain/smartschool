@@ -101,6 +101,5 @@ export default {
 }
 .mint-cell{
     padding-left: 10px;
-    border-radius: 10px;
 }
 </style>

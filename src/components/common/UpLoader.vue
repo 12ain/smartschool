@@ -11,22 +11,25 @@
         <span class="file-remove" @click="remove(index)">+</span>
       </section>
       <!-- 添加图片按钮 -->
-      <section v-if="status == 'ready'" class="file-item">
+      <!-- <section v-if="status == 'ready'" class="file-item"> -->
+        <section class="file-item">
         <div @click="add" class="add">
           <span>+</span>
         </div>
       </section>
     </div>
     <!-- 上传图片操作 及 显示进程 -->
-    <section v-if="files.length != 0" class="upload-func">
+    <!-- <section v-if="files.length != 0" class="upload-func"> -->
+      <section class="upload-func">
       <!-- 上传进度 -->
       <div class="progress-bar">
         <section v-if="uploading" :width="(percent * 100) + '%'">{{(percent * 100) + '%'}}</section>
       </div>
       <!-- 操作按钮 -->
       <div class="operation-box">
-        <button v-if="status == 'ready'" @click="submit">提交</button>
-        <button v-if="status == 'finished'" @click="finished">完成</button>
+        <!-- <button v-if="status == 'ready'" @click="submit">提交</button> -->
+        <button @click="submit">提交</button>
+        <!-- <button v-if="status == 'finished'" @click="finished">完成</button> -->
       </div>
     </section>
     <!-- 调用相机/图库 ref="file" 指定DOM节点 -->
@@ -43,7 +46,7 @@ import { mapState, mapMutations } from "vuex";
     props: {
       src: { // 后台接受图片的http地址
         type: String,
-        required: true
+        required: false
       },
       info:{
         type: Object,
@@ -66,10 +69,10 @@ import { mapState, mapMutations } from "vuex";
       },
       // 上传图片操作
       submit() {
-        if (this.files.length === 0) {
-          console.warn('no file!');
-          return
-        }
+        // if (this.files.length === 0) {
+        //   console.warn('no file!');
+        //   return
+        // }
         // 创建formData对象
         const formData = new FormData();
         this.files.forEach((item) => {
@@ -89,8 +92,11 @@ import { mapState, mapMutations } from "vuex";
           if (xhr.status === 200 || xhr.status === 304) {
             this.status = 'finished'
             console.log('upload success!')
+            Toast('操作成功')
+            this.finished()
           } else {
             console.log(`error：error code ${xhr.status}`)
+            Toast('提交失败,请检查网络或参数是否完整')
           }
         }
       },
@@ -98,7 +104,6 @@ import { mapState, mapMutations } from "vuex";
       finished() {
         this.files = []
         this.status = 'ready'
-        Toast('操作成功')
       },
       // 上传图片列表中的某个图片
       remove(index) {
@@ -219,7 +224,7 @@ import { mapState, mapMutations } from "vuex";
       float: left;
       text-align: center;
       line-height: 80px;
-      border: 1px dashed #ececec;
+      border: 1px dashed white;
       font-size: 30px;
       cursor: pointer;
     }
@@ -227,8 +232,6 @@ import { mapState, mapMutations } from "vuex";
       display: flex;
       padding: 10px;
       margin: 0px;
-      background: #f8f8f8;
-      border-top: 1px solid #ececec;
       .progress-bar {
         flex-grow: 1;
         section {

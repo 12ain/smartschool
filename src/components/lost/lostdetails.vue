@@ -6,19 +6,22 @@
             </router-link>
         </mt-header>
         <div class="main">
-            <mt-swipe>
-                <mt-swipe-item>
-                    <img :src="'http://'+lostList.image" width="100%">
-                </mt-swipe-item>
-            </mt-swipe>
+            <div class="img">
+                <img :src="'http://'+lostList.image" width="100%">
+            </div>
             <div class="show">
-                <div class="show-title">{{ lostList.des }}</div>
+                <mt-field label="物品描述" :value="lostList.des" readonly></mt-field>
+                <mt-field label="发布时间" :value="lostList.time | dateFormat('yyyy-mm-dd')" readonly></mt-field>
+                <mt-field label="用户名" :value="lostList.uid" readonly></mt-field>
+                <mt-field label="联系方式" :value="lostList.utel" readonly></mt-field>
+                <mt-field label="用户身份" :value="lostList.lflag" readonly></mt-field>
+                <mt-field label="当前状态" :value="lostList.lstatic" readonly></mt-field>
+                <!-- <div class="show-title">{{ lostList.des }}</div>
                 <div class="show-title">{{ lostList.time | dateFormat('yyyy-mm-dd')}}</div>
                 <div class="show-id"><i class="mintui mintui-renyuanguanli"></i>{{ lostList.uid }}</div>
                 <div class="show-tel">{{ lostList.utel }}</div>
                 <div class="show-tel">{{ lostList.lflag }}</div>
-                <div class="show-tel">{{ lostList.wstatic }}</div>
-                <div class="show-tel">{{ lostList.lstatic }}</div>
+                <div class="show-tel">{{ lostList.lstatic }}</div> -->
             </div>
         </div>
     </div>
@@ -51,20 +54,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.mint-swipe{
-    height: 300px;
-    width: 100%;
+.container{
+    margin-bottom:0;
 }
-.show{
+.main{
     display: flex;
     flex-direction: column;
-    background-color: white;
-    .show-title{
-        font-size: 1.2rem;
+    .img{
+        width: 100%;
+        max-height: 50%;
     }
-    .show-price{
-        color: red;
-        font-weight: 600; 
+    .show{
+        display: inline-flex;
+        flex-direction: column;
+        background-color: white;
+        .show-title{
+            font-size: 1.2rem;
+        }
+        .show-price{
+            color: red;
+            font-weight: 600; 
+        }
     }
 }
 </style>

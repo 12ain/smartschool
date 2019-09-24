@@ -40,4 +40,7 @@ a{
 .mint-navbar{
   margin-bottom:5px;
 }
+.mint-button--default{
+  background-color: white
+}
 </style>
