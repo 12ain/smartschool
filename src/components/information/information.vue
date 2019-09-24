@@ -132,7 +132,10 @@ export default {
     },
     created() {
     axios
-        .post("/testtell/checkTell",{udept:window.localStorage.getItem('udept')})
+        .post("/testtell/checkTell",
+        qs.stringify({
+            udept:window.localStorage.getItem('udept')}
+        ))
         .then(res => {
         // console.log(res);
         

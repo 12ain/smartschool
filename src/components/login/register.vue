@@ -39,6 +39,10 @@
           
           <select v-model="userInfo.udept" class="am-form-group">
             <option value="青岛工学院">青岛工学院</option>
+            <option value="山东师范大学">山东师范大学</option>
+            <option value="山东科技大学">山东科技大学</option>
+            <option value="中国石油大学(华东)">中国石油大学(华东)</option>
+            <option value="中国海洋大学">中国海洋大学</option>
             <option value="青岛大学">青岛大学</option>
             <option value="青岛科技大学">青岛科技大学</option>
             <option value="青岛理工大学">青岛理工大学</option>
@@ -46,6 +50,12 @@
             <option value="青岛滨海学院">青岛滨海学院</option>
             <option value="青岛恒星科技学院">青岛恒星科技学院</option>
             <option value="青岛黄海学院">青岛黄海学院</option>
+            <option value="山东外贸职业学院">山东外贸职业学院</option>
+            <option value="青岛农业大学海都学院">青岛农业大学海都学院</option>
+            <option value="青岛职业技术学院">青岛职业技术学院</option>
+            <option value="青岛理工大学琴岛学院">青岛理工大学琴岛学院</option>
+            <option value="北京电影学院现代创意媒体学院">北京电影学院现代创意媒体学院</option>
+            <option value="青岛酒店管理职业技术学院">青岛酒店管理职业技术学院</option>
             <option value="青岛求实职业技术学院">青岛求实职业技术学院</option>
             <option value="青岛远洋船员职业学院">青岛远洋船员职业学院</option>
             <option value="青岛飞洋职业技术学院">青岛飞洋职业技术学院</option>
