@@ -37,6 +37,7 @@
 import tabbar from '../common/tabbar'
 import mUpLoader from "../common/UpLoader"
 import axios from "axios";
+import qs from 'QS'
 export default {
     props: {},
     data() {
@@ -44,6 +45,7 @@ export default {
             src: 'http://106.12.189.19/trade/insertTo',
             active : 'tab-container1',
             thingList:{
+                udept: window.localStorage.getItem("udept"),                   
                 tuid: window.localStorage.getItem("uid"),
                 tdes:'',
                 tprice:'',
@@ -64,11 +66,12 @@ export default {
     },
     methods: {
         getthingLists(){
-            axios({
-                url: "/trade/rmess",
-                method: "post",
-                params: {}
-                }).then(res => {
+                axios
+                .post("/trade/rmess",
+                qs.stringify({
+                udept: window.localStorage.getItem("udept")
+                }))
+                .then(res => {
                 // console.log(res)
                 this.thingLists = res.data.list;
             });

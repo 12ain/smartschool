@@ -52,6 +52,7 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
+import qs from 'QS'
 import tabbar from "../common/tabbar";
 import { Toast } from "mint-ui";
 import mUpLoader from "../common/UpLoader"
@@ -63,6 +64,7 @@ export default {
       active: "tab-container2",
       repairList: {
         ruid: window.localStorage.getItem("uid"),
+        udept: window.localStorage.getItem("udept"),
         rdate: "",
         radr: "",
         rtype: "",
@@ -102,23 +104,24 @@ export default {
       });
     },
     getRepairLists(){
-      axios({
-      url: "/record/rmess",
-      method: "post",
-    }).then(res => {
+      axios
+      .post("/record/rmess",
+      qs.stringify({
+        udept: window.localStorage.getItem("udept")
+      }))
+      .then(res => {
       // Toast({
       //     message: res.data.msg,
       //     position: 'bottom',
       //     duration: 3000
       //     });
       this.repairInfo = res.data.list;
-    });
-    }
+    })}
   },
   components: {
     tabbar,mUpLoader
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

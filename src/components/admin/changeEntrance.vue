@@ -30,7 +30,6 @@ export default {
         return {
             entranceList: [],
             userentrance: {},
-            usersrc: 'http://106.12.189.19/testtell/updateTell',
             isAdmin:false,
             isRepair:false,
         };

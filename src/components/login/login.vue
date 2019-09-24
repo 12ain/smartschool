@@ -146,6 +146,7 @@ export default {
             if (res.data.status == '0') {
               // console.log(res)
               Toast(res.data.msg);
+              window.localStorage.setItem("udept", res.data.data.udept);
               this.update({
                 uid: res.data.data.uid,
                 upsd: res.data.data.upsd,

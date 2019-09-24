@@ -61,6 +61,7 @@ export default {
         this.userLost.time = this.lostList.time
         this.userLost.lstatic = this.lostList.lstatic
         this.userLost.des = this.lostList.des
+        this.userLost.udept = window.localStorage.getItem("udept")      
     },
     },
     components: {

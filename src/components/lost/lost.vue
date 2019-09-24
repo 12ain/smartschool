@@ -86,6 +86,7 @@ export default {
                 uid : window.localStorage.getItem("uid"),
                 lflag : "失主",     // 失主/得主
                 lstatic: "未解决", 
+                udept: window.localStorage.getItem('udept')
             },
             lostLists:[],   //失主信息列表
             getLists:[],    //得主信息列表
@@ -107,14 +108,20 @@ export default {
             axios({
                 url: "/lf/testAllLost",
                 method: "post",
-                params: {lflag : "失主"}
+                params: {
+                    lflag : "失主",
+                    udept: window.localStorage.getItem("udept")
+                    }
                 }).then(res => {
                 this.lostLists = res.data.list;
     });
             axios({
                 url: "lf/testAllFound",
                 method: "post",
-                params: {lflag : "得主"}
+                params: {
+                    lflag : "得主",
+                    udept : window.localStorage.getItem("udept")
+                    }
                 }).then(res => {
                 this.getLists = res.data.list;
             });

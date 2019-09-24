@@ -72,13 +72,15 @@ export default {
               this.userRepair.radr = this.repairList.radr
               this.userRepair.rtype = this.repairList.rtype
               this.userRepair.rdes = this.repairList.rdes
-          }
+              this.userRepair.udept = window.localStorage.getItem("udept")
+            }
         if (this.userInformation.ugrade === '1'){        
               this.isRepair = true;
               this.repairRepair.rid = this.repairList.rid
               this.repairRepair.wid = this.userInformation.uid
               this.repairRepair.wstatic = this.repairList.wstatic
               this.repairRepair.wdate = this.repairList.wdate
+              this.userRepair.udept = window.localStorage.getItem("udept")
           }
       },
         submitRepair(){

@@ -59,6 +59,7 @@ export default {
         this.usersecond.tid = this.secondList.tid
         this.usersecond.tdes = this.secondList.tdes
         this.usersecond.tprice = this.secondList.tprice
+        this.usersecond.udept = window.localStorage.getItem("udept")
       },
     },
     components: {

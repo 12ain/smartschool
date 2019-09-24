@@ -132,7 +132,7 @@ export default {
     },
     created() {
     axios
-        .post("/testtell/checkTell")
+        .post("/testtell/checkTell",{udept:window.localStorage.getItem('udept')})
         .then(res => {
         // console.log(res);
         

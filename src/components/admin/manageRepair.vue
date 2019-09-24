@@ -111,7 +111,8 @@ created() {
       getList1(){
           axios
             .post("/record/wwmessmy", 
-            qs.stringify({           
+            qs.stringify({    
+                udept: window.localStorage.getItem("udept")                     
         }))
             .then(res => {
             // console.log(res);

@@ -108,7 +108,7 @@ created() {
           axios
             .post("record/rmessmy", 
             qs.stringify({           
-            ruid: this.userInformation.uid,
+            ruid: this.userInformation.uid,        
         }))
             .then(res => {
             // console.log(res);

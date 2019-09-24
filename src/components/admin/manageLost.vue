@@ -108,7 +108,10 @@ export default {
       axios({
         url: "/lf/testAllLost",
         method: "post",
-        params: { lflag: "失主" }
+        params: { 
+          lflag: "失主" ,
+          udept: window.localStorage.getItem("udept"),
+        }
       }).then(res => {
         this.lostList = res.data.list;
       });},
@@ -116,7 +119,10 @@ export default {
       axios({
         url: "/lf/testAllFound",
         method: "post",
-        params: { lflag: "得主" }
+        params: { 
+          lflag: "得主" ,
+          udept : window.localStorage.getItem("udept")
+          }
       }).then(res => {
         this.lostList = res.data.list;
       });

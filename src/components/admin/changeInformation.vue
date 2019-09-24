@@ -61,6 +61,7 @@ export default {
         this.usertest.testname = this.testList.testname
         this.usertest.testarea = this.testList.testarea
         this.usertest.testdate = this.testList.testdate
+        this.usertest.udept = window.localStorage.getItem('udept')
 
       },
     },

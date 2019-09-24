@@ -59,6 +59,7 @@ export default {
           testname:'',
           testdate:'',
           testarea:'',
+          udept: window.localStorage.getItem('udept'),
         },
     }
   },
@@ -122,7 +123,10 @@ created() {
       },
       getList(){
           axios
-            .post("/testtell/checkTell")
+            .post("/testtell/checkTell",
+            qs.stringify({
+              udept:window.localStorage.getItem('udept')}
+              ))
             .then(res => {
             // console.log(res);
             

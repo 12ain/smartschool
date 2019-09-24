@@ -105,8 +105,11 @@ created() {
         // console.log(this.secondItem)
       },
       getList(){
-          axios
-            .post("/trade/rmess")
+            axios
+            .post("/trade/rmess",
+            qs.stringify({
+            udept: window.localStorage.getItem("udept")
+            }))  
             .then(res => {
             // console.log(res);
             
