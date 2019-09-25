@@ -61,6 +61,9 @@ import { mapState, mapMutations } from "vuex";
         percent: 0, // 上传进度
       }
     },
+    computed: {
+        ...mapState(["userInformation"]),
+    },
     methods: {
       ...mapMutations(["update"]),
       // 添加图片操作
@@ -76,7 +79,7 @@ import { mapState, mapMutations } from "vuex";
         // 创建formData对象
         const formData = new FormData();
         this.files.forEach((item) => {
-          formData.append("image", item.file)
+          formData.append("uimage", item.file)
         })
         for(let key in this.info){
         formData.append(key, this.info[key])
@@ -130,6 +133,17 @@ import { mapState, mapMutations } from "vuex";
         const reader = new FileReader()
         reader.onload = (e) => {
           this.$set(item, 'src', e.target.result)
+          // window.localStorage.setItem('uimage',e.target.result)
+          this.update({
+                uid: this.userInformation.uid, 
+                upsd: this.userInformation.upsd,	
+                uname: this.userInformation.uname,	
+                uemail: this.userInformation.uemail,
+                utel: this.userInformation.utel,
+                udept: this.userInformation.udept,
+                ugrade: this.userInformation.ugrade,
+                uimage: e.target.result
+            })
         }
         reader.readAsDataURL(file)
       },

@@ -8,7 +8,7 @@
     </mt-header>
     <router-link to="/avatar">
       <mt-cell title="头像" is-link>
-        <img slot="icon" :src="'http://'+userInformation.uimage" width="30" class="cell-avatar" v-show="avator">
+        <img slot="icon" :src="userInformation.uimage" width="30" class="cell-avatar" v-show="avator">
         <img slot="icon" src="../../../assets/images/logo.png" width="30" class="cell-avatar" v-show="!avator">
       </mt-cell>
     </router-link>

@@ -151,7 +151,7 @@ export default {
                 uid: res.data.data.uid,
                 upsd: res.data.data.upsd,
                 ugrade: res.data.data.ugrade.toString(),
-                uimage: res.data.data.uimage,
+                uimage: 'http://'+res.data.data.uimage,
                 uname: res.data.data.uname,
                 udept: res.data.data.udept,
                 utel: res.data.data.utel,

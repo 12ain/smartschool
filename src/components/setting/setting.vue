@@ -11,7 +11,7 @@
 
         <mt-cell :title="this.userInformation.uname" class="setting-name" is-link to="/account" v-show="avator">
             
-        <img slot="icon" :src="'http://'+this.userInformation.uimage" width="80" height="80">
+        <img slot="icon" :src="this.userInformation.uimage" width="80" height="80">
         </mt-cell>
 
         <mt-cell title="青岛高校全景" is-link icon="ditu" class="setting-map" to="/school"></mt-cell>
