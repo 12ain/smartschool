@@ -113,7 +113,7 @@ export default {
                     id: 4,
                 },
                 {
-                    name:'职业技术学院',
+                    name:'食品工程学院',
                     id: 5,
                 },
                 {
@@ -123,7 +123,11 @@ export default {
                 {
                     name:'外语学院',
                     id: 7,
-                }
+                },
+                {
+                    name:'职业技术学院',
+                    id: 8,
+                },
             ]
         };
     },
