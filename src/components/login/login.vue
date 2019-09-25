@@ -46,7 +46,7 @@ Vue.use(Vuex);
 import { mapState, mapMutations } from "vuex";
 import { Toast } from 'mint-ui';
 import qs from 'Qs';
-axios.defaults.baseURL = 'http://106.12.189.19';
+axios.defaults.baseURL = 'http://47.94.10.228';
 axios.defaults.withCredentials = true;
 
 export default {

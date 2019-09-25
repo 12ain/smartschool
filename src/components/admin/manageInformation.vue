@@ -50,7 +50,7 @@ export default {
   },
   data() {
     return {
-        src:'http://106.12.189.19/testtell/insertTell',
+        src:'http://47.94.10.228/testtell/insertTell',
         popupVisible:false,  // 显示添加组件
         testList:[],        // 所有考试信息列表
         testItem:[],

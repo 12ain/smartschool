@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-        src:'http://106.12.189.19/test/insertTest',
+        src:'http://47.94.10.228/test/insertTest',
         popupVisible:false,  // 显示添加组件
         testList:[],        // 所有考试信息列表
         tid:'',

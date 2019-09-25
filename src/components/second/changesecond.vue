@@ -32,7 +32,7 @@ export default {
         return {
             secondList: [],
             usersecond: {},
-            usersrc: 'http://106.12.189.19/trade/updateTo',
+            usersrc: 'http://47.94.10.228/trade/updateTo',
             isAdmin:false,
             isRepair:false,
         };

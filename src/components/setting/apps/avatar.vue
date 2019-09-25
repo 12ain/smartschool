@@ -23,7 +23,7 @@ props: {
 },
 data() {
 return {
-    src: 'http://106.12.189.19//user/update',
+    src: 'http://47.94.10.228//user/update',
 }
 },
 computed: {

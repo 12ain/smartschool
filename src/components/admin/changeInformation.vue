@@ -33,7 +33,7 @@ export default {
         return {
             testList: [],
             usertest: {},
-            usersrc: 'http://106.12.189.19/testtell/updateTell',
+            usersrc: 'http://47.94.10.228/testtell/updateTell',
             isAdmin:false,
             isRepair:false,
         };

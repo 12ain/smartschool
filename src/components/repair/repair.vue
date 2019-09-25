@@ -60,7 +60,7 @@ export default {
   props: {},
   data() {
     return {
-      src: 'http://106.12.189.19/record/insertTo',
+      src: 'http://47.94.10.228/record/insertTo',
       active: "tab-container2",
       repairList: {
         ruid: window.localStorage.getItem("uid"),

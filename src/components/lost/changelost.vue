@@ -33,7 +33,7 @@ export default {
         return {
             lostList: [],
             userLost: {},
-            usersrc: 'http://106.12.189.19/lf/testUpdateTo',
+            usersrc: 'http://47.94.10.228/lf/testUpdateTo',
             isAdmin:false,
             isRepair:false,
         };

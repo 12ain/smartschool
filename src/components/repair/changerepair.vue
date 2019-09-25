@@ -42,8 +42,8 @@ export default {
             repairList: [],
             userRepair: {},
             repairRepair:{},
-            usersrc: 'http://106.12.189.19/record/updateTo',
-            repairsrc: 'http://106.12.189.19/record/delByW',
+            usersrc: 'http://47.94.10.228/record/updateTo',
+            repairsrc: 'http://47.94.10.228/record/delByW',
             isAdmin:false,
             isRepair:false,
         };

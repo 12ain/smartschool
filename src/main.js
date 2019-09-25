@@ -21,7 +21,7 @@ new Vue({
   template: '<App/>'
 })
 Vue.prototype.$axios = axios;
-axios.defaults.baseURL = 'http://106.12.189.19';
+axios.defaults.baseURL = 'http://47.94.10.228';
 // axios.defaults.baseURL = 'http://192.168.123.219';
 
 // 时间处理过滤器

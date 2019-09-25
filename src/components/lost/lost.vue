@@ -77,7 +77,7 @@ export default {
     },
     data() {
         return {
-            src: 'http://106.12.189.19/lf/testInsertTo',
+            src: 'http://47.94.10.228/lf/testInsertTo',
             active : 'tab-container1',
             actives : 'lost-container',
             lostList:{

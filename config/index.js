@@ -13,7 +13,7 @@ module.exports = {
     // proxyTable: {
     //   // 开发环境代理
     //   "/api": {
-    //     target: 'http://106.12.189.19/',
+    //     target: 'http://47.94.10.228/',
     //     changeOrigin: true,
     //     pathRewrite: {
     //       '^/api': '/'

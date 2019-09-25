@@ -42,7 +42,7 @@ export default {
     props: {},
     data() {
         return {
-            src: 'http://106.12.189.19/trade/insertTo',
+            src: 'http://47.94.10.228/trade/insertTo',
             active : 'tab-container1',
             thingList:{
                 udept: window.localStorage.getItem("udept"),                   
