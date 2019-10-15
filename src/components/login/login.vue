@@ -82,7 +82,7 @@ export default {
     let userLogin = {
       uid: window.localStorage.getItem("uid"),
       upsd: window.localStorage.getItem("upsd"),
-      autoLogin: window.localStorage.getItem("autoLogin")
+      autoLogin: Boolean(window.localStorage.getItem("autoLogin"))
     };
 
     // 如果存在参数，自动调用登录函数
@@ -146,6 +146,7 @@ export default {
             if (res.data.status == '0') {
               // console.log(res)
               Toast(res.data.msg);
+              window.localStorage.setItem("uid", this.userLogin.uid);
               window.localStorage.setItem("udept", res.data.data.udept);
               this.update({
                 uid: res.data.data.uid,
@@ -158,7 +159,7 @@ export default {
                 uemail: res.data.data.uemail,
             });
             if (this.userLogin.autoLogin ){
-            window.localStorage.setItem("uid", this.userLogin.uid);
+            // window.localStorage.setItem("uid", this.userLogin.uid);
             window.localStorage.setItem("upsd", this.userLogin.upsd);
             window.localStorage.setItem("autoLogin", this.userLogin.autoLogin);
             }
