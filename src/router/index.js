@@ -46,220 +46,196 @@ const router= new Router({
       component: login
     },
     {
+      path: '/register',
+      name: 'register',
+      component: register,
+
+    },
+    {
       path: '/setting',
       name: 'setting',
       component: setting,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/lost',
       name: 'lost',
       component: lost,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/lostdetails',
       name: 'lostdetails',
       component: lostdetails,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/changelost',
       name: 'changelost',
       component: changelost,
-      meta: {
-        checkLogined: true
-      },
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: register,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/about',
       name: 'about',
       component: about,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/school',
       name: 'school',
       component: school,
+      meta: { checkLogined: true },
     },
     {
       path: '/account',
       name: 'account',
       component: account,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/avatar',
       name: 'avatar',
       component: avatar,
-      meta: {
-        checkLogined: true
-      },
-    },
-    {
-      path:'/tabbar',
-      name: 'tabbar',
-      component: tabbar,
+      meta: { checkLogined: true },
     },
     {
       path: '/information',
       name: 'information',
       component: information,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/changeInformation',
       name: 'changeInformation',
       component: changeInformation,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/entrance',
       name: 'entrance',
       component: entrance,
+      meta: { checkLogined: true },
     },
     {
       path: '/changeEntrance',
       name: 'changeEntrance',
       component: changeEntrance,
+      meta: { checkLogined: true },
     },
     {
       path: '/repair',
       name: 'repair',
       component: repair,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/repairdetails',
       name: 'repairdetails',
       component: repairdetails,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/changerepair',
       name: 'changerepair',
       component: changerepair,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/second',
       name: 'second',
       component: second,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/seconddetails',
       name: 'seconddetails',
       component: seconddetails,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/changesecond',
       name: 'changesecond',
       component: changesecond,
-      meta: {
-        checkLogined: true
-      },
+      meta: { checkLogined: true },
     },
     {
       path: '/view',
       name: 'view',
       component: view,
+      meta: { checkLogined: true },
     },
     {
       path: '/myLost',
       name: 'myLost',
       component: myLost,
+      meta: { checkLogined: true },
     },
     {
       path: '/myRepair',
       name: 'myRepair',
       component: myRepair,
+      meta: { checkLogined: true },
     },
     {
       path: '/mySecond',
       name: 'mySecond',
       component: mySecond,
+      meta: { checkLogined: true },
     },
     {
       path: '/admin',
       name: 'admin',
       component: admin,
+      meta: { checkLogined: true },
     },
     {
       path: '/manageEntrance',
       name: 'manageEntrance',
       component: manageEntrance,
+      meta: { checkLogined: true },
     },
     {
       path: '/manageInformation',
       name: 'manageInformation',
       component: manageInformation,
+      meta: { checkLogined: true },
     },
     {
       path: '/manageLost',
       name: 'manageLost',
       component: manageLost,
+      meta: { checkLogined: true },
     },
     {
       path: '/manageRepair',
       name: 'manageRepair',
       component: manageRepair,
+      meta: { checkLogined: true },
     },
     {
       path: '/manageSecond',
       name: 'manageSecond',
       component: manageSecond,
+      meta: { checkLogined: true },
     },
   ],
   linkActiveClass:''
 })
-// router.beforeEach((to, from, next) => {
-//       if (to.meta.checkLogined) {
-//         if (
-//           window.localStorage.getItem("uid") &&
-//           window.localStorage.getItem("upsd")
-//         ) {
-//           next({
-//             path: "/",
-//           });
-//         } else {
-//           next();
-//         }
-//       } else {
-//         next();
-//       }
-//     });
+router.beforeEach((to, from, next) => {
+      if (to.meta.checkLogined) {
+        if (
+          window.localStorage.getItem("uid") &&
+          window.localStorage.getItem("upsd")
+        ) {
+          next();
+        } else {
+          next({
+              path: "/"
+            });
+        }
+      } else {
+        next();
+      }
+    });
 export default router;
