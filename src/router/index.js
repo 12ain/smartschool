@@ -225,8 +225,7 @@ const router= new Router({
 router.beforeEach((to, from, next) => {
       if (to.meta.checkLogined) {
         if (
-          window.localStorage.getItem("uid") &&
-          window.localStorage.getItem("upsd")
+          Boolean(window.localStorage.getItem("isLogined")) === true
         ) {
           next();
         } else {

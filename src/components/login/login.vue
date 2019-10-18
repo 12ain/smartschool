@@ -148,6 +148,7 @@ export default {
               Toast(res.data.msg);
               window.localStorage.setItem("uid", this.userLogin.uid);
               window.localStorage.setItem("udept", res.data.data.udept);
+              window.localStorage.setItem("isLogined",true)
               this.update({
                 uid: res.data.data.uid,
                 upsd: res.data.data.upsd,
