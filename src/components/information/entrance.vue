@@ -20,11 +20,7 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
 import tabbar from "../common/tabbar";
-import { Toast } from 'mint-ui';
-import qs from 'Qs';
 export default {
     props: {
     },
@@ -41,21 +37,18 @@ export default {
 
     },
     created() {
-        axios
-            .post("/test/checkcollege",
-            qs.stringify({           
+        this.http.post(this.ports.api.test.checkcollege,
+            {           
                 tcollege: this.$route.query.collegeName
-        }))
-        .then(res => {
+        },res => {
             // console.log(res);           
             if (res.data.status == '0') {
-            //   Toast(res.data.msg);
+            //   this.$toast(res.data.msg);
                 this.testList = res.data.list;
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
         })
-    .catch();
     },
     mounted() {
     },

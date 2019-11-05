@@ -1,5 +1,3 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import "./assets/normalize/normalize.css"
 import MintUI from 'mint-ui'
@@ -7,23 +5,22 @@ import 'mint-ui/lib/style.css';
 import App from './App'
 Vue.config.productionTip = false
 import router from './router'
-import axios from 'axios';
 import Vuex from 'vuex'
 import store from './store/store'
+import http from './utils/http'
+import ports from './api/index'
+Vue.prototype.http = http
+Vue.prototype.ports = ports
 Vue.use(MintUI)
 Vue.use(Vuex);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  store: store,
+  store,
   components: { App },
   template: '<App/>'
 })
-Vue.prototype.$axios = axios;
-axios.defaults.baseURL = 'http://47.94.10.228';
-// axios.defaults.baseURL = 'http://192.168.123.219';
-
 // 时间处理过滤器
 Vue.filter('dateFormat', function (dateStr, pattern = "") {
   let dt = new Date(dateStr)

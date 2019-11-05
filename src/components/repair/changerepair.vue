@@ -29,10 +29,6 @@
 </template>
 
 <script>
-import { Toast } from 'mint-ui';
-import store from "../../store/store";
-import axios from 'axios';
-import qs from 'Qs';
 import { mapState, mapMutations } from "vuex";
 import mUpLoader from "../common/UpLoader"
 export default {
@@ -84,21 +80,19 @@ export default {
           }
       },
         submitRepair(){
-          axios
-            .post("/record/delByW", 
-            qs.stringify({           
+          this.http.post(this.ports.api.record.delByW, 
+            {           
             rid: this.repairRepair.rid,
             wid: this.repairRepair.wid,
             wstatic: this.repairRepair.wstatic,
             wdate: this.repairRepair.wdate,
-        }))
-            .then(res => {
-            console.log(res);
+        },res => {
+            // console.log(res);
             if (res.data.status == '0') {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
                 this.$router.back(-1)
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
       },

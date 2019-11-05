@@ -50,11 +50,7 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
-import qs from 'QS'
 import tabbar from "../common/tabbar";
-import { Toast } from "mint-ui";
 import mUpLoader from "../common/UpLoader"
 export default {
   props: {},
@@ -90,7 +86,7 @@ export default {
       formData.append("rdes", this.repairList.rdes);
       formData.append("wstatic", this.repairList.wstatic);
       formData.append("image", );
-      console.log(this.repairList.image)
+      // console.log(this.repairList.image)
       let config = {
         headers: {
           "Content-Type": "multipart/form-data"
@@ -99,18 +95,16 @@ export default {
       axios.post("/record/insertTo", formData, config)
       .then(res => {
         if (res.status === 200) {
-            console.log(res);
+            // console.log(res);
         }
       });
     },
     getRepairLists(){
-      axios
-      .post("/record/rmess",
-      qs.stringify({
+      this.http.post(this.ports.api.record.rmess,
+      {
         udept: window.localStorage.getItem("udept")
-      }))
-      .then(res => {
-      // Toast({
+      },res => {
+      // this.$toast({
       //     message: res.data.msg,
       //     position: 'bottom',
       //     duration: 3000

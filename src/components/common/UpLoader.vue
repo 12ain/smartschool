@@ -38,9 +38,6 @@
   </div>
 </template>
 <script>
-import {Toast} from 'mint-ui'
-import Vuex from 'vuex';
-import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
   export default {
     props: {
@@ -91,11 +88,11 @@ import { mapState, mapMutations } from "vuex";
           if (xhr.status === 200 || xhr.status === 304) {
             this.status = 'finished'
             console.log('upload success!')
-            Toast('操作成功')
+            this.$toast('操作成功')
             this.finished()
           } else {
             console.log(`error：error code ${xhr.status}`)
-            Toast('提交失败,请检查网络或参数是否完整')
+            this.$toast('提交失败,请检查网络或参数是否完整')
           }
         }
       },

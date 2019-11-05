@@ -33,13 +33,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import Vue from 'vue'
-import { CellSwipe,Toast } from 'mint-ui';
-Vue.component(CellSwipe.name, CellSwipe, Toast);
-import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
-import qs from 'Qs';
 export default {
   props: {},
   data() {
@@ -89,7 +83,7 @@ export default {
               // console.log(this.id)
               this.delList(this.id);
             } else {
-              console.log("取消");
+              // console.log("取消");
             }
           })
       }
@@ -105,41 +99,35 @@ export default {
         this.updatelost(this.lostItem)
       },
     getlostList() {
-      axios({
-        url: "/lf/testAllLost",
-        method: "post",
-        params: { 
-          lflag: "失主" ,
-          udept: window.localStorage.getItem("udept"),
-        }
-      }).then(res => {
+      this.http.post(this.ports.api.lf.testAllLost,
+      {
+        lflag: "失主" ,
+        udept: window.localStorage.getItem("udept"),
+      },res => {
         this.lostList = res.data.list;
-      });},
+      })},
     getfoundList(){
-      axios({
-        url: "/lf/testAllFound",
-        method: "post",
-        params: { 
+      this.http.post(this.ports.api.lf.testAllFound,
+        { 
           lflag: "得主" ,
           udept : window.localStorage.getItem("udept")
           }
-      }).then(res => {
+      ,res => {
         this.lostList = res.data.list;
       });
     },
     delList(){
-          axios
-            .post("/lf/testDeleteTo", 
-            qs.stringify({           
-            id: this.id,
-            }))
-            .then(res => {
+          this.http.post(this.ports.api.lf.testDeleteTo, 
+            {           
+              id: this.id,
+            }
+            ,res => {
             // console.log(res);
             if (res.data.status == '0') {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
                 this.getlostList();
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
       },

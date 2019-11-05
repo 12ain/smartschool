@@ -35,20 +35,8 @@
 </div>
 
 </template>
-
 <script>
-import Vue from "vue";
-import Vuex from 'vuex';
-import axios from "axios";
-import router from "../../router/index";
-import store from "../../store/store";
-Vue.use(Vuex);
 import { mapState, mapMutations } from "vuex";
-import { Toast } from 'mint-ui';
-import qs from 'Qs';
-axios.defaults.baseURL = 'http://47.94.10.228';
-axios.defaults.withCredentials = true;
-
 export default {
   components: {
 
@@ -88,7 +76,7 @@ export default {
     // 如果存在参数，自动调用登录函数
     if (userLogin.uid  && userLogin.upsd  && userLogin.autoLogin != false) {
       this._submitLogin(userLogin);
-      console.log('调用自动登录函数')
+      // console.log('调用自动登录函数')
     }
     this.$nextTick(function() {
 
@@ -103,12 +91,12 @@ export default {
     // 正则检测用户名
     checkUid() {
       if (this.userLogin.uid == "") {
-        Toast("请输入账号");
+        this.$toast("请输入账号");
       } else if (
         this.userLogin.uid != "" &&
         !this.regUser.uid.test(this.userLogin.uid)
       ) {
-        Toast("用户名不符合要求");
+        this.$toast("用户名不符合要求");
       } else {
         return true;
       }
@@ -116,12 +104,12 @@ export default {
     // 正则检测密码
     checkPwd() {
       if (this.userLogin.upsd == "") {
-        Toast("请输入密码");
+        this.$toast("请输入密码");
       } else if (
         this.userLogin.upsd != "" &&
         !this.regUser.upsd.test(this.userLogin.upsd)
       ) {
-        Toast("密码不符合要求");
+        this.$toast("密码不符合要求");
       } else {
         return true;
       }
@@ -132,20 +120,16 @@ export default {
         this.checkUid() &&
         this.checkPwd()
       ) {
-        axios
-          .post("/user/login", 
-          qs.stringify(
+        this.http.post(this.ports.api.user.login,
             {           
             uid: this.userLogin.uid, 
             upsd: this.userLogin.upsd,	
             autoLogin: this.userLogin.autoLogin
-            }
-          ))
-          .then(res => {
-            
+            },res => {
+            // console.log(res)
             if (res.data.status == '0') {
               // console.log(res)
-              Toast(res.data.msg);
+              this.$toast(res.data.msg);
               window.localStorage.setItem("uid", this.userLogin.uid);
               window.localStorage.setItem("udept", res.data.data.udept);
               window.localStorage.setItem("isLogined",true)
@@ -167,11 +151,10 @@ export default {
               this.$router.push("/repair");
               // console.log('登录成功')
             } else {
-              Toast(res.data.msg);
+              this.$toast(res.data.msg);
               // console.log('登录失败')
             }
           })
-          .catch();
       }
     }
   }

@@ -71,16 +71,9 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
-import router from "../../router/index";
-import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
-import { Toast } from 'mint-ui';
 import tabbar from '../common/tabbar'
 import qs from 'Qs';
-axios.defaults.baseURL = 'http://47.94.10.228';
-axios.defaults.withCredentials = true;
 export default {
     props: {
 
@@ -135,22 +128,20 @@ export default {
 
     },
     created() {
-    axios
-        .post("/testtell/checkTell",
-        qs.stringify({
-            udept:window.localStorage.getItem('udept')}
-        ))
-        .then(res => {
+    this.http.post(this.ports.api.testtell.checkTell,
+        {
+            udept:window.localStorage.getItem('udept')
+        }
+        ,res => {
         // console.log(res);
         
         if (res.data.status == '0') {
-        //   Toast(res.data.msg);
+        //   this.$toast(res.data.msg);
             this.testList = res.data.list;
         } else {
-            Toast(res.data.msg);
+            this.$toast(res.data.msg);
         }
         })
-        .catch();
 
     },
     mounted() {

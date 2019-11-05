@@ -33,13 +33,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { CellSwipe,Toast } from 'mint-ui';
-Vue.component(CellSwipe.name, CellSwipe, Toast);
-import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
-import axios from 'axios';
-import qs from 'Qs';
 import mUpLoader from "../common/UpLoader";
 export default {
   components: {
@@ -85,7 +79,7 @@ created() {
     if(action == 'confirm'){
       this.$router.push({ name:'changeInformation', params: { informationList: this.informationitem }})
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
@@ -103,7 +97,7 @@ created() {
         // console.log(this.id)
         this.delList(this.testid)
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
@@ -122,37 +116,36 @@ created() {
         this.updateinformation(this.informationItem)
       },
       getList(){
-          axios
-            .post("/testtell/checkTell",
-            qs.stringify({
-              udept:window.localStorage.getItem('udept')}
-              ))
-            .then(res => {
+          this.http
+            .post(this.ports.api.testtell.checkTell,
+            {
+              udept:window.localStorage.getItem('udept')
+            },
+            res => {
             // console.log(res);
             
             if (res.data.status == '0') {
                 this.testList = res.data.list
-                // Toast(res.data.msg);
+                // this.$toast(res.data.msg);
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
       },
       delList(){
-          axios
-            .post("/testtell/deleteTell", 
-            qs.stringify({           
+          this.http.post(this.ports.api.testtell.deleteTell, 
+            {           
             testid: this.testid,
-            }))
-            .then(res => {
+            }
+            ,res => {
             // console.log(res);
             if (res.data.status == '0') {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
                 this.getList();
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
-            })
+          })
       },
   }
 }

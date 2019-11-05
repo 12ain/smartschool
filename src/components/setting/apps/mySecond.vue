@@ -23,13 +23,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { CellSwipe,Toast } from 'mint-ui';
-Vue.component(CellSwipe.name, CellSwipe, Toast);
-import store from "../../../store/store";
 import { mapState, mapMutations } from "vuex";
-import axios from 'axios';
-import qs from 'Qs';
 export default {
 components: {},
 props: {
@@ -64,7 +58,7 @@ created() {
     if(action == 'confirm'){
         this.$router.push({ name:'changesecond', params: { secondList: this.secondItem }})
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
@@ -82,7 +76,7 @@ created() {
         // console.log(this.id)
         this.delList(this.tid)
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
@@ -100,35 +94,31 @@ methods: {
         this.updatesecond(this.secondItem)
     },
     getList(){
-        axios
-            .post("/trade/rmessmy", 
-            qs.stringify({           
+        this.http.post(this.ports.api.trade.rmessmy, 
+            {           
             tuid: this.userInformation.uid,
-        }))
-            .then(res => {
+        },res => {
             // console.log(res);
             
             if (res.data.status == '0') {
                 this.secondList = res.data.list
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
     },
     delList(rid){
-        axios
-            .post("/trade/deleteTo", 
-            qs.stringify({           
+        this.http.post(this.ports.api.trade.deleteTo, 
+            {           
             tid: this.tid,
-            }))
-            .then(res => {
+            },res => {
             // console.log(res);
             if (res.data.status == '0') {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
                 this.getList();
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
         },

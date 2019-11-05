@@ -70,7 +70,6 @@
 <script>
 import tabbar from '../common/tabbar'
 import mUpLoader from "../common/UpLoader"
-import axios from "axios";
 export default {
     props: {
 
@@ -105,24 +104,20 @@ export default {
     },
     methods: {
         getlostList(){
-            axios({
-                url: "/lf/testAllLost",
-                method: "post",
-                params: {
+            this.http.post(this.ports.api.lf.testAllLost,
+                {
                     lflag : "失主",
                     udept: window.localStorage.getItem("udept")
                     }
-                }).then(res => {
+                ,res => {
                 this.lostLists = res.data.list;
     });
-            axios({
-                url: "lf/testAllFound",
-                method: "post",
-                params: {
+            this.http.post(this.ports.api.lf.testAllFound,
+                {
                     lflag : "得主",
                     udept : window.localStorage.getItem("udept")
-                    }
-                }).then(res => {
+                }
+                ,res => {
                 this.getLists = res.data.list;
             });
         }

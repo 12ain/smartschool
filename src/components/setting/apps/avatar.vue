@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import Vue from "vue";
-import store from "../../../store/store";
 import { mapState, mapMutations } from "vuex";
 import mUpLoader from "../../common/avatarUp"
 export default {

@@ -21,10 +21,6 @@
 </template>
 
 <script>
-import { Toast } from 'mint-ui';
-import store from "../../store/store";
-import axios from 'axios';
-import qs from 'Qs';
 import { mapState, mapMutations } from "vuex";
 import mUpLoader from "../common/UpLoader"
 export default {

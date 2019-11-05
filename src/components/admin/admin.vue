@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import Vue from "vue";
-import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
 export default {
   components: {
