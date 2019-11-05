@@ -21,7 +21,7 @@ props: {
 },
 data() {
 return {
-    src: 'http://47.94.10.228//user/update',
+    src: this.http.BASE_URL + this.ports.api.user.update,
 }
 },
 computed: {

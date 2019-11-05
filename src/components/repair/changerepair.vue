@@ -38,8 +38,8 @@ export default {
             repairList: [],
             userRepair: {},
             repairRepair:{},
-            usersrc: 'http://47.94.10.228/record/updateTo',
-            repairsrc: 'http://47.94.10.228/record/delByW',
+            usersrc: this.http.BASE_URL + this.ports.api.record.updateTo,
+            repairsrc: this.http.BASE_URL + this.ports.api.record.delByW,
             isAdmin:false,
             isRepair:false,
         };

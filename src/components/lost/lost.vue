@@ -76,7 +76,7 @@ export default {
     },
     data() {
         return {
-            src: 'http://47.94.10.228/lf/testInsertTo',
+            src: this.http.BASE_URL + this.ports.api.lf.testInsertTo,
             active : 'tab-container1',
             actives : 'lost-container',
             lostList:{

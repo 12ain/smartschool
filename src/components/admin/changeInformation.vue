@@ -29,7 +29,7 @@ export default {
         return {
             testList: [],
             usertest: {},
-            usersrc: 'http://47.94.10.228/testtell/updateTell',
+            usersrc: this.http.BASE_URL + this.ports.api.testtell.updateTell,
             isAdmin:false,
             isRepair:false,
         };

@@ -55,6 +55,7 @@ export default {
      * @param response 请求成功时的回调函数
      * @param exception 异常的回调函数
      */
+    BASE_URL,
     post(url, data, response, exception) {
         axios({
             method: 'post',

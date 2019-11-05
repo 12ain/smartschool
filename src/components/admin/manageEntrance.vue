@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-        src:'http://47.94.10.228/test/insertTest',
+        src:this.http.BASE_URL + this.ports.api.test.insertTest,
         popupVisible:false,  // 显示添加组件
         testList:[],        // 所有考试信息列表
         tid:'',

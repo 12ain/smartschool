@@ -65,7 +65,7 @@ created() {
     if(action == 'confirm'){
         this.$router.push({ name:'changerepair', params: { repairList: this.repairitem }})
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },

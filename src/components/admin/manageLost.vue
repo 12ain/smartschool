@@ -64,7 +64,7 @@ export default {
             if (action == "confirm") {
               this.$router.push({ name:'changelost', params: { lostList: this.lostitem }})
             } else {
-              console.log("取消");
+              // console.log("取消");
             }
           })
       },

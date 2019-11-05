@@ -40,7 +40,7 @@ export default {
     props: {},
     data() {
         return {
-            src: 'http://47.94.10.228/trade/insertTo',
+            src: this.http.BASE_URL + this.ports.api.trade.insertTo,
             active : 'tab-container1',
             thingList:{
                 udept: window.localStorage.getItem("udept"),                   

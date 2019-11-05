@@ -29,7 +29,7 @@ export default {
         return {
             lostList: [],
             userLost: {},
-            usersrc: 'http://47.94.10.228/lf/testUpdateTo',
+            usersrc: this.http.BASE_URL + this.ports.api.lf.testUpdateTo,
             isAdmin:false,
             isRepair:false,
         };
@@ -40,7 +40,7 @@ export default {
     ...mapState(["userInformation"]),
     },
     created() {
-        this.give(),
+        this.give()
         this.decide()
     },
     mounted() {

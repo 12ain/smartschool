@@ -78,7 +78,7 @@ created() {
         // console.log(this.id)
         this.delList(this.id)
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
