@@ -20,10 +20,6 @@
 </template>
 
 <script>
-import { Toast } from 'mint-ui';
-import store from "../../store/store";
-import axios from 'axios';
-import qs from 'Qs';
 import { mapState, mapMutations } from "vuex";
 import mUpLoader from "../common/UpLoader"
 export default {
@@ -32,7 +28,7 @@ export default {
         return {
             secondList: [],
             usersecond: {},
-            usersrc: 'http://47.94.10.228/trade/updateTo',
+            usersrc: this.http.BASE_URL + this.ports.api.trade.updateTo,
             isAdmin:false,
             isRepair:false,
         };

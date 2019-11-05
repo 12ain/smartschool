@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import Vue from "vue";
 import tabbar from "../../common/tabbar";
 export default {
     props: {

@@ -77,16 +77,8 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
-import router from "../../router/index";
-import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
-import { Toast } from 'mint-ui';
 import qs from 'Qs';
-
-axios.defaults.withCredentials = true;
-
 export default {
   components: {
 
@@ -141,12 +133,12 @@ export default {
     // 正则检测用户名
     checkUid() {
       if (this.userInfo.uid == "") {
-        Toast("请输入账号");
+        this.$toast("请输入账号");
       } else if (
         this.userInfo.uid != "" &&
         !this.regUser.uid.test(this.userInfo.uid)
       ) {
-        Toast("用户名不符合要求");
+        this.$toast("用户名不符合要求");
       } else {
         return true;
       }
@@ -154,12 +146,12 @@ export default {
     // 正则检测密码
     checkPwd() {
       if (this.userInfo.upsd == "") {
-        Toast("请输入密码");
+        this.$toast("请输入密码");
       } else if (
         this.userInfo.upsd != "" &&
         !this.regUser.upsd.test(this.userInfo.upsd)
       ) {
-        Toast("密码不符合要求");
+        this.$toast("密码不符合要求");
       } else {
         return true;
       }
@@ -167,9 +159,9 @@ export default {
     // 检测confirmPwd
     checkConfirmPwd() {
       if (this.confirmpwd == "" ){
-        Toast("请输入确认密码");
+        this.$toast("请输入确认密码");
       } else if(this.confirmpwd != this.userInfo.upsd){
-        Toast("两次输入密码不一致");
+        this.$toast("两次输入密码不一致");
       } else {
         return true;
       }      
@@ -177,12 +169,12 @@ export default {
     // 正则检测手机号
     checkTel() {
       if (this.userInfo.utel == "") {
-        Toast("请输入手机号");
+        this.$toast("请输入手机号");
       } else if (
         this.userInfo.utel != "" &&
         !this.regUser.utel.test(this.userInfo.utel)
       ) {
-        Toast("手机号不符合要求");
+        this.$toast("手机号不符合要求");
       } else {
         return true;
       }
@@ -190,7 +182,7 @@ export default {
     // 检测姓名
     checkName() {
       if (this.userInfo.uname == "") {
-        Toast("请输入姓名");
+        this.$toast("请输入姓名");
       }  else {
         return true;
       }
@@ -198,12 +190,12 @@ export default {
     // 检测邮箱合法性
     checkUemail(){
       if (this.userInfo.uemail == "") {
-        Toast("请输入邮箱");
+        this.$toast("请输入邮箱");
       } else if (
         this.userInfo.uemail != "" &&
         !this.regUser.uemail.test(this.userInfo.uemail)
       ) {
-        Toast("邮箱不符合要求");
+        this.$toast("邮箱不符合要求");
       } else {
         return true;
       }
@@ -218,9 +210,8 @@ export default {
         this.checkTel()  &&
         this.checkUemail()
       ) {
-        axios
-          .post("/user/register", 
-          qs.stringify({           
+        this.http.post(this.ports.api.user.register, 
+          {           
             uid: this.userInfo.uid, 
             upsd: this.userInfo.upsd,	
             uname: this.userInfo.uname,	
@@ -228,20 +219,18 @@ export default {
             utel: this.userInfo.utel,
             udept: this.userInfo.udept,
             ugrade: this.userInfo.ugrade
-          }))
-          .then(res => {
-            console.log(res);
+          },res => {
+            // console.log(res);
             
             if (res.data.status == '0') {
-              Toast(res.data.msg);
+              this.$toast(res.data.msg);
               this.$router.push("/login");
               // console.log('注册成功')
             } else {
-              Toast(res.data.msg);
+              this.$toast(res.data.msg);
               // console.log('注册失败')
             }
           })
-          .catch();
       }
     }
   }

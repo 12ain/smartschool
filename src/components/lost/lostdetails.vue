@@ -39,7 +39,7 @@ export default {
 
     },
     created() {
-        console.log(this.lostList);
+        // console.log(this.lostList);
     },
     mounted() {
     },

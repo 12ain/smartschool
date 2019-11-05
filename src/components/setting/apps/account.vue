@@ -54,17 +54,7 @@
 </template>
 
 <script>
-import Vue from "vue";
-import Vuex from 'vuex';
-import axios from "axios";
-import router from "../../../router/index";
-import store from "../../../store/store";
-Vue.use(Vuex);
 import { mapState, mapMutations } from "vuex";
-import { Toast } from 'mint-ui';
-import qs from 'Qs';
-axios.defaults.baseURL = 'http://47.94.10.228';
-axios.defaults.withCredentials = true;
 export default {
     props: {
 
@@ -91,20 +81,18 @@ export default {
     methods: {
       ...mapMutations(["update"]),
         submitInformation(){
-        axios
-          .post("/user/update", 
-          qs.stringify({           
+        this.http.post(this.ports.api.user.update, 
+          {           
             uid: this.userInformation.uid, 
             upsd: this.userInformation.upsd,	
             uname: this.userInformation.uname,	
             uemail: this.userInformation.uemail,
             utel: this.userInformation.utel,
             udept: this.userInformation.udept,
-        }))
-          .then(res => {
+        },res => {
             
             if (res.data.status == '0') {
-              Toast(res.data.msg);
+              this.$toast(res.data.msg);
               this.update({
                 uid: this.userInformation.uid, 
                 upsd: this.userInformation.upsd,	
@@ -116,10 +104,9 @@ export default {
                 uimage: this.userInformation.uimage
             });
             } else {
-              Toast(res.data.msg);
+              this.$toast(res.data.msg);
             }
           })
-          .catch();
       }
     },
     components: {

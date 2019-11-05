@@ -50,17 +50,13 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
-import qs from 'QS'
 import tabbar from "../common/tabbar";
-import { Toast } from "mint-ui";
 import mUpLoader from "../common/UpLoader"
 export default {
   props: {},
   data() {
     return {
-      src: 'http://47.94.10.228/record/insertTo',
+      src: this.http.BASE_URL + this.ports.api.record.insertTo,
       active: "tab-container2",
       repairList: {
         ruid: window.localStorage.getItem("uid"),
@@ -81,36 +77,12 @@ export default {
   mounted() {},
   watch: {},
   methods: {
-    submitRepairList() {
-      let formData = new FormData();
-      formData.append("ruid", this.repairList.ruid);
-      formData.append("rdate", this.repairList.rdate);
-      formData.append("radr", this.repairList.radr);
-      formData.append("rtype", this.repairList.rtype);
-      formData.append("rdes", this.repairList.rdes);
-      formData.append("wstatic", this.repairList.wstatic);
-      formData.append("image", );
-      console.log(this.repairList.image)
-      let config = {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      };
-      axios.post("/record/insertTo", formData, config)
-      .then(res => {
-        if (res.status === 200) {
-            console.log(res);
-        }
-      });
-    },
     getRepairLists(){
-      axios
-      .post("/record/rmess",
-      qs.stringify({
+      this.http.post(this.ports.api.record.rmess,
+      {
         udept: window.localStorage.getItem("udept")
-      }))
-      .then(res => {
-      // Toast({
+      },res => {
+      // this.$toast({
       //     message: res.data.msg,
       //     position: 'bottom',
       //     duration: 3000

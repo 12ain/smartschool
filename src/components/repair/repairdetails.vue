@@ -33,7 +33,7 @@ export default {
 
     },
     created() {
-        console.log(this.repairList);
+        // console.log(this.repairList);
     },
     mounted() {
     },

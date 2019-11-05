@@ -31,7 +31,7 @@ export default {
 
     },
     created() {
-        console.log(this.secondList);
+        // console.log(this.secondList);
     },
     mounted() {
     },

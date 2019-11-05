@@ -29,7 +29,6 @@
 
 <script>
 import tabbar from '../common/tabbar'
-import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
 export default {
     props: {

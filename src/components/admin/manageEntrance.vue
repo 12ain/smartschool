@@ -31,13 +31,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { CellSwipe,Toast } from 'mint-ui';
-Vue.component(CellSwipe.name, CellSwipe, Toast);
-import store from "../../store/store";
 import { mapState, mapMutations } from "vuex";
-import axios from 'axios';
-import qs from 'Qs';
 import mUpLoader from "../common/UpLoader";
 export default {
   components: {
@@ -48,7 +42,7 @@ export default {
   },
   data() {
     return {
-        src:'http://47.94.10.228/test/insertTest',
+        src:this.http.BASE_URL + this.ports.api.test.insertTest,
         popupVisible:false,  // 显示添加组件
         testList:[],        // 所有考试信息列表
         tid:'',
@@ -82,7 +76,7 @@ created() {
     if(action == 'confirm'){
       this.$router.push({ name:'changeEntrance', params: { EntranceList: this.Entranceitem }})
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
@@ -100,7 +94,7 @@ created() {
         // console.log(this.id)
         this.delList(this.tid)
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
@@ -118,51 +112,49 @@ created() {
         this.updateentrance(this.entranceItem)
       },
       getList(){
-          axios
-            .post("/test/checktest")
+          axios.post("/test/checktest")
             .then(res => {
             // console.log(res);
             
             if (res.data.status == '0') {
                 this.testList = res.data.list
-                // Toast(res.data.msg);
+                // this.$toast(res.data.msg);
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
       },
       delList(){
-          axios
-            .post("/test/deleteTest", 
-            qs.stringify({           
+          this.http
+            .post(this.ports.api.test.deleteTest, 
+            {           
             tid: this.tid,
-            }))
-            .then(res => {
+            },res => {
             // console.log(res);
             if (res.data.status == '0') {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
                 this.getList();
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
-            })
+          })
       },
       submitNew(){
-          axios
-            .post("/test/insertTest", 
-            qs.stringify({           
+          this.http
+            .post(this.ports.api.test.insertTest, 
+            {           
             tname: this.newtestList.tname,
             turl: this.newtestList.turl,
             tcollege: this.newtestList.tcollege,
-            }))
-            .then(res => {
+            },
+            res => {
             // console.log(res);
             if (res.data.status == '0') {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
                 this.getList();
                 this.popupVisible=false;
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
       },

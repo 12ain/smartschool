@@ -29,10 +29,6 @@
 </template>
 
 <script>
-import { Toast } from 'mint-ui';
-import store from "../../store/store";
-import axios from 'axios';
-import qs from 'Qs';
 import { mapState, mapMutations } from "vuex";
 import mUpLoader from "../common/UpLoader"
 export default {
@@ -42,8 +38,8 @@ export default {
             repairList: [],
             userRepair: {},
             repairRepair:{},
-            usersrc: 'http://47.94.10.228/record/updateTo',
-            repairsrc: 'http://47.94.10.228/record/delByW',
+            usersrc: this.http.BASE_URL + this.ports.api.record.updateTo,
+            repairsrc: this.http.BASE_URL + this.ports.api.record.delByW,
             isAdmin:false,
             isRepair:false,
         };
@@ -84,21 +80,19 @@ export default {
           }
       },
         submitRepair(){
-          axios
-            .post("/record/delByW", 
-            qs.stringify({           
+          this.http.post(this.ports.api.record.delByW, 
+            {           
             rid: this.repairRepair.rid,
             wid: this.repairRepair.wid,
             wstatic: this.repairRepair.wstatic,
             wdate: this.repairRepair.wdate,
-        }))
-            .then(res => {
-            console.log(res);
+        },res => {
+            // console.log(res);
             if (res.data.status == '0') {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
                 this.$router.back(-1)
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
       },

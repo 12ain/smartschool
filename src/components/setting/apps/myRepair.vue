@@ -24,13 +24,7 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { CellSwipe,Toast } from 'mint-ui';
-Vue.component(CellSwipe.name, CellSwipe, Toast);
-import store from "../../../store/store";
 import { mapState, mapMutations } from "vuex";
-import axios from 'axios';
-import qs from 'Qs';
 export default {
   components: {
 
@@ -67,7 +61,7 @@ created() {
     if(action == 'confirm'){
         this.$router.push({ name:'changerepair', params: { repairList: this.repairitem }})
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
@@ -85,7 +79,7 @@ created() {
         // console.log(this.id)
         this.delList(this.rid)
     }else{
-        console.log('取消')
+        // console.log('取消')
     }
 })
     },
@@ -105,35 +99,31 @@ created() {
         // console.log(this.repairItem)
       },
       getList(){
-          axios
-            .post("record/rmessmy", 
-            qs.stringify({           
-            ruid: this.userInformation.uid,        
-        }))
-            .then(res => {
+          this.http.post(this.ports.api.record.rmessmy, 
+            {           
+            ruid: this.userInformation.uid, 
+            },res => {
             // console.log(res);
             
             if (res.data.status == '0') {
                 this.repairList = res.data.list
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
       },
       delList(rid){
-          axios
-            .post("/record/deleteTo", 
-            qs.stringify({           
+          this.http.post(this.ports.api.record.deleteTo, 
+            {           
             rid: rid,
-            }))
-            .then(res => {
+            },res => {
             // console.log(res);
             if (res.data.status == '0') {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
                 this.getList();
             } else {
-                Toast(res.data.msg);
+                this.$toast(res.data.msg);
             }
             })
       },

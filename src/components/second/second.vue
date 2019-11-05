@@ -36,13 +36,11 @@
 <script>
 import tabbar from '../common/tabbar'
 import mUpLoader from "../common/UpLoader"
-import axios from "axios";
-import qs from 'QS'
 export default {
     props: {},
     data() {
         return {
-            src: 'http://47.94.10.228/trade/insertTo',
+            src: this.http.BASE_URL + this.ports.api.trade.insertTo,
             active : 'tab-container1',
             thingList:{
                 udept: window.localStorage.getItem("udept"),                   
@@ -66,12 +64,10 @@ export default {
     },
     methods: {
         getthingLists(){
-                axios
-                .post("/trade/rmess",
-                qs.stringify({
+                this.http.post(this.ports.api.trade.rmess,
+                {
                 udept: window.localStorage.getItem("udept")
-                }))
-                .then(res => {
+                },res => {
                 // console.log(res)
                 this.thingLists = res.data.list;
             });
