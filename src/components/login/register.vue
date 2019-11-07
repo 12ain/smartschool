@@ -78,7 +78,6 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import qs from 'Qs';
 export default {
   components: {
 
@@ -112,7 +111,6 @@ export default {
         upsd: /\w{6,16}/,
         uemail: /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/,
       },
-      store,
       confirmpwd: "",
     }
   },
