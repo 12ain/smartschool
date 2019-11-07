@@ -78,7 +78,6 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import qs from 'Qs';
 export default {
   components: {
 
@@ -112,7 +111,6 @@ export default {
         upsd: /\w{6,16}/,
         uemail: /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/,
       },
-      store,
       confirmpwd: "",
     }
   },
@@ -236,11 +234,10 @@ export default {
   }
 }
 </script>
-
+<style lang="css" scoped src="../../assets/normalize/normalize.css"></style>
+<style lang="css" scoped src="./css/amazeui.min.css"></style>
+<style lang="css" scoped src="./css/app.css"></style>
 <style scoped>
-@import url('../../assets/normalize/normalize.css');
-@import url('./css/amazeui.min.css');
-@import url('./css/app.css');
 *{
   margin: 0;
   padding: 0;

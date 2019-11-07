@@ -6,7 +6,7 @@ import App from './App'
 Vue.config.productionTip = false
 import router from './router'
 import Vuex from 'vuex'
-import store from './store/store'
+import store from './store/index'
 import http from './utils/http'
 import ports from './api/index'
 Vue.prototype.http = http

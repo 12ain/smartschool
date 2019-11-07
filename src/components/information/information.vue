@@ -73,7 +73,6 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import tabbar from '../common/tabbar'
-import qs from 'Qs';
 export default {
     props: {
 
