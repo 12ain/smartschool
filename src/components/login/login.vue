@@ -161,10 +161,10 @@ export default {
 }
 </script>
 
-<style scoped>
-@import url('../../assets/normalize/normalize.css');
-@import url('./css/amazeui.min.css');
-@import url('./css/app.css');
+<style scoped lang="scss">
+@import "../../assets/normalize/normalize.css";
+@import "./css/amazeui.min.css";
+@import "./css/app.css";
 .myapp-login-logo-block{
   min-height: 100vh;
   display: flex;
