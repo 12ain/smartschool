@@ -6,33 +6,33 @@ const BASE_URL = 'http://47.94.10.228'
 /*
  * @param response 返回数据列表
  */
-// function handleResults(response) {
-//     let remoteResponse = response.data
-//     var result = {
-//         success: false,
-//         message: '',
-//         status: [],
-//         errorCode: '',
-//         data: {
-//             total: 0,
-//             results: []
-//         }
-//     }
-//     if (remoteResponse.success) {
-//         result.data.results = remoteResponse.data
-//         result.data.total = remoteResponse.total
-//         result.success = true
-//     }
-//     if (!remoteResponse.success) {
-//         let code = remoteResponse.errorCode
-//         if (code === 400) {
-//             console.log('传参错误')
-//         }
-//         result.errorCode = remoteResponse.errorCode
-//         result.message = remoteResponse.message
-//     }
-//     return result
-// }
+function handleResults(response) {
+    let remoteResponse = response.data
+    var result = {
+        success: false,
+        message: '',
+        status: [],
+        errorCode: '',
+        data: {
+            total: 0,
+            results: []
+        }
+    }
+    if (remoteResponse.success) {
+        result.data.results = remoteResponse.data
+        result.data.total = remoteResponse.total
+        result.success = true
+    }
+    if (!remoteResponse.success) {
+        let code = remoteResponse.errorCode
+        if (code === 400) {
+            console.log('传参错误')
+        }
+        result.errorCode = remoteResponse.errorCode
+        result.message = remoteResponse.message
+    }
+    return result
+}
 
 function handleUrl(url) {
     url = BASE_URL + url
