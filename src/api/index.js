@@ -10,23 +10,18 @@ export default {
             deleteTest:"/test/deleteTest",
             insertTest:"/test/insertTest",
             checkcollege: "/test/checkcollege",
-            insertTest :"/test/insertTest"
-
         },
         testtell:{
             updateTell: "/testtell/updateTell",
             checkTell: "/testtell/checkTell",
             deleteTell:"/testtell/deleteTell",
             insertTell:"/testtell/insertTell",
-            updateTell:"/testtell/updateTell"
-
         },
         lf:{
             testAllLost:"/lf/testAllLost",
             testAllFound:"/lf/testAllFound",
             testDeleteTo:"/lf/testDeleteTo",
             testAllThing:"/lf/testAllThing",
-            testDeleteTo:"/lf/testDeleteTo",
             testInsertTo :"/lf/testInsertTo",
             testUpdateTo :"/lf/testUpdateTo"
         },
@@ -44,7 +39,6 @@ export default {
             rmess:"/trade/rmess",
             deleteTo:"/trade/deleteTo",
             rmessmy:"/trade/rmessmy",
-            deleteTo:"/trade/deleteTo",
             insertTo :"/trade/insertTo",
             updateTo:"trade/updateTo"
         }
